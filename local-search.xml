@@ -11,6 +11,24 @@
     <content type="html"><![CDATA[<p>3月16日，我好无聊，不想刷题，也不想看论文。</p><p>​    于是把Ubuntu18，升级到了Ubuntu20，这篇文章就算是记录一下我对Ubuntu 20.04的认识吧，曾几何时，我还是个少年，第一次接触到linux就是从ubutnu开始的，我主动想参加一下Fira的一个无人机仿真项目，比赛平台听说在ubutnu上面，就自己早早安装了Ubuntu16，最明显的感觉就是简陋和不方便，恍惚间，我以为即将在一个脆弱的操作系统上工作，再加上其实对于Ubuntu系列Linux接触的太早了，对于操作系统的概念几乎没有，仿佛在当时的我眼里，这就是内核！！很尴尬的事情，当我真正学习操作系统内核的时候，我已经转眼大三了，感觉课程安排的的确有点问题了。</p><p>​    回到刚才的时间线上，我继续讲讲，linux平台的支持在18年的支持仍是非常差的，不仅是国内，国外也是这样，站在2021年的Ubuntu20,角度上这一点难以想象，国内的搜狗拼音，后来出现的网易云音乐，以及某个有实力却应付人的企鹅，仿佛就是在他乡遇到了一个故国人，心里的激动溢于言表，几乎所有能有办法运行在Ubuntu16上的软件我都尝试了一次，这些方法包括直接添加一个源，然后用包管理器安装的方式以及wine虚拟机的方式，对于ubuntu，我不用考虑环境坏了的问题，大不了就重装而已,我觉得这个时候已经没有什么事情可以永恒，我们在科技领域一定是可以胜过资本主义强盗的，我仿佛一个蓄意已久的火山，在此刻肆意倾吐着心中的热情，当然结果是令人沮丧的，因为我最喜欢的qq，原来是一个时空穿越，破碎的界面镌刻着08年的永恒，似乎告诉我，超越光年以外的东西有很多，比如c++。</p><img src="/images/image-20210327171025335.png" alt="image-20210327171025335" style="zoom: 50%;" /><p>​    后面我正式成为基地的视觉队员的时候，尴尬的发现这个比赛被取消了，当然如果不取消，后面我知道准确的讲，比赛平台不简单的是ubutnu，而是ubuntu14！！天呐，无法想象！还好被取消了。Ubuntu16里的娱乐成分已经贫瘠成这样了，还能怎样度量ubutnu14呢，伴随着使用Ubuntu系统的痛苦，我也感受到一下难以言表的收获，我其实不是一个聪明的人，因为家里比较穷，我知道改变命运的方式于我而言只有读书一条，寝室有个同学说，现在多数大学生都已经，四体不勤，五谷不分，我听到的时候有点难过，因为我是少数，并且不是因为我博古通今才分的五谷，我在基地项目上话费了很多精力，比赛也还好，我在算法竞赛上其实若于很多同龄人，可能正好是较早的接触了ubuntu，为我后面的战斗打下了坚实的基础，在此之上实现了弯道超车，同时也为我赢得了大学里的第一个国奖，直到大四，我才知晓，国奖荣誉的成分大于那8000人民币，我那么久的时间里一直是另一种思维。</p><p>​    我安装ubuntu18的时候已经显得很稳重了，即使换了电脑，有了cuda这个新的工具，我没了对于娱乐环境的探求，也不想再看国产软件如何应付linux环境，然而可能正是这段时间，我错过了亲眼看到那股彭博之势，Ubuntu18的环境已经改善了很多了，在我的调整下已经很像windows了</p><p><img src="/images/image-20210327172930349.png"></p><p>​    我没有关注游戏的环境改变，但是</p>]]></content>
     
     
+    <categories>
+      
+      <category>Diary</category>
+      
+      <category>Personal</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Ubuntu</tag>
+      
+      <tag>Games</tag>
+      
+      <tag>Life</tag>
+      
+    </tags>
     
   </entry>
   
@@ -24,6 +42,20 @@
     <content type="html"><![CDATA[<h2 id="opencv4-5-和-cuda一起编译"><a href="#opencv4-5-和-cuda一起编译" class="headerlink" title="opencv4.5 和 cuda一起编译"></a>opencv4.5 和 cuda一起编译</h2><p>opencv现在越写越大，原来简单的cmake配置现在变得烦的一批，为了下一次别人问我的时候，我不尴尬，我决定这次把编译方案记录下来，也好流芳百世（雾）.</p><ul><li><p>cmake and git</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install cmake<br>sudo apt install git<br></code></pre></td></tr></table></figure></li><li><p>opencv  download</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">git clone https://github.com/opencv/opencv.git<br>git clone https://github.com/opencv/opencv_contrib.git<br></code></pre></td></tr></table></figure></li><li><p>cuda 11</p><p>此处建议直接去官网下载，并不会浪费很多时间，下载速度也很快</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin<br>sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600wget https://developer.download.nvidia.com/compute/cuda/11.2.2/local_installers/cuda-repo-ubuntu2004-11-2-local_11.2.2-460.32.03-1_amd64.deb<br>sudo dpkg -i cuda-repo-ubuntu2004-11-2-local_11.2.2-460.32.03-1_amd64.deb<br>sudo apt-key add /var/cuda-repo-ubuntu2004-11-2-local/7fa2af80.pub<br>sudo apt-get update<br>sudo apt-get -y install cuda<br></code></pre></td></tr></table></figure></li><li><p>cmake 编译设置</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">cmake -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules<br>      -DWITH_CUDA=ON <br>      -DCUDA_FAST_MATH=ON<br>      -DWITH_CUBLAS=ON  <br>      -DCUDA_ARCH_PTX=7.5 <br>      -DCUDA_ARCH_BIN=7.5 <br>      ..<br></code></pre></td></tr></table></figure><p>解释一下：</p><p>英明的英伟达对显卡计算能力做了分级，可以自己搜一下就明白那个算力数字的含义，其实可以感觉到这是架构不同或者说硬件结构的限制，因此需要区别版本，如果不加那两句进行编译，也是可以的，这样表示默认，全部cuda支持硬件架构你都要编译，时间上会花费很久。</p></li></ul>]]></content>
     
     
+    <categories>
+      
+      <category>environment setup</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>opencv</tag>
+      
+      <tag>cuda</tag>
+      
+    </tags>
     
   </entry>
   
@@ -37,6 +69,22 @@
     <content type="html"><![CDATA[<h3 id="Red-Black-Tree"><a href="#Red-Black-Tree" class="headerlink" title="Red Black Tree"></a>Red Black Tree</h3><p>红黑树很不错，我写得贼6</p>]]></content>
     
     
+    <categories>
+      
+      <category>algorithm</category>
+      
+      <category>tree</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>algorithm</tag>
+      
+      <tag>rbtree</tag>
+      
+    </tags>
     
   </entry>
   
