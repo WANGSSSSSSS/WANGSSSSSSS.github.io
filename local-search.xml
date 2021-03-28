@@ -11,6 +11,20 @@
     <content type="html"><![CDATA[<h3 id="异常控制流（一）"><a href="#异常控制流（一）" class="headerlink" title="异常控制流（一）"></a>异常控制流（一）</h3><h3 id="非本地跳转"><a href="#非本地跳转" class="headerlink" title="非本地跳转"></a>非本地跳转</h3><p>c语言提供了用户级别的异常控制流形式，成为非本地跳转。这个机制可以实现从一个函数直接转移到另一个函数，而不是遵循基本的调用过程（参数压戰+call function）。非本地跳转机制主要通过setjump函数和longjump函数实现。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;setjmp.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">setjmp</span><span class="hljs-params">(jmp_buf env)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">sigsetjmp</span><span class="hljs-params">(sigjmp_buf env, <span class="hljs-keyword">int</span> savesigs)</span></span>;<br><br><span class="hljs-comment">// 返回：setjmp 返回 0，longjmp 返回非零。</span><br></code></pre></td></tr></table></figure><h4 id="函数-setjump"><a href="#函数-setjump" class="headerlink" title="函数 setjump"></a>函数 setjump</h4><p>setjump 函数的作用相当于保存复活点，因此函数参数为一个缓冲区，作用就是将环境信息保存起来，这个信息包括pc，栈指针以及一些通用的寄存器（rax，rbx，rdi..）</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c">jmp_buf env;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    rc = setjmp(env); <br>&#125;<br></code></pre></td></tr></table></figure><h4 id="函数-longjump"><a href="#函数-longjump" class="headerlink" title="函数 longjump"></a>函数 longjump</h4><p>longjump实现从刚才保存的复活点重新启动，然后触发一个setjump调用的返回</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c">jmp_buf env;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    rc = setjmp(env); <br>    longjump(env, <span class="hljs-number">0</span>);<br>&#125;<br></code></pre></td></tr></table></figure><p>这里有一些奇怪的东西：</p><ul><li>setjump多次返回：调用一次，longjump调用又从那里返回一次</li><li>setjump返回值：第一次调用返回0，longjump调用返回的时候返回值是savesigs，这个数字被用来解码，至于原因，后文会说</li><li>longjump不返回</li></ul><p>这里根据我对signal机制的了解，大概实现思路已经有了</p><h3 id="非本地跳转应用"><a href="#非本地跳转应用" class="headerlink" title="非本地跳转应用"></a>非本地跳转应用</h3><h4 id="高性能异常处理"><a href="#高性能异常处理" class="headerlink" title="高性能异常处理"></a>高性能异常处理</h4><p>直接随地跳转，如果是在递归过程中间出现了异常，大量的递归栈要被解开，会浪费大量时间，通过非本地跳转可以实现快速上报错误，返回值指定了错误码，用户可以用来制定解码规则，甄别错误类型。</p><p><strong>高级语言的异常处理</strong></p><p>C++ 和 Java 提供的异常机制是较高层次的，是 C 语言的 setjmp 和 longjmp 函数的更加结构化的版本。你可以把 try 语句中的 catch 子句看做类似于 setjmp 函数。相似地，throw 语句就类似于 longjmp 函数。</p><h3 id="非本地跳转实验"><a href="#非本地跳转实验" class="headerlink" title="非本地跳转实验"></a>非本地跳转实验</h3><p>我只是简单的复制粘贴了书上的代码，这个东西挺好玩的，不过我懒得写了。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;setjmp.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span><br><br><br>jmp_buf buf;<br><br><span class="hljs-keyword">int</span> error1 = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">int</span> error2 = <span class="hljs-number">1</span>;<br><br>void foo(void), bar(void);<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">switch</span> (setjmp(buf)) &#123;<br>    <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:<br>        foo();<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Detected an error1 condition in foo\n&quot;</span>);<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Detected an error2 condition in foo\n&quot;</span>);<br>        <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">default</span>:<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Unknown error condition in foo\n&quot;</span>);<br>    &#125;<br>    <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>&#125;<br><br><span class="hljs-comment">/* Deeply nested function foo */</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">foo</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (error1)<br>        longjmp(buf, <span class="hljs-number">1</span>);<br>    bar();<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bar</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (error2)<br>        longjmp(buf, <span class="hljs-number">2</span>);<br>&#125;<br></code></pre></td></tr></table></figure><h5 id="实验结果："><a href="#实验结果：" class="headerlink" title="实验结果："></a>实验结果：</h5><p><img src="/images/image-20210328171319221.png"></p><h3 id="非本地跳转实现原理"><a href="#非本地跳转实现原理" class="headerlink" title="非本地跳转实现原理"></a>非本地跳转实现原理</h3><h4 id="基本数据结构与函数定义"><a href="#基本数据结构与函数定义" class="headerlink" title="基本数据结构与函数定义"></a>基本数据结构与函数定义</h4><img src="/images/image-20210328171757424.png" alt="image-20210328171757424" style="zoom: 67%;" /><p>jmp buf是一个jmp buf tag的指针，这种定义方式还挺奇怪的，以前没见过</p><p><strong>__jmpbuf</strong>   : 一个int数组 int[8]</p><p><strong>__sigset_t</strong> : 老熟人了，大致已经猜到底层就是signal那套机制了</p><img src="/images/image-20210328172313775.png" alt="image-20210328172313775" style="zoom:80%;" /><h5 id="setjump-函数"><a href="#setjump-函数" class="headerlink" title="setjump 函数"></a>setjump 函数</h5><img src="/images/image-20210328171704299.png" alt="image-20210328171704299" style="zoom: 67%;" /><h5 id="longjump函数"><a href="#longjump函数" class="headerlink" title="longjump函数"></a>longjump函数</h5><img src="/images/image-20210328172518149.png" alt="image-20210328172518149" style="zoom:80%;" /><h4 id="实现原理梳理："><a href="#实现原理梳理：" class="headerlink" title="实现原理梳理："></a>实现原理梳理：</h4><h5 id="setjump系统调用发生："><a href="#setjump系统调用发生：" class="headerlink" title="setjump系统调用发生："></a>setjump系统调用发生：</h5><p>现在处于内核里面了，寄存器按照x86的32位描述，这块应该没啥问题，很好理解</p><p>上面是用户栈，下面是内核栈，最下面是寄存器状态</p><p><img src="/images/image-20210328173109840.png" alt="image-20210328173109840"></p><h5 id="set过程："><a href="#set过程：" class="headerlink" title="set过程："></a>set过程：</h5><ol><li>根据系统调用传入的参数，在用户栈中找到env：env（这是一个指针其实，前面数据结构有提到），将寄存器保存下来，（那八大金刚寄存器），从前面的数据结构可以看出，有字长设置，自己实现需要注意这个问题</li><li>退出，这是第一次调用返回，也是最正常的一次</li></ol><p><img src="/images/image-20210328173412838.png" alt="image-20210328173412838"></p><h4 id="longjump过程："><a href="#longjump过程：" class="headerlink" title="longjump过程："></a>longjump过程：</h4><ol><li><p>根据参数找到保存寄存器的地方，恢复寄存器到核心栈</p><p>注意：这里比signal简单一点，不需要存上下文，因为是直接返回</p></li><li><p>恢复之后，内核栈里面保存的上下文变成了esp指向了set的时候的状态，eip指向了返回地址</p></li><li><p>修改返回值：根据第三个参数，修改eax</p></li><li><p>退出，这个时候操作系统根据tss寄存器找到上下文，恢复好寄存器，然后第二次返回setjump</p></li></ol><p><img src="/images/image-20210328174109255.png" alt="image-20210328174109255"></p><h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>这个过程其实很简单，比signal简单多了，因为是一个进程自己搞自己，不牵扯页表切换，就这样吧</p><p>​                                                                                                                我是王帅，一个西工大的本科屌丝</p>]]></content>
     
     
+    <categories>
+      
+      <category>os</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>os</tag>
+      
+      <tag>cs</tag>
+      
+    </tags>
     
   </entry>
   
@@ -24,6 +38,20 @@
     <content type="html"><![CDATA[]]></content>
     
     
+    <categories>
+      
+      <category>os</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>os</tag>
+      
+      <tag>cs</tag>
+      
+    </tags>
     
   </entry>
   
@@ -39,7 +67,7 @@
     
     <categories>
       
-      <category>algorithm</category>
+      <category>algorithem</category>
       
       <category>dp</category>
       
@@ -48,7 +76,9 @@
     
     <tags>
       
-      <tag>-dp -algorithem</tag>
+      <tag>dp</tag>
+      
+      <tag>algorithem</tag>
       
     </tags>
     
