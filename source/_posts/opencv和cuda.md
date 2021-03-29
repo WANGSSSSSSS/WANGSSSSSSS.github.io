@@ -6,6 +6,7 @@ categories:
 tags:
 - opencv
 - cuda
+cover:
 ---
 
 ## opencv4.5 和 cuda一起编译
