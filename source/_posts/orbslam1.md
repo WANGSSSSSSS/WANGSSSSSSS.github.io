@@ -7,14 +7,14 @@ categories:
 tags:
 - cv
 - slam
-cover: /images/image-20210401174702609.png
+cover: image-20210401174702609.png
 ---
 
 # Tracking 线程
 
 Tracking 线程整体流程包括关键帧的插入，当前帧的位置确定。位置确定的过程根据跟踪成功与否，可以分为，匀速运动模型估计，以及失败情况下的重定位。
 
-![image-20210401174702609](/images/image-20210401174702609.png)
+![系统框图](./orbslam1/image-20210401174702609.png)
 
 ## 初始化
 
