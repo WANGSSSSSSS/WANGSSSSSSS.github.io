@@ -178,6 +178,14 @@ swiper:
 
 butterfly_article_double_row:
   enable: true
+kramed:
+  gfm: true
+  pedantic: false
+  sanitize: false
+  tables: true
+  breaks: true
+  smartLists: true
+  smartypants: true
 
 history_calendar:
   priority: 4

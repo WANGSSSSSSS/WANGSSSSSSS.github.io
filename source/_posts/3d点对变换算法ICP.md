@@ -14,7 +14,7 @@ cover:
 
 已知$n$对真实坐标点$(p_i, q_i)$，其中$p_i$是机器人在位置$P$观测的实物位置坐标，$q_i$是机器人在位置$Q$观测的实物位置坐标，现在需要求解相关位姿变换$R,T$（$Q$相对于$P$）
 
-​														$min \Sigma_i (Rp_i + t -q_i) $
+​														$$min \Sigma_i (Rp_i + t -q_i) $$
 
 ### 2D 坐标
 
@@ -22,9 +22,9 @@ cover:
 
 算法流程：
 
-* 将两个点云归一化的各自中心坐标下$(p_i - \bar p, q_i-\bar q)$
+* 将两个点云归一化的各自中心坐标下$$(p_i - \bar p, q_i-\bar q)$$
 * 计算平均角度误差量，包括线性与非线性两种
-* 最后计算平移向量$t = \bar p - R\bar q$
+* 最后计算平移向量$$t = \bar p - R\bar q$$
 
 #### 线性算法
 
@@ -71,7 +71,7 @@ double icpStep(OrientedPoint & retval, const PointPairContainer& container){
 
 #### 非线性算法
 
-**代码示例** 算法 $sin 与 cos $累计误差
+**代码示例** 算法 $$sin 与 cos $$累计误差
 
 ```c++
 template <typename PointPairContainer>
@@ -115,9 +115,9 @@ double icpNonlinearStep(OrientedPoint & retval, const PointPairContainer& contai
 
 算法流程：
 
-* 将两个点云归一化的各自中心坐标下$(p_i - \bar p, q_i-\bar q)$
+* 将两个点云归一化的各自中心坐标下$$(p_i - \bar p, q_i-\bar q)$$
 * 计算相对的旋转矩阵，包括直接线性变换与非线性优化两种
-* 最后计算平移向量$t = \bar p - R\bar q$
+* 最后计算平移向量$$t = \bar p - R\bar q$$
 
 #### 直接线性变换DLT
 
