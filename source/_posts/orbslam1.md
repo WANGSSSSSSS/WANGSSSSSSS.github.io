@@ -33,13 +33,9 @@ void Tracking::FirstInitialization()
         mvbPrevMatched.resize(mCurrentFrame.mvKeysUn.size());
         for(size_t i=0; i<mCurrentFrame.mvKeysUn.size(); i++)
             mvbPrevMatched[i]=mCurrentFrame.mvKeysUn[i].pt;
-
         if(mpInitializer)
             delete mpInitializer;
-
         mpInitializer =  new Initializer(mCurrentFrame,1.0,200);
-
-
         mState = INITIALIZING;
     }
 }
@@ -127,58 +123,12 @@ void Tracking::Initialize()
 ```c++
 void Tracking::CreateInitialMap(cv::Mat &Rcw, cv::Mat &tcw)
 {
-    // Set Frame Poses
-    mInitialFrame.mTcw = cv::Mat::eye(4,4,CV_32F);
-    mCurrentFrame.mTcw = cv::Mat::eye(4,4,CV_32F);
-    Rcw.copyTo(mCurrentFrame.mTcw.rowRange(0,3).colRange(0,3));
-    tcw.copyTo(mCurrentFrame.mTcw.rowRange(0,3).col(3));
-
-    // Create KeyFrames
-    KeyFrame* pKFini = new KeyFrame(mInitialFrame,mpMap,mpKeyFrameDB);
-    KeyFrame* pKFcur = new KeyFrame(mCurrentFrame,mpMap,mpKeyFrameDB);
-
-    pKFini->ComputeBoW();
-    pKFcur->ComputeBoW();
-
-    // Insert KFs in the map
-    mpMap->AddKeyFrame(pKFini);
-    mpMap->AddKeyFrame(pKFcur);
+  	// 设置第二帧相机位姿
+    { ... }
 
     // Create MapPoints and asscoiate to keyframes
     // 建立地图点观测与关键帧之间的联系
-    for(size_t i=0; i<mvIniMatches.size();i++)
-    {
-        if(mvIniMatches[i]<0)
-            continue;
-
-        //Create MapPoint.
-        cv::Mat worldPos(mvIniP3D[i]);
-
-        MapPoint* pMP = new MapPoint(worldPos,pKFcur,mpMap);
-
-        pKFini->AddMapPoint(pMP,i);
-        pKFcur->AddMapPoint(pMP,mvIniMatches[i]);
-
-        pMP->AddObservation(pKFini,i);
-        pMP->AddObservation(pKFcur,mvIniMatches[i]);
-
-        pMP->ComputeDistinctiveDescriptors();
-        pMP->UpdateNormalAndDepth();
-
-        //Fill Current Frame structure
-        mCurrentFrame.mvpMapPoints[mvIniMatches[i]] = pMP;
-
-        //Add to Map
-        mpMap->AddMapPoint(pMP);
-
-    }
-
-    // Update Connections
-    pKFini->UpdateConnections();
-    pKFcur->UpdateConnections();
-
-    // Bundle Adjustment
-    ROS_INFO("New Map created with %d points",mpMap->MapPointsInMap());
+    { ... }
 	// 全局优化位姿以及地图点
     Optimizer::GlobalBundleAdjustemnt(mpMap,20);
 
@@ -186,13 +136,7 @@ void Tracking::CreateInitialMap(cv::Mat &Rcw, cv::Mat &tcw)
     // 单目视觉slam缺少尺度信息，这个步骤是归一化地图尺度
     float medianDepth = pKFini->ComputeSceneMedianDepth(2);
     float invMedianDepth = 1.0f/medianDepth;
-
-    if(medianDepth<0 || pKFcur->TrackedMapPoints()<100)
-    {
-        ROS_INFO("Wrong initialization, reseting...");
-        Reset();
-        return;
-    }
+	...
 
     // Scale initial baseline
     cv::Mat Tc2w = pKFcur->GetPose();
@@ -210,24 +154,7 @@ void Tracking::CreateInitialMap(cv::Mat &Rcw, cv::Mat &tcw)
             pMP->SetWorldPos(pMP->GetWorldPos()*invMedianDepth);
         }
     }
-
-    mpLocalMapper->InsertKeyFrame(pKFini);
-    mpLocalMapper->InsertKeyFrame(pKFcur);
-
-    mCurrentFrame.mTcw = pKFcur->GetPose().clone();
-    mLastFrame = Frame(mCurrentFrame);
-    mnLastKeyFrameId=mCurrentFrame.mnId;
-    mpLastKeyFrame = pKFcur;
-
-    mvpLocalKeyFrames.push_back(pKFcur);
-    mvpLocalKeyFrames.push_back(pKFini);
-    mvpLocalMapPoints=mpMap->GetAllMapPoints();
-    mpReferenceKF = pKFcur;
-
-    mpMap->SetReferenceMapPoints(mvpLocalMapPoints);
-
-    mpMapPublisher->SetCurrentCameraPose(pKFcur->GetPose());
-
+    ...
     mState=WORKING;
 }
 ```
@@ -241,13 +168,6 @@ bool Tracking::TrackPreviousFrame()
 {
     ORBmatcher matcher(0.9,true);
     vector<MapPoint*> vpMapPointMatches;
-
-    // Search first points at coarse scale levels to get a rough initial estimate
-    int minOctave = 0;
-    int maxOctave = mCurrentFrame.mvScaleFactors.size()-1;
-    if(mpMap->KeyFramesInMap()>5)
-        minOctave = maxOctave/2+1;
-
     int nmatches = matcher.WindowSearch(mLastFrame,mCurrentFrame,200,vpMapPointMatches,minOctave);
 
     mLastFrame.mTcw.copyTo(mCurrentFrame.mTcw);
@@ -257,34 +177,9 @@ bool Tracking::TrackPreviousFrame()
     {
         // Optimize pose with correspondences
         Optimizer::PoseOptimization(&mCurrentFrame);
-
-        for(size_t i =0; i<mCurrentFrame.mvbOutlier.size(); i++)
-            if(mCurrentFrame.mvbOutlier[i])
-            {
-                mCurrentFrame.mvpMapPoints[i]=NULL;
-                mCurrentFrame.mvbOutlier[i]=false;
-                nmatches--;
-            }
-
-        // Search by projection with the estimated pose
+       // Search by projection with the estimated pose
         nmatches += matcher.SearchByProjection(mLastFrame,mCurrentFrame,15,vpMapPointMatches);
     }
-
-
-    mCurrentFrame.mvpMapPoints=vpMapPointMatches;
-
-    // Optimize pose again with all correspondences
-    Optimizer::PoseOptimization(&mCurrentFrame);
-
-    // Discard outliers
-    for(size_t i =0; i<mCurrentFrame.mvbOutlier.size(); i++)
-        if(mCurrentFrame.mvbOutlier[i])
-        {
-            mCurrentFrame.mvpMapPoints[i]=NULL;
-            mCurrentFrame.mvbOutlier[i]=false;
-            nmatches--;
-        }
-
     return nmatches>=10;
 }
 ```
