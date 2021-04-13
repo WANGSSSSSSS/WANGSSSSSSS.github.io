@@ -5,7 +5,7 @@ categories:
 - compiler
 tags:
 - compiler
-cover: tiny/image-20210410201501500.png
+cover: image-20210413162640273.png
 ---
 
 # Tiny Compiler 分析
@@ -18,6 +18,8 @@ cover: tiny/image-20210410201501500.png
 ## Tiny Compiler 介绍
 
 Tiny 编译器是一个仅有两千行代码的小型编译器，但是麻雀虽小，五脏俱全，这个编译器不仅实现了编译器的前端和代码生成，甚至还带有一个可运行的虚拟机，可供操作。
+
+![image-20210413162640273](tiny/image-20210413162640273.png)
 
 ## 词法分析
 
