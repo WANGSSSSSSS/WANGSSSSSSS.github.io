@@ -5,7 +5,7 @@ categories:
 - environment setup
 tags:
 - environment setup
-cover: 编译fastplanner/image-20210404095959149.png
+cover: image-20210404095959149.png
 ---
 
 ![Fast planner](编译fastplanner/image-20210404095959149.png)
