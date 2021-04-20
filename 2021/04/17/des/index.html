@@ -1,16 +1,17 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>des | wangshuai.excellent</title><meta name="author" content="wangshuai"><meta name="copyright" content="wangshuai"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="$L_{i} &#x3D; R_{i-1}$ $R_i &#x3D; L_{i-1} + f(R_{i-1}, k_i)$">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>des | wangshuai.excellent</title><meta name="keywords" content="encryption"><meta name="author" content="wangshuai"><meta name="copyright" content="wangshuai"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="abstract ：  本文实现了上世纪最具知名度的加密算法DES，同时应用与图像内容加密，用可视化的方式展示了加密算法DES存在的一些问题，以及用来改进他的CBC方法 关键字： DES加密，级联DES加密，CBC方法，加密可视化，图像加密 一．问题重述 DES 加密算法是Data Encryption Standard 的缩写，是一种对称加密算法，在1976年被美国联邦政府的国家标准安全局确定为">
 <meta property="og:type" content="article">
 <meta property="og:title" content="des">
 <meta property="og:url" content="http://wangsssssss.github.io/2021/04/17/des/index.html">
 <meta property="og:site_name" content="wangshuai.excellent">
-<meta property="og:description" content="$L_{i} &#x3D; R_{i-1}$ $R_i &#x3D; L_{i-1} + f(R_{i-1}, k_i)$">
+<meta property="og:description" content="abstract ：  本文实现了上世纪最具知名度的加密算法DES，同时应用与图像内容加密，用可视化的方式展示了加密算法DES存在的一些问题，以及用来改进他的CBC方法 关键字： DES加密，级联DES加密，CBC方法，加密可视化，图像加密 一．问题重述 DES 加密算法是Data Encryption Standard 的缩写，是一种对称加密算法，在1976年被美国联邦政府的国家标准安全局确定为">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg2.png">
+<meta property="og:image" content="http://wangsssssss.github.io/2021/04/17/des/image-20210420213735821.png">
 <meta property="article:published_time" content="2021-04-17T02:17:45.000Z">
-<meta property="article:modified_time" content="2021-04-17T02:19:36.935Z">
+<meta property="article:modified_time" content="2021-04-20T13:41:55.777Z">
 <meta property="article:author" content="wangshuai">
+<meta property="article:tag" content="encryption">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg2.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://wangsssssss.github.io/2021/04/17/des/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="http://wangsssssss.github.io/2021/04/17/des/image-20210420213735821.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://wangsssssss.github.io/2021/04/17/des/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: undefined,
@@ -56,7 +57,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2021-04-17 10:19:36'
+  postUpdate: '2021-04-20 21:41:55'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -141,9 +142,166 @@
     })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
 <style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
   white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/images/1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">34</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">wangshuai.excellent</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">des</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-04-17T02:17:45.000Z" title="Created 2021-04-17 10:17:45">2021-04-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-04-17T02:19:36.935Z" title="Updated 2021-04-17 10:19:36">2021-04-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="des"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><p>$L_{i} = R_{i-1}$</p>
-<p>$R_i = L_{i-1} + f(R_{i-1}, k_i)$</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">wangshuai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://wangsssssss.github.io/2021/04/17/des/">http://wangsssssss.github.io/2021/04/17/des/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg2.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/wechat.jpeg" target="_blank"><img class="post-qr-code-img" src="/images/wechat.jpeg"/></a><div class="post-qr-code-desc"></div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/18/sentences/"><img class="prev-cover" src="/2021/04/18/sentences/image-20210418162421840.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">sentences</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/14/MnasNet/"><img class="next-cover" src="/2021/04/14/MnasNet/image-20210414220146133.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">MnasNet</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/images/1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">wangshuai</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">34</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/WANGSSSSSSS"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/WANGSSSSSSS" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:wangshuai.excellent@foxmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/04/20/TimerSformer/" title="TimerSformer"><img src="/2021/04/20/TimerSformer/image-20210420201820752.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TimerSformer"/></a><div class="content"><a class="title" href="/2021/04/20/TimerSformer/" title="TimerSformer">TimerSformer</a><time datetime="2021-04-20T12:16:23.000Z" title="Created 2021-04-20 20:16:23">2021-04-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/20/map/" title="map"><img src="/2021/04/20/map/image-20210420143803529.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="map"/></a><div class="content"><a class="title" href="/2021/04/20/map/" title="map">map</a><time datetime="2021-04-20T06:37:54.000Z" title="Created 2021-04-20 14:37:54">2021-04-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/20/unordered-map/" title="unordered_map"><img src="/2021/04/20/unordered-map/image-20210420143623662.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="unordered_map"/></a><div class="content"><a class="title" href="/2021/04/20/unordered-map/" title="unordered_map">unordered_map</a><time datetime="2021-04-20T06:33:12.000Z" title="Created 2021-04-20 14:33:12">2021-04-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/18/sentences/" title="sentences"><img src="/2021/04/18/sentences/image-20210418162421840.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="sentences"/></a><div class="content"><a class="title" href="/2021/04/18/sentences/" title="sentences">sentences</a><time datetime="2021-04-18T07:55:04.000Z" title="Created 2021-04-18 15:55:04">2021-04-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/17/des/" title="des"><img src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="des"/></a><div class="content"><a class="title" href="/2021/04/17/des/" title="des">des</a><time datetime="2021-04-17T02:17:45.000Z" title="Created 2021-04-17 10:17:45">2021-04-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By wangshuai</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/images/1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">34</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">18</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">wangshuai.excellent</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">des</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-04-17T02:17:45.000Z" title="Created 2021-04-17 10:17:45">2021-04-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-04-20T13:41:55.777Z" title="Updated 2021-04-20 21:41:55">2021-04-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/encryption/">encryption</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="des"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><p>abstract ：  本文实现了上世纪最具知名度的加密算法DES，同时应用与图像内容加密，用可视化的方式展示了加密算法DES存在的一些问题，以及用来改进他的CBC方法</p>
+<p>关键字： DES加密，级联DES加密，CBC方法，加密可视化，图像加密</p>
+<p>一．问题重述</p>
+<p>DES 加密算法是Data Encryption Standard 的缩写，是一种对称加密算法，在1976年被美国联邦政府的国家标准安全局确定为一个安全标准，它使用56位密钥的对称加密算法，本次大作业独立实现DES加密算法，并可视化的加密图像文件，这样可以更立体的认识到加密算法的不足,以及建立对于基于例如CBC算法的改进工作的认识。</p>
+<p><img src="/2021/04/17/des/image-20210420212734865.png" alt="image-20210420212734865"> </p>
+<p>二．DES文件加密算法</p>
+<p> <img src="/2021/04/17/des/image-20210420212757339.png" alt="image-20210420212757339"></p>
+<ol>
+<li>密钥生成</li>
+</ol>
+<p>密钥是一个长度为64的位串，其中56位是密钥，其他8位是奇偶校验位，在密码编排过程中，这些校验位需要忽略掉</p>
+<p>1.1 P1 置换</p>
+<p>P1 置换的作用是用来除去上文中提到的奇偶校验位，左图中的{8,16,24,32,40,48,56,64}这些奇偶校验位通过置换，从原来的K中去除</p>
+<p><img src="/2021/04/17/des/image-20210420212826918.png" alt="img"> <img src="/2021/04/17/des/image-20210420212841839.png" alt="image-20210420212841839"></p>
+<p>1.2 分组循环左移</p>
+<p>加密过程总共有16轮，通过设定好的移位步长先生成16个子密钥，在每一轮的加密过程中，初步加密的明文通过二进制加法与子密钥结合，进一步加密，下图是DES 加密的移位表。</p>
+<p><img src="/2021/04/17/des/image-20210420212853929.png" alt="image-20210420212853929"> </p>
+<p>1.3 P2 置换</p>
+<p>经过expand之后的明文有48位，但是子密钥现在还是56位，仍有位数上的差距，现在对子密钥进行压缩</p>
+<p><img src="/2021/04/17/des/image-20210420212905784.png" alt="image-20210420212905784"> </p>
+<ol>
+<li>分组加密</li>
+</ol>
+<p>2.1 最初置换</p>
+<p>输入分组明文之后，对输入的明文进行第一步置换，最初置换的作用主要是将明文中的奇偶校验位提取出来，但是不同于密钥的处理步骤，密钥是将奇偶校验位去除掉，这里只是将奇偶校验位提取到同一行，同时将整个明文打乱。</p>
+<p><img src="/2021/04/17/des/image-20210420212920382.png" alt="img"> <img src="/2021/04/17/des/image-20210420212929311.png" alt="image-20210420212929311"></p>
+<p>2.2 Expand</p>
+<p>现在将整个明文分为两部分，L（1,32），R（33，64）两部分，对于R部分进行expand操作，这里的expand操作让我想起了神经网络中的SE结构，也就是隐藏层操作，将R部分映射成为48位的向量。</p>
+<p><img src="/2021/04/17/des/image-20210420212950843.png" alt="image-20210420212950843"> <img src="/2021/04/17/des/image-20210420213003125.png" alt="image-20210420213003125"></p>
+<p>2.3 S box</p>
+<p>对于expand之后的R（1,48），按照每六个一组，分为8组，S box 总共有8个，每个分别对一个小分组进行处理，处理的规则为：</p>
+<p>例如： 对于第五个小分组011011，采用S5 box，则按照行列索引其中（2,5）位作为列索引，第一位和最后一位作为行索引，找到表中数据作为输出，将R（1,48）映射为（1,32）。</p>
+<p><img src="/2021/04/17/des/image-20210420213013654.png" alt="image-20210420213013654"> </p>
+<p>下图为DES 加密算法中的8个S 盒，但是S盒的设计细节一直没有公开，是否存在后门，不得而知。</p>
+<p><img src="/2021/04/17/des/image-20210420213022632.png" alt="image-20210420213022632"> </p>
+<p>2.4 P box</p>
+<p>经过S盒处理之后的R（1,32）再次经过一个映射排列，打乱顺序。</p>
+<p><img src="/2021/04/17/des/image-20210420213040710.png" alt="image-20210420213040710"> <img src="/2021/04/17/des/image-20210420213049127.png" alt="image-20210420213049127"></p>
+<p>2.5 密钥加密</p>
+<p>对于每一轮加密：</p>
+<p><img src="/2021/04/17/des/image-20210420213100367.png" alt="image-20210420213100367"> </p>
+<p>2.6 最末置换</p>
+<p>经过16轮加密之后，还要进行一次映射，这个映射和第一次执行的映射互为逆操作。</p>
+<p><img src="/2021/04/17/des/image-20210420213116962.png" alt="img"> <img src="/2021/04/17/des/image-20210420213122492.png" alt="image-20210420213122492"></p>
+<p>三．DES 文件解密算法</p>
+<p>四．DES 加密算法实现</p>
+<p>算法实现过程中，为了增强编码速度与调试方便性，所有数据类型都是基于c++中的string数据结构实现，这样可以让置换等操作更加方便，输入字符串只包含十六进制的字符也就是{1,2,3,4,5,6,7,8,9,10,A,B,C,D,E,F},所有的非规格化的输入都需要实现一个tostring方法供加密流程调用</p>
+<p><strong>DES 数据结构：</strong></p>
+<p>在构造函数中进行，对16个子密钥的生成工作。</p>
+<p><img src="/2021/04/17/des/image-20210420213134981.png" alt="image-20210420213134981"> </p>
+<p><strong>辅助函数</strong>：</p>
+<ol>
+<li>hex2bin和bin2hex函数</li>
+</ol>
+<p>这里采用哈西表的方式完成16进制字符串变为二进制字符串，过程如下：</p>
+<p><img src="/2021/04/17/des/image-20210420213213722.png" alt="img"> <img src="/2021/04/17/des/image-20210420213220321.png" alt="image-20210420213220321"></p>
+<ol>
+<li>permute</li>
+</ol>
+<p><img src="/2021/04/17/des/image-20210420213242453.png" alt="image-20210420213242453"> </p>
+<ol>
+<li>左移位 shift</li>
+</ol>
+<p><img src="/2021/04/17/des/image-20210420213252271.png" alt="image-20210420213252271"> </p>
+<ol>
+<li>二进制加法</li>
+</ol>
+<p><img src="/2021/04/17/des/image-20210420213302803.png" alt="image-20210420213302803"> </p>
+<p><strong>加密流程：</strong></p>
+<ol>
+<li><p>进行将格式化输入的16进制字符串，格式化为二进制字符串</p>
+</li>
+<li><p>进行第一次置换</p>
+</li>
+<li><p>拆分为left，right两部分</p>
+</li>
+</ol>
+<p><img src="/2021/04/17/des/image-20210420213330819.png" alt="image-20210420213330819"> </p>
+<ol>
+<li><p>进行16轮加密</p>
+</li>
+<li><p>expand</p>
+</li>
+</ol>
+<p><img src="/2021/04/17/des/image-20210420213502971.png" alt="image-20210420213502971"> </p>
+<ol>
+<li><p>xor with key</p>
+<p><img src="/2021/04/17/des/image-20210420213513525.png" alt="image-20210420213513525"></p>
+</li>
+<li><p>s box</p>
+</li>
+</ol>
+<p><img src="/2021/04/17/des/image-20210420213521257.png" alt="image-20210420213521257"> </p>
+<ol>
+<li>p box</li>
+</ol>
+<p><img src="/2021/04/17/des/image-20210420213531150.png" alt="image-20210420213531150"></p>
+<ol>
+<li>xor with left</li>
+</ol>
+<p>​                                                      <img src="/2021/04/17/des/image-20210420213542358.png" alt="image-20210420213542358"> </p>
+<ol>
+<li>最后交换</li>
+</ol>
+<p><img src="/2021/04/17/des/image-20210420213608305.png" alt="image-20210420213608305"> </p>
+<p><strong>解密流程：</strong></p>
+<p>解密流程与加密流程完全一样，只需要将密钥顺序调换即可</p>
+<p> <img src="/2021/04/17/des/image-20210420213618864.png" alt="image-20210420213618864"></p>
+<p>五．CDC 密钥增强</p>
+<p>六．多级DES 加密</p>
+<p>七．图像信息加密实验</p>
+<p>基本基于上面提到的辅助函数，为了让文件加密具有可视化效果，因此采用了对于图像加密，来可视化。</p>
+<p><img src="/2021/04/17/des/image-20210420213630701.png" alt="image-20210420213630701"> </p>
+<p>说明： opencv读取图片采用3个通道，因此在编码过程中不是很方便，为了让编码更加方便，附加了一个通道，有点类似alpha通道的感觉，也就是png图片的原有格式。</p>
+<p><strong>inplace 加密：</strong></p>
+<p><img src="/2021/04/17/des/image-20210420213654640.png" alt="image-20210420213654640"> </p>
+<p><strong>inplace 解密：</strong></p>
+<p><img src="/2021/04/17/des/image-20210420213712051.png" alt="image-20210420213712051"> </p>
+<p>结构化图像：</p>
+<ol>
+<li>原始图像</li>
+</ol>
+<p><img src="/2021/04/17/des/image-20210420213729076.png" alt="img"> <img src="/2021/04/17/des/image-20210420213735821.png" alt="image-20210420213735821"></p>
+<p>des加密速度实在太慢了，也可能是实现上的问题，因此对于每个图片都进行了压缩</p>
+<ol>
+<li><p>DES 加密后图像信息</p>
+</li>
+<li><p>结构化图像</p>
+</li>
+</ol>
+<p><img src="/2021/04/17/des/image-20210420213745884.png" alt="img"> <img src="/2021/04/17/des/image-20210420213751433.png" alt="image-20210420213751433"></p>
+<ol>
+<li>非结构化图像</li>
+</ol>
+<p>纹理信息较高，结构信息较少的图片，在des加密后信息保密程度更高。</p>
+<p> <img src="/2021/04/17/des/image-20210420213816148.png" alt="image-20210420213816148"></p>
+<ol>
+<li>多级DES 加密后图像信息</li>
+</ol>
+<p>多级DES 加密实验，采用des3进行加密，原因是更高的级联时间开销受不了，</p>
+<ol>
+<li>结构化图像</li>
+</ol>
+<p><img src="/2021/04/17/des/image-20210420213846302.png" alt="image-20210420213846302"> </p>
+<ol>
+<li>非结构化图像</li>
+</ol>
+<p><img src="/2021/04/17/des/image-20210420213859721.png" alt="img"> <img src="/2021/04/17/des/image-20210420213904815.png" alt="image-20210420213904815"></p>
+<ol>
+<li>CDC 密钥增强</li>
+</ol>
+<p>每次加密使用同一密钥，但是加密算法的输入是当前明文分组和前一次密文分组的异或。各密文组yi不仅与当前明文组xi有关，而且通过反馈作用还与以前明文组x1, x2,…, xi-1有关。因此重复的明文分组不会在密文中暴露</p>
+<p><img src="/2021/04/17/des/image-20210420213916313.png" alt="image-20210420213916313"></p>
+<p><strong>代码实现：</strong></p>
+<p>继承+添加预处理函数</p>
+<p><img src="/2021/04/17/des/image-20210420213938342.png" alt="image-20210420213938342"> </p>
+<p><img src="/2021/04/17/des/image-20210420214002135.png" alt="image-20210420214002135"> <img src="/2021/04/17/des/image-20210420214006656.png" alt="image-20210420214006656"></p>
+<p><img src="/2021/04/17/des/image-20210420214017046.png" alt="image-20210420214017046"><img src="/2021/04/17/des/image-20210420214047514.png" alt="image-20210420214047514"></p>
+<p>可以观察到加密效果非常好，根本看不出来加密后是个啥，同时解密后又是高保真的效果</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">wangshuai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://wangsssssss.github.io/2021/04/17/des/">http://wangsssssss.github.io/2021/04/17/des/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/encryption/">encryption</a></div><div class="post_share"><div class="social-share" data-image="/2021/04/17/des/image-20210420213735821.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/wechat.jpeg" target="_blank"><img class="post-qr-code-img" src="/images/wechat.jpeg"/></a><div class="post-qr-code-desc"></div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/18/sentences/"><img class="prev-cover" src="/2021/04/18/sentences/image-20210418162421840.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">sentences</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/14/MnasNet/"><img class="next-cover" src="/2021/04/14/MnasNet/image-20210414220146133.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">MnasNet</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/images/1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">wangshuai</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">34</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">18</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/WANGSSSSSSS"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/WANGSSSSSSS" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:wangshuai.excellent@foxmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/04/20/TimerSformer/" title="TimerSformer"><img src="/2021/04/20/TimerSformer/image-20210420201820752.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TimerSformer"/></a><div class="content"><a class="title" href="/2021/04/20/TimerSformer/" title="TimerSformer">TimerSformer</a><time datetime="2021-04-20T12:16:23.000Z" title="Created 2021-04-20 20:16:23">2021-04-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/20/map/" title="map"><img src="/2021/04/20/map/image-20210420143803529.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="map"/></a><div class="content"><a class="title" href="/2021/04/20/map/" title="map">map</a><time datetime="2021-04-20T06:37:54.000Z" title="Created 2021-04-20 14:37:54">2021-04-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/20/unordered-map/" title="unordered_map"><img src="/2021/04/20/unordered-map/image-20210420143623662.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="unordered_map"/></a><div class="content"><a class="title" href="/2021/04/20/unordered-map/" title="unordered_map">unordered_map</a><time datetime="2021-04-20T06:33:12.000Z" title="Created 2021-04-20 14:33:12">2021-04-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/18/sentences/" title="sentences"><img src="/2021/04/18/sentences/image-20210418162421840.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="sentences"/></a><div class="content"><a class="title" href="/2021/04/18/sentences/" title="sentences">sentences</a><time datetime="2021-04-18T07:55:04.000Z" title="Created 2021-04-18 15:55:04">2021-04-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/17/des/" title="des"><img src="/2021/04/17/des/image-20210420213735821.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="des"/></a><div class="content"><a class="title" href="/2021/04/17/des/" title="des">des</a><time datetime="2021-04-17T02:17:45.000Z" title="Created 2021-04-17 10:17:45">2021-04-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By wangshuai</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
   window.MathJax = {
     loader: {
       source: {
