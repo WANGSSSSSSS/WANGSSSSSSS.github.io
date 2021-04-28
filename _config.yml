@@ -104,7 +104,7 @@ theme: butterfly
 
 deploy:
   type: git
-  repo: https://github.com/WANGSSSSSSS/WANGSSSSSSS.github.io
+  repo: git@github.com:WANGSSSSSSS/WANGSSSSSSS.github.io
   # example, https://github.com/hexojs/hexojs.github.io
   branch: master
   
