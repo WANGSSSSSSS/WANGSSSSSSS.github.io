@@ -2,7 +2,7 @@
 
 #### self introduction
 
-I am wangshuai from north western polytechnic university, major in computer science and technology
+I am wangshuai from north western polytechnic university, major in computer science and technology, I am open-minded, willing and have broad interests, the mainly interested research direction is 3d computer vision and robotics.
 
 ### how do think the AI
 
@@ -10,11 +10,15 @@ ai is powerful, intelligent, expensive.
 
 ### introduce your university
 
-nwpu is my university, nwpu is devoted to develop the aerospace technology and the national defense industry, our school is big and its location is remote, which is located in the foot of qinling mountain
+nwpu is my university, nwpu is devoted to develop the aerospace technology and the national defense industry, nwpu is extensive known by its identity as the seven son for national defense force. our school is big while its location is remote, which is located at the foot of qinling mountains, with the pros and cons of the location, we can bury ourself to learning without a suitable and convenient place to relax. when i need to get signed and stamped document in old campus which is in the city, it is awkward because i will waste nearly two hours for transport.  And my major subject computer science is one of the best subjects of our university. 
 
 ### introduce your hometown
 
 shanxi is a historical province, while xian is the captical of shanxi, xian is the ancient captical of thirteen dynasties, a lot of famous person is buried in xian, and xian is the start station of the silk road economic belt, i think xian is the center of western china.
+
+
+
+xian has a solid historical foundation with the its excellent position in history river, which is a capital of thirteen dynasties. on contrast, the new epoch silk road economics belt provide xian a new opportunity to not only revive his history story, but assist the gdp index increase, in fact , xian never waste this chance,  is continuing improve the infrastructure.  
 
 ### ICRA
 
@@ -36,7 +40,7 @@ the match is a contrastive learning process, or they are very similar.
 
 ### What is the most interesting course for undergraduates
 
-machine vision and artificial intelligence, which lead me to the 3 dimension computer vision, including how to get the transformation from one image to the other image, how to compute the relative pose for each image in a image set, or named muti view stereotype, and ackonwledge the industy application, like slam, simuen localization and mapping
+machine vision and artificial intelligence, which lead me to the 3 dimension computer vision, including how to get the transformation from one image to the other image, how to compute the relative pose for each image in a image set, or named muti view stereotype, and acknowledge the industy application, like slam, simuen localization and mapping
 
 ### Why do you want to go to graduate school
 
@@ -44,4 +48,5 @@ because i want to know the theroy of artificial intelligence, and use this techn
 
 ### the planning of the graduate level
 
-it is hard to answer a explict schedule
+it is hard to answer a explict schedule, first of all ,  grasp the essential knowledge of the artificial intellgence and 3d computer vision.  having the solid foundation of theory and owning ample insight knowledge, it is a essiential way for me to realize my self value and improve  further research capability 
+
