@@ -146,7 +146,9 @@
 <p><img src="/2021/08/01/yoloX/image-20210801204054164.png" alt="image-20210801204054164"></p>
 <h3 id="我的问题"><a href="#我的问题" class="headerlink" title="我的问题"></a>我的问题</h3><ul>
 <li><p>Decoupled head 实验表明，可以加块收敛，但是会损害精度提升，为什么会这样？</p>
-<p>Concretely, it contains a 1 ×1 conv layer to reduce the channel dimension, followed by<br>two parallel branches with two 3 ×3 conv layers respectively. We report the inference time with batch=1 on V100 in Tab. 2 and the lite decoupled head brings additional 1.1<br>ms (11.6 ms v.s. 10.5 ms)</p>
+<p>Concretely, it contains a 1 ×1 conv layer to reduce the channel dimension, followed by
+two parallel branches with two 3 ×3 conv layers respectively. We report the inference time with batch=1 on V100 in Tab. 2 and the lite decoupled head brings additional 1.1
+ms (11.6 ms v.s. 10.5 ms)</p>
 <p><strong>真是服了水这篇的人了，tm参数量都不一样，推理明显慢了1ms, 这解耦头也太随意了吧</strong></p>
 <p><img src="/2021/08/01/yoloX/image-20210801225919856.png" alt="image-20210801225919856"></p>
 </li>
@@ -156,14 +158,15 @@
 <p>网络结构基本如下：</p>
 <p><img src="/2021/08/01/yoloX/image-20210801212438992.png" alt="image-20210801212438992"></p>
 <ul>
-<li><p>推理过程：</p>
-<img src="/2021/08/01/yoloX/image-20210801212612072.png" alt="image-20210801212612072" style="zoom: 67%;"></li>
-<li><p>训练过程：</p>
-</li>
+<li>推理过程：</li>
 </ul>
-<img src="/2021/08/01/yoloX/image-20210801212702207.png" alt="image-20210801212702207" style="zoom:67%;">
-
-<img src="/2021/08/01/yoloX/image-20210801212736474.png" alt="image-20210801212736474" style="zoom:67%;"></li>
+<p>&lt;img src=&quot;yoloX/image-20210801212612072.png&quot; alt=&quot;image-20210801212612072&quot; style=&quot;zoom: 67%;&quot; /&gt;</p>
+<ul>
+<li>训练过程：</li>
+</ul>
+<p>&lt;img src=&quot;yoloX/image-20210801212702207.png&quot; alt=&quot;image-20210801212702207&quot; style=&quot;zoom:67%;&quot; /&gt;</p>
+<p>&lt;img src=&quot;yoloX/image-20210801212736474.png&quot; alt=&quot;image-20210801212736474&quot; style=&quot;zoom:67%;&quot; /&gt;</p>
+</li>
 <li><p>那为什么要在anchor free的end2end结构中引入这个呢？</p>
 </li>
 </ul>

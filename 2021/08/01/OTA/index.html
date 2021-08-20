@@ -158,7 +158,8 @@
 <li>PAA</li>
 <li>GuidedAnchoring </li>
 </ul>
-<h3 id="最优传输问题定义"><a href="#最优传输问题定义" class="headerlink" title="最优传输问题定义"></a>最优传输问题定义</h3><p>The Optimal Transport (OT) describes the following problem: supposing there are m suppliers and n demanders in a certain area. The i-th supplier holds si units of goods<br>while the j-th demander needs dj units of goods. Transporting cost for each unit of good from supplier i to demander j is denoted by cij. The goal of OT problem is to find a transportation plan π∗= {πi,j|i = 1,2,…m,j = 1,2,…n}, according to which all goods from suppliers can be transported to demanders at a minimal transportation cost:</p>
+<h3 id="最优传输问题定义"><a href="#最优传输问题定义" class="headerlink" title="最优传输问题定义"></a>最优传输问题定义</h3><p>The Optimal Transport (OT) describes the following problem: supposing there are m suppliers and n demanders in a certain area. The i-th supplier holds si units of goods
+while the j-th demander needs dj units of goods. Transporting cost for each unit of good from supplier i to demander j is denoted by cij. The goal of OT problem is to find a transportation plan π∗= {πi,j|i = 1,2,…m,j = 1,2,…n}, according to which all goods from suppliers can be transported to demanders at a minimal transportation cost:</p>
 <p><img src="/2021/08/01/OTA/image-20210801222928031.png" alt="image-20210801222928031"></p>
 <h3 id="OTA-的-Methods"><a href="#OTA-的-Methods" class="headerlink" title="OTA 的 Methods"></a>OTA 的 Methods</h3><p><img src="/2021/08/01/OTA/image-20210801222726916.png" alt="image-20210801222726916"></p>
 <h4 id="Dynamic-k-Estimation"><a href="#Dynamic-k-Estimation" class="headerlink" title="Dynamic k Estimation"></a>Dynamic k Estimation</h4><p>因为每个标签可能存在的anchor应该是有一定数量的差异的，这个数量应该正比于预测是该标签的anchor数量，因此可以通过IOU求和可以代表。</p>

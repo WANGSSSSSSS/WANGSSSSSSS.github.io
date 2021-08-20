@@ -52,7 +52,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2021-08-20 19:45:53'
+  postUpdate: '2021-08-20 21:34:04'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -154,7 +154,7 @@ $\lim _{n \to \inf} ({X_n \over Y_n}) = {A\over B}$
 $\lim _{n \to \inf} (\lambda X_n + \beta Y_n) = \lambda A+ \beta B$
 
 极限存在的两个准则
-夹 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" title="概率论复习">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="概率论复习"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" title="概率论复习">概率论复习</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-07-05T01:28:15.000Z" title="Created 2021-07-05 09:28:15">2021-07-05</time></span></div><div class="content">[TOC]
+夹 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" title="概率论复习">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="概率论复习"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/07/05/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" title="概率论复习">概率论复习</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-07-05T01:28:15.000Z" title="Created 2021-07-05 09:28:15">2021-07-05</time></span></div><div class="content">[TOC]
 
 概率论离散分布    (分布律)
 01分布
@@ -212,7 +212,32 @@ leading dimension
 
 
 实验数据类型
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061template&lt;typename T&gt;class Matrix&#123;public:    T* hostPtr;    T* devicePtr;    int rows&#123;&#125;;    int cols&#123;&#125;;    Matrix(int rows, int cols)    &#123;        hostPtr = new T[rows*cols];        for(int i=0; i&lt;rows; i++)        &#123;            for(int j=0; j&lt;cols; j++)            &#1 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/06/12/svm/" title="svm">     <img class="post_bg" src="/2021/06/12/svm/image-20210612202437948.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="svm"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/12/svm/" title="svm">svm</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-12T11:31:47.000Z" title="Created 2021-06-12 19:31:47">2021-06-12</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/cv/">cv</a><i class="fas fa-angle-right"></i><a class="article-meta__categories" href="/categories/cv/svm/">svm</a></span></div><div class="content">the SVM questionGiven training data ${X_i, y_i}$, $y_i \to {-1, 1}$this is a binary classification problem.
+&lt;!–code￼0–&gt;
+
+Level 1 function每个函数基本有四个类型：
+
+cublasIamin()&lt;!–code￼1–&gt;
+
+
+cublasasum()&lt;!–code￼2–&gt;
+
+
+cublasdot()&lt;!–code￼3–&gt;
+
+
+cublascopy()&lt;!–code￼4–&gt;
+
+
+cublasrot()注意，需要使用弧度制
+&lt;!–code￼5–&gt;
+
+
+发现 cos， sin真的是按照公式的，没有做归一化
+&lt;img src=&quot;cublas/image-20210622134717078.png&quot; alt=&quot;image-20210622134717078&quot; style=&quot;zoom:50%;&quot; /&gt;
+
+cublasrotm()&lt;!–code￼6–&gt;
+
+打印消息是不支持，我也不知道为 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/06/12/svm/" title="svm">     <img class="post_bg" src="/2021/06/12/svm/image-20210612202437948.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="svm"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/12/svm/" title="svm">svm</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-12T11:31:47.000Z" title="Created 2021-06-12 19:31:47">2021-06-12</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/cv/">cv</a><i class="fas fa-angle-right"></i><a class="article-meta__categories" href="/categories/cv/svm/">svm</a></span></div><div class="content">the SVM questionGiven training data ${X_i, y_i}$, $y_i \to {-1, 1}$this is a binary classification problem.
 the constrain is $y_i(W X_i + b) &gt; 0$,  also we can make the constrain greater, 
 witch is :$y_i (WX_i +b) &gt; 1$ , then the $WX_i +b &gt; 1$
 the target is to maxmize $(W X_i + b) / ||W||^2 $
@@ -223,51 +248,16 @@ the SVM math formatthe question is rewrite as :
 given:                     $y_i (WX_i +b) &gt; 1 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/06/11/attention/" title="Attention in CV">     <img class="post_bg" src="/2021/06/11/attention/image-20210611154234123.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Attention in CV"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/06/11/attention/" title="Attention in CV">Attention in CV</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-06-11T07:12:46.000Z" title="Created 2021-06-11 15:12:46">2021-06-11</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/cv/">cv</a></span></div><div class="content">External Attention
 ​    外注意力机制，不同于自注意力，自注意力是使用自己的不同特征来加权重新得到更强的特征，外注意力特征则是使用一个可学习的记忆块来做从特征空间或者向量空间来理解的话就是：给一个足够强可以描述当前空间的向量组，用这个来描述所有的特征，有点类似于更换基向量的线性变换
 多头注意力：
-
-
+&lt;img src=&quot;attention/image-20210611154811047.png&quot; alt=&quot;image-20210611154811047&quot; style=&quot;zoom:80%;&quot; /&gt;
 问题：
 
 看论文的时候，他的伪代码上softmax归一化是在第一个维度（b, n, m ），后面又来了一次归一化norm，这次是在第二个维度（b, n, m）,（m代表memory block 里面的向量个数）感觉有点离谱，我觉得应该只给第二个维度m上直接一个softmax就行，就像self attention那样
-
-
-6月再看了一次，我觉得还是他的问题，没必要这样，消融实验上也没有证明两个差距，只是论文里面说这个attention对input dim（n）很sensitive，double normalization is necessary
-SE attention
-这个有点久远了，我还给别人分享的时候，讲错了，这篇是做通道注意力
-
-融合$F_{scaled}(. ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/05/15/llvm-ir/" title="llvm_ir">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="llvm_ir"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/15/llvm-ir/" title="llvm_ir">llvm_ir</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-05-15T11:13:58.000Z" title="Created 2021-05-15 19:13:58">2021-05-15</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/compiler/">compiler</a></span></div><div class="content">IR 设计上层指令上层IR假设有无穷多的寄存器，因此每个指令结果可以直接产生一个结果寄存器，这个结果寄存器和这个指令基本绑定，用这个结果运算等价于用这个指令运算，所以用指令地址表示寄存器号，上层IR指令包含下面这些类型：
-
-
+&lt;img src=&quot;attention/image-20210611155 ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/05/15/llvm-ir/" title="llvm_ir">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="llvm_ir"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/15/llvm-ir/" title="llvm_ir">llvm_ir</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-05-15T11:13:58.000Z" title="Created 2021-05-15 19:13:58">2021-05-15</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/compiler/">compiler</a></span></div><div class="content">IR 设计上层指令上层IR假设有无穷多的寄存器，因此每个指令结果可以直接产生一个结果寄存器，这个结果寄存器和这个指令基本绑定，用这个结果运算等价于用这个指令运算，所以用指令地址表示寄存器号，上层IR指令包含下面这些类型：
+&lt;img src=&quot;llvm-ir/image-20210522212409706.png&quot; alt=&quot;image-20210522212409706&quot; style=&quot;zoom:67%;&quot; /&gt;
 
 分配指令
 当前分配只包括寄存器，我们假设寄存器多的用不完，LLVM中将变量先分配在内存中，然后用mem2reg完成将部分变量提取到寄存器中，然后进行SSA处理，我们这里采取相反的操作方式，一直保持变量在寄存器中，寄存器分配的时候用图着色方法分配，没有分配到的滚到内存中去。
-
-一元运算指令
-
-二元运算指令
-
-函数返回
-
-函数调用
-函数调用的包含实参和指向函数定义的指针
-
-Break
-
-Continue
-
-赋值语句
-
-比较指令
-
-
-基本块每个块有自己的符号表，同时每个块可以访问父亲的符号表，查找的时候自底向上查找变量定义
-
-
-符号表包含函数符号表，变量符号表， 常量符号表？（常量传播用的上？）
-
-
-
-
-</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/05/08/openmp/" title="openmp">     <img class="post_bg" src="/2021/05/08/openmp/image-20210508130211335.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="openmp"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/08/openmp/" title="openmp">openmp</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-05-08T04:34:55.000Z" title="Created 2021-05-08 12:34:55">2021-05-08</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/os/">os</a><i class="fas fa-angle-right"></i><a class="article-meta__categories" href="/categories/os/openmp/">openmp</a></span></div><div class="content">并行计算利用openmp实现并行计算，了解openmp的编程模型以及并行计算的特点
+&lt;img src=&quot;llvm-ir/image-20210522212432930.png&quot; alt=&quot;image-20210522212432930&quot; style=&quot;zoom: ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/05/08/openmp/" title="openmp">     <img class="post_bg" src="/2021/05/08/openmp/image-20210508130211335.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="openmp"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/05/08/openmp/" title="openmp">openmp</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-05-08T04:34:55.000Z" title="Created 2021-05-08 12:34:55">2021-05-08</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/os/">os</a><i class="fas fa-angle-right"></i><a class="article-meta__categories" href="/categories/os/openmp/">openmp</a></span></div><div class="content">并行计算利用openmp实现并行计算，了解openmp的编程模型以及并行计算的特点
 openmp 适用于下面两种编程模型（统一内存访问和多处理机）：
 
 在高性能计算中，通常mpi和openmp混合使用，mpi负责多处理机的主机层面的并行交互
@@ -275,74 +265,10 @@ openmp 适用于下面两种编程模型（统一内存访问和多处理机）�
 openmp的编程模型基于线程实现并行，通过fork和join来控制线程，openmp在内存方面共享内存，
 矩阵计算串行计算矩阵的运算，以及利用openmp来进行并行编程
 矩阵加法串行矩阵加法：
-
-
+&lt;img src=&quot;openmp/image-20210508125758522.png&quot; alt=&quot;image-20210508125758522&quot; style=&quot;zoom: 67%;&quot; /&gt;
 并行矩阵加法：
-
-
-性能对比：
-
-正常串行加法：
-
-一个外层循环
-
-
-调节环境变量，设置并行线程数为8，发现速度还能提升：
-
-
-
-
-矩阵减法串行矩阵减法：
-
-
-并行矩阵减法：
-
-
-矩阵乘法串行矩阵乘法：
-
-
-并行矩阵乘法：
-
-
-运行效率：性能提升了5倍
-
-矩阵点乘串行矩阵点乘：
-
-
-并行矩阵点乘：
-
-
-矩阵除法排序算法插入排序
-
-排序结果：
-
-
-采用omp并行之后：（排序结果出错了，想想逻辑的确不对，这块不能并行）
-
-
-快速排序
-
-排序结果：
-
-
-并行化：
-
-
-并行化结果：
-
-
-归并排序
-
-排序结果：
-
-
-并行化：
-
-
-并行化结果：
-
-
-</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/04/28/huawei/" title="huawei机试">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="huawei机试"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/28/huawei/" title="huawei机试">huawei机试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-04-28T13:50:22.000Z" title="Created 2021-04-28 21:50:22">2021-04-28</time></span></div><div class="content">我算法咋这么菜！！！！
+&lt;img src=&quot;openmp/image-20210508125856054.png&quot; alt=&quot;image-20210508125856054&quot; style=&quot;zoom:67%;&quot; /&gt;
+性能对比： ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/04/28/huawei/" title="huawei机试">     <img class="post_bg" src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="huawei机试"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/04/28/huawei/" title="huawei机试">huawei机试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-04-28T13:50:22.000Z" title="Created 2021-04-28 21:50:22">2021-04-28</time></span></div><div class="content">我算法咋这么菜！！！！
 不出意外肯定凉了
 第一道搜索模板题
 第二题一道拓扑排序+字典序输出
@@ -358,6 +284,7 @@ $M(A,B,X,Y,\pi)$, 其中$\pi$为初始状态
 
 
 后向算法
+&lt;img src=&quot;HMM/image-20210427174821045.png&quot; alt=&quot;image-20210427174821045&quot; style=&quot;zoom:67%;&quot; /&gt;
 
 
 状态估计已知观测序列$O = Y_1Y_2Y_3Y_4…Y_n$，以及模型参数$A,B,\pi$,求解最可能出现的内部状态序列$X = X_1X_2..X_n$
@@ -377,7 +304,7 @@ EM 算法
             </div>
             <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Photograhic/"><span class="card-category-list-name">Photograhic</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Photographic/"><span class="card-category-list-name">Photographic</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/algorithm/"><span class="card-category-list-name">algorithm</span><span class="card-category-list-count">5</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/algorithm/bfs/"><span class="card-category-list-name">bfs</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/algorithm/dp/"><span class="card-category-list-name">dp</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/algorithm/tree/"><span class="card-category-list-name">tree</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/coaa/"><span class="card-category-list-name">coaa</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/compiler/"><span class="card-category-list-name">compiler</span><span class="card-category-list-count">2</span></a></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/3Dcv/" style="font-size: 1.1em; color: #999">3Dcv</a> <a href="/tags/Generative-Modeling/" style="font-size: 1.1em; color: #999">Generative Modeling</a> <a href="/tags/Photograhic/" style="font-size: 1.1em; color: #999">Photograhic</a> <a href="/tags/Photographic/" style="font-size: 1.1em; color: #999">Photographic</a> <a href="/tags/algorithm/" style="font-size: 1.34em; color: #99a3b0">algorithm</a> <a href="/tags/attention/" style="font-size: 1.1em; color: #999">attention</a> <a href="/tags/bfs/" style="font-size: 1.1em; color: #999">bfs</a> <a href="/tags/coaa/" style="font-size: 1.1em; color: #999">coaa</a> <a href="/tags/compiler/" style="font-size: 1.18em; color: #999ca1">compiler</a> <a href="/tags/convolution/" style="font-size: 1.1em; color: #999">convolution</a> <a href="/tags/cs/" style="font-size: 1.18em; color: #999ca1">cs</a> <a href="/tags/cuda/" style="font-size: 1.26em; color: #999fa8">cuda</a> <a href="/tags/cv/" style="font-size: 1.5em; color: #99a9bf">cv</a> <a href="/tags/dp/" style="font-size: 1.1em; color: #999">dp</a> <a href="/tags/encryption/" style="font-size: 1.1em; color: #999">encryption</a> <a href="/tags/environment-setup/" style="font-size: 1.1em; color: #999">environment setup</a> <a href="/tags/graph/" style="font-size: 1.1em; color: #999">graph</a> <a href="/tags/graphics/" style="font-size: 1.1em; color: #999">graphics</a> <a href="/tags/machine-learning/" style="font-size: 1.26em; color: #999fa8">machine learning</a> <a href="/tags/math/" style="font-size: 1.26em; color: #999fa8">math</a> <a href="/tags/nas/" style="font-size: 1.26em; color: #999fa8">nas</a> <a href="/tags/opencv/" style="font-size: 1.18em; color: #999ca1">opencv</a> <a href="/tags/openmp/" style="font-size: 1.1em; color: #999">openmp</a> <a href="/tags/os/" style="font-size: 1.42em; color: #99a6b7">os</a> <a href="/tags/parallel/" style="font-size: 1.1em; color: #999">parallel</a> <a href="/tags/rbtree/" style="font-size: 1.1em; color: #999">rbtree</a> <a href="/tags/ros/" style="font-size: 1.1em; color: #999">ros</a> <a href="/tags/slam/" style="font-size: 1.34em; color: #99a3b0">slam</a> <a href="/tags/transformer/" style="font-size: 1.26em; color: #999fa8">transformer</a> <a href="/tags/video/" style="font-size: 1.1em; color: #999">video</a> <a href="/tags/%E6%B2%A1%E5%86%99%E5%AE%8C/" style="font-size: 1.1em; color: #999">没写完</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/08/"><span class="card-archive-list-date">August 2021</span><span class="card-archive-list-count">11</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/07/"><span class="card-archive-list-date">July 2021</span><span class="card-archive-list-count">11</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">June 2021</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/05/"><span class="card-archive-list-date">May 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/04/"><span class="card-archive-list-date">April 2021</span><span class="card-archive-list-count">22</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">March 2021</span><span class="card-archive-list-count">17</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">67</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-08-20T11:45:53.123Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By wangshuai</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='all'|| 'all' ==='all')){
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/3Dcv/" style="font-size: 1.1em; color: #999">3Dcv</a> <a href="/tags/Generative-Modeling/" style="font-size: 1.1em; color: #999">Generative Modeling</a> <a href="/tags/Photograhic/" style="font-size: 1.1em; color: #999">Photograhic</a> <a href="/tags/Photographic/" style="font-size: 1.1em; color: #999">Photographic</a> <a href="/tags/algorithm/" style="font-size: 1.34em; color: #99a3b0">algorithm</a> <a href="/tags/attention/" style="font-size: 1.1em; color: #999">attention</a> <a href="/tags/bfs/" style="font-size: 1.1em; color: #999">bfs</a> <a href="/tags/coaa/" style="font-size: 1.1em; color: #999">coaa</a> <a href="/tags/compiler/" style="font-size: 1.18em; color: #999ca1">compiler</a> <a href="/tags/convolution/" style="font-size: 1.1em; color: #999">convolution</a> <a href="/tags/cs/" style="font-size: 1.18em; color: #999ca1">cs</a> <a href="/tags/cuda/" style="font-size: 1.26em; color: #999fa8">cuda</a> <a href="/tags/cv/" style="font-size: 1.5em; color: #99a9bf">cv</a> <a href="/tags/dp/" style="font-size: 1.1em; color: #999">dp</a> <a href="/tags/encryption/" style="font-size: 1.1em; color: #999">encryption</a> <a href="/tags/environment-setup/" style="font-size: 1.1em; color: #999">environment setup</a> <a href="/tags/graph/" style="font-size: 1.1em; color: #999">graph</a> <a href="/tags/graphics/" style="font-size: 1.1em; color: #999">graphics</a> <a href="/tags/machine-learning/" style="font-size: 1.26em; color: #999fa8">machine learning</a> <a href="/tags/math/" style="font-size: 1.26em; color: #999fa8">math</a> <a href="/tags/nas/" style="font-size: 1.26em; color: #999fa8">nas</a> <a href="/tags/opencv/" style="font-size: 1.18em; color: #999ca1">opencv</a> <a href="/tags/openmp/" style="font-size: 1.1em; color: #999">openmp</a> <a href="/tags/os/" style="font-size: 1.42em; color: #99a6b7">os</a> <a href="/tags/parallel/" style="font-size: 1.1em; color: #999">parallel</a> <a href="/tags/rbtree/" style="font-size: 1.1em; color: #999">rbtree</a> <a href="/tags/ros/" style="font-size: 1.1em; color: #999">ros</a> <a href="/tags/slam/" style="font-size: 1.34em; color: #99a3b0">slam</a> <a href="/tags/transformer/" style="font-size: 1.26em; color: #999fa8">transformer</a> <a href="/tags/video/" style="font-size: 1.1em; color: #999">video</a> <a href="/tags/%E6%B2%A1%E5%86%99%E5%AE%8C/" style="font-size: 1.1em; color: #999">没写完</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/08/"><span class="card-archive-list-date">August 2021</span><span class="card-archive-list-count">11</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/07/"><span class="card-archive-list-date">July 2021</span><span class="card-archive-list-count">11</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/06/"><span class="card-archive-list-date">June 2021</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/05/"><span class="card-archive-list-date">May 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/04/"><span class="card-archive-list-date">April 2021</span><span class="card-archive-list-count">22</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">March 2021</span><span class="card-archive-list-count">17</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">67</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-08-20T13:34:04.257Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By wangshuai</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='all'|| 'all' ==='all')){
     var parent = document.getElementById('recent-posts');
     var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><a class="magnet_link_more"  href="http://wangsssssss.github.io/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
     console.log('已挂载magnet')

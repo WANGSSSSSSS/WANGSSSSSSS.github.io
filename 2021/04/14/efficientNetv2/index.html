@@ -150,11 +150,9 @@
 <li>Depthwise convolutions 在目前的设备上训练很慢</li>
 </ol>
 <h4 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h4><p>时间加速上要么重新造一张更快的设备，要么让自己的算法训练更高效，显然正常软件研究者都不会选择前者。</p>
-<img src="/2021/04/14/efficientNetv2/image-20210414212729470.png" alt="image-20210414212729470" style="zoom:67%;">
-
+<p>&lt;img src=&quot;efficientNetv2/image-20210414212729470.png&quot; alt=&quot;image-20210414212729470&quot; style=&quot;zoom:67%;&quot; /&gt;</p>
 <p>这里采用直接33卷积替换depthwise 卷积，同时作者做了一个实验，证明更换的确是有用的：</p>
-<img src="/2021/04/14/efficientNetv2/image-20210414213318496.png" alt="image-20210414213318496" style="zoom:80%;">
-
+<p>&lt;img src=&quot;efficientNetv2/image-20210414213318496.png&quot; alt=&quot;image-20210414213318496&quot; style=&quot;zoom:80%;&quot; /&gt;</p>
 <h5 id="搜索网络结构"><a href="#搜索网络结构" class="headerlink" title="搜索网络结构"></a>搜索网络结构</h5><p>前面确定了已经存在更优的网络结构了，现在通过nas技术找到最优的网络结构。</p>
 <p>采用MnasNet论文中的方案，和前一代efficientnet-b0的产生方式很类似</p>
 <ul>
@@ -173,8 +171,7 @@
 <h4 id="Processive-Training过程"><a href="#Processive-Training过程" class="headerlink" title="Processive Training过程"></a>Processive Training过程</h4><p>分辨率对于网络很重要，多分辨率训练可以提高网络性能，因此想到在训练过程改变分辨率，随机改变分辨率，会影响训练的时间，这是由于硬件设备的限制，以前的processive training方法是随着训练不断进行，会加大图片的分辨率，但是正则化方法都不变化</p>
 <p><img src="/2021/04/14/efficientNetv2/image-20210414214323364.png" alt="image-20210414214323364"></p>
 <p>结果这样会导致训练的结果掉点，因此作者提出自适应正则化（线性插值）：</p>
-<img src="/2021/04/14/efficientNetv2/image-20210414214637675.png" alt="image-20210414214637675" style="zoom:67%;">
-
+<p>&lt;img src=&quot;efficientNetv2/image-20210414214637675.png&quot; alt=&quot;image-20210414214637675&quot; style=&quot;zoom:67%;&quot; /&gt;</p>
 <h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><p>实验设置：</p>
 <p><img src="/2021/04/14/efficientNetv2/image-20210414214806283.png" alt="image-20210414214806283"></p>
 <p>实验结果：</p>

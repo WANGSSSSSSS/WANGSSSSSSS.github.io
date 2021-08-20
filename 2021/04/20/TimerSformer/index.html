@@ -166,16 +166,14 @@
 <p>和vit差不多</p>
 <p><img src="/2021/04/20/TimerSformer/image-20210420211620096.png" alt="image-20210420211620096"></p>
 <h2 id="论文实验"><a href="#论文实验" class="headerlink" title="论文实验"></a>论文实验</h2><p>论文中很大一个创新点就是把计算量从时空同时attention做成了，分开进行，先做时间，再做空间，计算量从$N*F+1$，减少到$(N+1) + (F +1)$,N是patch的数量，不是token的，token多一个bias vector。</p>
-<img src="/2021/04/20/TimerSformer/image-20210420202750749.png" alt="image-20210420202750749" style="zoom:80%;">
-
+<p>&lt;img src=&quot;TimerSformer/image-20210420202750749.png&quot; alt=&quot;image-20210420202750749&quot; style=&quot;zoom:80%;&quot; /&gt;</p>
 <p>文章中提到了总共五个方案：</p>
 <p><strong>space</strong>: 在时间上不做，也就是vit，变成了一个图像分类任务</p>
 <p><strong>Joint spatio</strong>: 同时做</p>
 <p><strong>Divided space time</strong>: 就是最大的一个创新点，减少了许多冗余的计算量，不过我有其他看法，这里patch没能直接cross 到其他图像的patch，我觉得swin的思路还是可以借鉴的</p>
 <p><strong>Sparse spatio</strong>: 如图，没法描述</p>
 <p><strong>Axial spatio</strong>：只对行列进行attention，这个肯定信息获得不够</p>
-<img src="/2021/04/20/TimerSformer/image-20210420201820752.png" alt="image-20210420201820752" style="zoom:67%;">
-
+<p>&lt;img src=&quot;TimerSformer/image-20210420201820752.png&quot; alt=&quot;image-20210420201820752&quot; style=&quot;zoom:67%;&quot; /&gt;</p>
 <p>实验结果：</p>
 <p><img src="/2021/04/20/TimerSformer/image-20210420210129862.png" alt="image-20210420210129862"></p>
 <h4 id="数据集效果"><a href="#数据集效果" class="headerlink" title="数据集效果"></a>数据集效果</h4><p>transformer 计算量就算大，比起3d cnn，那可是好多了，当然效果更好</p>
