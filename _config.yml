@@ -42,6 +42,15 @@ filename_case: 0
 render_drafts: false
 post_asset_folder: true
 marked:
+  gfm: true
+  pedantic: true
+  sanitize: true
+  tables: true
+  breaks: true
+  smartLists: true
+  smartypants: true
+  modifyAnchors: ''
+  autolink: true
   prependRoot: true
   postAsset: true
 relative_link: false
@@ -107,7 +116,8 @@ deploy:
   repo: git@github.com:WANGSSSSSSS/WANGSSSSSSS.github.io
   # example, https://github.com/hexojs/hexojs.github.io
   branch: master
-  
+
+
 # Ice Kano Plus_in
 # Hexo Github Canlendar
 # Volantis

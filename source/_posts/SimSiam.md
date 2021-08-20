@@ -56,12 +56,14 @@ cover: image-20210810183051288.png
 
   * when using the asymmetric loss without the projective head, the collapse result appears **(this is wield to understand)**
 
-  * when the projective head parameters is fixed randomly, the loss is bigger and not convergence 
-
     * 我做一个猜想，矩阵投影存在可逆，比如$Pa = b$​ , 然后分解一下也有: $P_1a = P_2b$
 
-      其中，$P_2^{-1}P_1 = P$​​, 神经网络也会这样，高层映射存在一定可逆，但是为啥resnet的encoder不行呢，我猜是因为一般卷积无法满足这样的投影性，因此可以补一个实验，encoder 后面都接一个mlp， 然后可以传递梯度到两个mlp上面，encoder依旧stop gradient, 这样预期结果应该是和baseline结果近似，有时间做一下
+      其中，$P_2^{-1}P_1 = P$​​​, 神经网络也会这样，高层映射存在一定可逆，但是为啥resnet的encoder不行呢，我猜是因为一般卷积无法满足这样的投影性，因此可以补一个实验，encoder 后面都接一个mlp， 然后可以传递梯度到两个mlp上面，encoder依旧stop gradient, 这样预期结果应该是和baseline结果近似，有时间做一下
 
-       ( i think this is because the feature vector need to be projected to embedding space ? )
+      **假想灵感来源于，[[SimCLR](../../02/SimCLR)] 最后一节的假说总结里面**
+
+  * when the projective head parameters is fixed randomly, the loss is bigger and not convergence 
+
+     ( i think this is because the feature vector need to be projected to embedding space ? )
 
   ![image-20210810185848397](SimSiam/image-20210810185848397.png)

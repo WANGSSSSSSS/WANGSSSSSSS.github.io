@@ -69,11 +69,10 @@ local_search:
 mathjax:
   enable: true
   per_page: true
-
 # KaTeX
 katex:
   enable: false
-  per_page: false
+  per_page: true
   hide_scrollbar: true
 
 # Image (圖片設置)
@@ -898,6 +897,7 @@ CDN:
 
   # math
   mathjax: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  #mathjax: https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML
   katex: https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css
   katex_copytex: https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.min.js
   katex_copytex_css: https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/copy-tex.css
