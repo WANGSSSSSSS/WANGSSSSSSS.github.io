@@ -162,7 +162,7 @@
 <p>1.3 P2 置换</p>
 <p>经过expand之后的明文有48位，但是子密钥现在还是56位，仍有位数上的差距，现在对子密钥进行压缩</p>
 <p><img src="/2021/04/17/des/image-20210420212905784.png" alt="image-20210420212905784"> </p>
-<ol>
+<ol start="2">
 <li>分组加密</li>
 </ol>
 <p>2.1 最初置换</p>
@@ -198,15 +198,15 @@
 </ol>
 <p>这里采用哈西表的方式完成16进制字符串变为二进制字符串，过程如下：</p>
 <p><img src="/2021/04/17/des/image-20210420213213722.png" alt="img"> <img src="/2021/04/17/des/image-20210420213220321.png" alt="image-20210420213220321"></p>
-<ol>
+<ol start="2">
 <li>permute</li>
 </ol>
 <p><img src="/2021/04/17/des/image-20210420213242453.png" alt="image-20210420213242453"> </p>
-<ol>
+<ol start="3">
 <li>左移位 shift</li>
 </ol>
 <p><img src="/2021/04/17/des/image-20210420213252271.png" alt="image-20210420213252271"> </p>
-<ol>
+<ol start="4">
 <li>二进制加法</li>
 </ol>
 <p><img src="/2021/04/17/des/image-20210420213302803.png" alt="image-20210420213302803"> </p>
@@ -220,30 +220,30 @@
 </li>
 </ol>
 <p><img src="/2021/04/17/des/image-20210420213330819.png" alt="image-20210420213330819"> </p>
-<ol>
+<ol start="4">
 <li><p>进行16轮加密</p>
 </li>
 <li><p>expand</p>
 </li>
 </ol>
 <p><img src="/2021/04/17/des/image-20210420213502971.png" alt="image-20210420213502971"> </p>
-<ol>
-<li><p>xor with key</p>
-<p><img src="/2021/04/17/des/image-20210420213513525.png" alt="image-20210420213513525"></p>
-</li>
-<li><p>s box</p>
-</li>
+<ol start="2">
+<li>xor with key</li>
+</ol>
+<p> <img src="/2021/04/17/des/image-20210420213513525.png" alt="image-20210420213513525"></p>
+<ol start="3">
+<li> s box</li>
 </ol>
 <p><img src="/2021/04/17/des/image-20210420213521257.png" alt="image-20210420213521257"> </p>
-<ol>
-<li>p box</li>
+<ol start="4">
+<li> p box</li>
 </ol>
 <p><img src="/2021/04/17/des/image-20210420213531150.png" alt="image-20210420213531150"></p>
-<ol>
+<ol start="5">
 <li>xor with left</li>
 </ol>
 <p>​                                                      <img src="/2021/04/17/des/image-20210420213542358.png" alt="image-20210420213542358"> </p>
-<ol>
+<ol start="5">
 <li>最后交换</li>
 </ol>
 <p><img src="/2021/04/17/des/image-20210420213608305.png" alt="image-20210420213608305"> </p>
@@ -266,19 +266,19 @@
 </ol>
 <p><img src="/2021/04/17/des/image-20210420213729076.png" alt="img"> <img src="/2021/04/17/des/image-20210420213735821.png" alt="image-20210420213735821"></p>
 <p>des加密速度实在太慢了，也可能是实现上的问题，因此对于每个图片都进行了压缩</p>
-<ol>
+<ol start="2">
 <li><p>DES 加密后图像信息</p>
 </li>
 <li><p>结构化图像</p>
 </li>
 </ol>
 <p><img src="/2021/04/17/des/image-20210420213745884.png" alt="img"> <img src="/2021/04/17/des/image-20210420213751433.png" alt="image-20210420213751433"></p>
-<ol>
+<ol start="2">
 <li>非结构化图像</li>
 </ol>
 <p>纹理信息较高，结构信息较少的图片，在des加密后信息保密程度更高。</p>
 <p> <img src="/2021/04/17/des/image-20210420213816148.png" alt="image-20210420213816148"></p>
-<ol>
+<ol start="3">
 <li>多级DES 加密后图像信息</li>
 </ol>
 <p>多级DES 加密实验，采用des3进行加密，原因是更高的级联时间开销受不了，</p>
@@ -290,7 +290,7 @@
 <li>非结构化图像</li>
 </ol>
 <p><img src="/2021/04/17/des/image-20210420213859721.png" alt="img"> <img src="/2021/04/17/des/image-20210420213904815.png" alt="image-20210420213904815"></p>
-<ol>
+<ol start="4">
 <li>CDC 密钥增强</li>
 </ol>
 <p>每次加密使用同一密钥，但是加密算法的输入是当前明文分组和前一次密文分组的异或。各密文组yi不仅与当前明文组xi有关，而且通过反馈作用还与以前明文组x1, x2,…, xi-1有关。因此重复的明文分组不会在密文中暴露</p>
@@ -301,7 +301,7 @@
 <p><img src="/2021/04/17/des/image-20210420214002135.png" alt="image-20210420214002135"> <img src="/2021/04/17/des/image-20210420214006656.png" alt="image-20210420214006656"></p>
 <p><img src="/2021/04/17/des/image-20210420214017046.png" alt="image-20210420214017046"><img src="/2021/04/17/des/image-20210420214047514.png" alt="image-20210420214047514"></p>
 <p>可以观察到加密效果非常好，根本看不出来加密后是个啥，同时解密后又是高保真的效果</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">wangshuai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://wangsssssss.github.io/2021/04/17/des/">http://wangsssssss.github.io/2021/04/17/des/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/encryption/">encryption</a></div><div class="post_share"><div class="social-share" data-image="/2021/04/17/des/image-20210420213735821.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/wechat.jpeg" target="_blank"><img class="post-qr-code-img" src="/images/wechat.jpeg"/></a><div class="post-qr-code-desc"></div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/18/sentences/"><img class="prev-cover" src="/2021/04/18/sentences/image-20210418162421840.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">sentences</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/14/MnasNet/"><img class="next-cover" src="/2021/04/14/MnasNet/image-20210414220146133.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">MnasNet</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/images/1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">wangshuai</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">67</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">31</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">24</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/WANGSSSSSSS"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/WANGSSSSSSS" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:wangshuai.excellent@foxmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/08/20/GenerativeModeling/" title="GenerativeModeling"><img src="/2021/08/20/GenerativeModeling/image-20210820185703405.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GenerativeModeling"/></a><div class="content"><a class="title" href="/2021/08/20/GenerativeModeling/" title="GenerativeModeling">GenerativeModeling</a><time datetime="2021-08-20T08:15:27.000Z" title="Created 2021-08-20 16:15:27">2021-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/18/ML-RNN/" title="ML-RNN"><img src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ML-RNN"/></a><div class="content"><a class="title" href="/2021/08/18/ML-RNN/" title="ML-RNN">ML-RNN</a><time datetime="2021-08-18T10:45:03.000Z" title="Created 2021-08-18 18:45:03">2021-08-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/18/ML-GNN/" title="ML-GNN"><img src="/2021/08/18/ML-GNN/image-20210818172616954.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ML-GNN"/></a><div class="content"><a class="title" href="/2021/08/18/ML-GNN/" title="ML-GNN">ML-GNN</a><time datetime="2021-08-18T08:22:14.000Z" title="Created 2021-08-18 16:22:14">2021-08-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/15/AutoVideo/" title="AutoVideo"><img src="/2021/08/15/AutoVideo/image-20210815203923219.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AutoVideo"/></a><div class="content"><a class="title" href="/2021/08/15/AutoVideo/" title="AutoVideo">AutoVideo</a><time datetime="2021-08-15T12:38:52.000Z" title="Created 2021-08-15 20:38:52">2021-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/11/Photographic(sensor)/" title="Photograhic(CMU)-sensor"><img src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Photograhic(CMU)-sensor"/></a><div class="content"><a class="title" href="/2021/08/11/Photographic(sensor)/" title="Photograhic(CMU)-sensor">Photograhic(CMU)-sensor</a><time datetime="2021-08-11T01:58:05.000Z" title="Created 2021-08-11 09:58:05">2021-08-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By wangshuai</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">wangshuai</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://wangsssssss.github.io/2021/04/17/des/">http://wangsssssss.github.io/2021/04/17/des/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/encryption/">encryption</a></div><div class="post_share"><div class="social-share" data-image="/2021/04/17/des/image-20210420213735821.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> Donate</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/wechat.jpeg" target="_blank"><img class="post-qr-code-img" src="/images/wechat.jpeg"/></a><div class="post-qr-code-desc"></div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/04/18/sentences/"><img class="prev-cover" src="/2021/04/18/sentences/image-20210418162421840.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">sentences</div></div></a></div><div class="next-post pull-right"><a href="/2021/04/14/MnasNet/"><img class="next-cover" src="/2021/04/14/MnasNet/image-20210414220146133.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">MnasNet</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/images/1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">wangshuai</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">67</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">31</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">24</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/WANGSSSSSSS"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/WANGSSSSSSS" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:wangshuai.excellent@foxmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/08/20/GenerativeModeling/" title="GenerativeModeling"><img src="/2021/08/20/GenerativeModeling/image-20210820185703405.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GenerativeModeling"/></a><div class="content"><a class="title" href="/2021/08/20/GenerativeModeling/" title="GenerativeModeling">GenerativeModeling</a><time datetime="2021-08-20T08:15:27.000Z" title="Created 2021-08-20 16:15:27">2021-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/18/ML-RNN/" title="ML-RNN"><img src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ML-RNN"/></a><div class="content"><a class="title" href="/2021/08/18/ML-RNN/" title="ML-RNN">ML-RNN</a><time datetime="2021-08-18T10:45:03.000Z" title="Created 2021-08-18 18:45:03">2021-08-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/18/ML-GNN/" title="ML-GNN"><img src="/2021/08/18/ML-GNN/image-20210818172616954.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ML-GNN"/></a><div class="content"><a class="title" href="/2021/08/18/ML-GNN/" title="ML-GNN">ML-GNN</a><time datetime="2021-08-18T08:22:14.000Z" title="Created 2021-08-18 16:22:14">2021-08-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/15/AutoVideo/" title="AutoVideo"><img src="/2021/08/15/AutoVideo/image-20210815203923219.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AutoVideo"/></a><div class="content"><a class="title" href="/2021/08/15/AutoVideo/" title="AutoVideo">AutoVideo</a><time datetime="2021-08-15T12:38:52.000Z" title="Created 2021-08-15 20:38:52">2021-08-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/11/Photographic(sensor)/" title="Photograhic(CMU)-sensor"><img src="https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Photograhic(CMU)-sensor"/></a><div class="content"><a class="title" href="/2021/08/11/Photographic(sensor)/" title="Photograhic(CMU)-sensor">Photograhic(CMU)-sensor</a><time datetime="2021-08-11T01:58:05.000Z" title="Created 2021-08-11 09:58:05">2021-08-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By wangshuai</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
   window.MathJax = {
     loader: {
       source: {
