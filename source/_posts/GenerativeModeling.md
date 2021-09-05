@@ -14,8 +14,8 @@ cover: image-20210820185703405.png
 ### The Basic Concept of Generative Modeling
 
 * the objectives of Generative Modeling
-  - [ ] learning $P_{model}$ which approximates $P_{data}$
-  - [ ] using the $P_{model}$ to sample new data
+  - [x] learning $P_{model}$ which approximates $P_{data}$
+  - [x] using the $P_{model}$ to sample new data
 
 * the density estimate formulation
   * explicit density estimation : solve parameters of a known model
@@ -29,9 +29,9 @@ cover: image-20210820185703405.png
 
 ### Fully visible belief network
 
-- [ ] explicit density model
+- [x] explicit density model
 
-- [ ] use chain rule to decompose likelihood of an image x into product of :
+- [x] use chain rule to decompose likelihood of an image x into product of :
 
   $P(x) = \Pi_{i=1} P(x_i|x_1,...x_{i-1}) \\\\$
 
@@ -39,7 +39,7 @@ cover: image-20210820185703405.png
 
 ##### Pixel RNN
 
-<img src="GenerativeModeling/image-20210820190034506.png" alt="image-20210820190034506" style="zoom:50%;" />
+<p><img src="GenerativeModeling/image-20210820190034506.png" alt="image-20210820190034506" style="zoom:50%;" /></p>
 
 ##### Pixel CNN
 
@@ -51,15 +51,15 @@ use context region instead of single pixel
 
 ### Variational  Autoencoders
 
-- [ ] also using explicit density but not tractable
+- [x] also using explicit density but not tractable
 
-- [ ] the intractable density function with latent $Z$ is formulate as following :
+- [x] the intractable density function with latent $Z$ is formulate as following :
 
   $P_{\theta}(x) = \int P_{\theta}(z) \ P_{theta}(x|z)dz$
 
-- [ ] there is no dependencies among pixels, avoid the repeated compute
+- [x] there is no dependencies among pixels, avoid the repeated compute
 
-- [ ]  Cannot optimize directly
+- [x]  Cannot optimize directly
 
 #### how make autoencoder a generative model?
 
@@ -75,13 +75,10 @@ $\theta + \phi$ is the whole parameters of autoencoder
 $\theta$ is the parameters of decoder neural network
 
 $\phi$ is the parameters of encoder neural network
-$$
-log P_{\theta + \phi}(x^{(i)})  = E_{z \sim q_{\phi}(z|x^i)}[logP_{\theta + \phi}(x^i)] \\
-=  E_z[log{{p_\theta(x^i | z) p_\theta(z)}\over p_\theta (z | x^i)}] 
-\\ = E_z[log{{p_\theta(x^i | z) p_\theta(z)}\over p_\theta (z | x^i)}{q_\phi(z | x^i) \over q_\phi(z | x^i) }] 
-\\ = E_z[logP_\theta(x^i|z)] - D_{KL}({q_\phi(z|x^i)|| p_\theta(z)}) + D_{KL}(q_\phi(z|x^i)||p_\theta{(z|x^i)})
-$$
-and  $D_{KL}(q_\phi(z|x^i)||p_\theta{(z|x^i)})  \ \ $  is obviously an intractable term, because of the irreversible property of neural network.  需要换行
+
+![image-20210820212758623](GenerativeModeling/image-20210820212758623.png)
+
+and  $D_{KL}(q_\phi(z|x^i)||p_\theta{(z|x^i)})  \ \ $  is obviously an intractable term, because of the irreversible property of neural network.  
 
 the tractable lower bound is :
 
@@ -89,13 +86,13 @@ the tractable lower bound is :
 
 this optimization method is some kind like SVM mathematics formulation
 
-
-
 ##### the training process
 
 <img src="GenerativeModeling/image-20210820183700528.png" alt="image-20210820183700528" style="zoom: 50%;" />
 
-**must assume the latent variable and input data follow a certain distribution, such as Gaussians distribution **
+
+
+**must assume the latent variable and input data follow a certain distribution, such as Gaussians distribution**
 
 * the encoder objective function :  $- D_{KL}({q_\phi(z|x^i)|| p_\theta(z)})$
 
@@ -115,7 +112,7 @@ this optimization method is some kind like SVM mathematics formulation
 
 use the decoder network to construct the model parameters, use this known model to sample images, as the following: $Z$ is the latent variable, also called as prior knowledge used in generative model.
 
-<img src="GenerativeModeling/image-20210820174509569.png" alt="image-20210820174509569" style="zoom:67%;" />
+<img src="GenerativeModeling/image-20210820174509569.png" style="zoom:67%"  alt="image-20210820174509569"   />
 
 
 
@@ -129,8 +126,8 @@ use the decoder network to construct the model parameters, use this known model 
 
 Want to sample from complex, high-dimensional training distribution
 
-- [ ]  Sample from a simple distribution we can easily sample from, e.g. random noise.  
-- [ ] learning a ability to transform a distribution to the other
+- [x]  Sample from a simple distribution we can easily sample from, e.g. random noise.  
+- [x] learning a ability to transform a distribution to the other
 
 #### how model this Idea?
 

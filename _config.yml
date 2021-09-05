@@ -44,7 +44,6 @@ post_asset_folder: true
 marked:
   gfm: true
   pedantic: true
-  sanitize: true
   tables: true
   breaks: true
   smartLists: true
