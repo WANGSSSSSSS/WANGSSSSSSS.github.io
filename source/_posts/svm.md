@@ -81,3 +81,5 @@ we can use $K(x_i, x_j) = \phi(x_i) \phi(x_j) = ....$to avoid the unnecessary co
 
 <img src="svm/image-20210612202519751.png" alt="image-20210612202519751" style="zoom:80%;" />
 
+
+
