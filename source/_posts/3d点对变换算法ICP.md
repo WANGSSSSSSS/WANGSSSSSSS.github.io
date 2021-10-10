@@ -3,7 +3,7 @@ title: 位姿求解算法ICP
 date: 2021-03-30 21:51:38
 categories:
 tags:
-cover:
+cover: image-20210330222259638.png
 ---
 
 ## ICP 算法

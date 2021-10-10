@@ -2,8 +2,12 @@
 title: PRS-net
 date: 2021-09-02 08:37:37
 categories:
+- cv
+- 3dv
 tags:
-cover:
+- cv
+- 3dv
+cover: image-20210902083846647.png
 ---
 
 # PRS-Net 初步实现报告

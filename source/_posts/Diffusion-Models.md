@@ -5,6 +5,8 @@ categories:
 - machine learing
 tags:
 - machine learning
-cover:
+cover: 
 ---
+
+### Diffusion Model
 

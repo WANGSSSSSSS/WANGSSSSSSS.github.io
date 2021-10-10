@@ -16,6 +16,7 @@
     "hexo-asset-image": "github:CodeFalling/hexo-asset-image",
     "hexo-butterfly-article-double-row": "^1.0.2",
     "hexo-deployer-git": "^3.0.0",
+    "hexo-filter-mermaid-diagrams": "^1.0.5",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-index": "^2.0.0",

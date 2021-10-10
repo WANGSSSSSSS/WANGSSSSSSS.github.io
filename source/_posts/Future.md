@@ -30,6 +30,7 @@ cover: edu-hero.svg
 - [ ] Generative Models
   - [x] VAE
   - [x] GAN
+  - [x] VRNN
   - [ ]  and so on ......
 - [ ] Video analyze
 - [ ] Tracking
@@ -38,7 +39,7 @@ cover: edu-hero.svg
 
 **Detailed Schedule**
 
-第一次学习周期，我打算了解一下目标跟踪
+第一次学习周期很失败，国庆期间，天天打牌，重置时间一次
 
 ```mermaid
 gantt
@@ -46,9 +47,9 @@ gantt
 dateFormat YYYY-MM-DD
 title Schedule
 section Tracking Study
-Read Tracking Papers : active des1, 2021-10-03, 2021-10-07
-Read Tracking Codes : crit, des2, 2021-10-05, 2021-10-08
-keep writting : des3, 2021-10-08
+Read Tracking Papers : active des1, 2021-10-08, 2021-10-16
+Read Tracking Codes : crit, des2, 2021-10-10, 2021-10-16
+keep writting : des3, 2021-10-16
 section B
 
 ```
