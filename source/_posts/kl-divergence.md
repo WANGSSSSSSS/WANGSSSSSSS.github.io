@@ -23,9 +23,9 @@ cover: image-20211010163532692.png
 
 直接定义两个分布对应概率差距，也就是在密度函数上进行差异的估计
 
-连续情形： $$loss = \int [P(x) - Q(x)]^2 dx$$
+连续情形： $loss = \int [P(x) - Q(x)]^2 dx$
 
-离散表示： $$loss = \Sigma [P_i - Q_i]^2 $$
+离散表示： $loss = \Sigma [P_i - Q_i]^2 $
 
 这是一种简单的策略，但是在训练过程中，非线性效果不够好,可能是其他的原因，就比如简单的分类任务上就抛弃了这个损失，这更像一个回归的监督方式，在目标检测回归包围框时使用
 
@@ -33,9 +33,9 @@ cover: image-20211010163532692.png
 
 $$H(p||q) = p(x) log({p(x) \over q(x)}) = -p(x)log(q(x)) +  p(x)log(p(x)) = H(p,q) - H(p)$$
 
-连续情形：$$ loss = \int p(x) log({p(x) \over q(x)}) dx$$
+连续情形：$ loss = \int p(x) log({p(x) \over q(x)}) dx$
 
-离散表示：$$loss = \Sigma p_i log({p_i \over q_i})$$
+离散表示：$loss = \Sigma p_i log({p_i \over q_i})$
 
 对于一个多分类任务，我希望输入向量经过神经网络之后的类别分布，符合类别的信息，什么意思呢？
 
@@ -55,7 +55,7 @@ $$loss = -log(q_i)$$
 
 对于$q(x)$分布，可以增加更多的非线性，或者说为了整流归一化，引入**Softmax**
 
-$\hat q(x) = softmax(q(x)) = \{ {e^{Ci} \over \Sigma_1^N e^{C_k}} \},  \ \  i\in [1,N]$
+$$\hat q(x) = softmax(q(x)) = \{ {e^{Ci} \over \Sigma_1^N e^{C_k}} \},  \ \  i\in [1,N]$$
 
 $$loss = -log(\hat q(x)_i) = C_i + log[\Sigma_1^N e^{C_k}]$$
 
