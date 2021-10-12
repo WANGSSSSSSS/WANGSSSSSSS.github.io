@@ -1,9 +1,9 @@
 ---
-title: bn
+title: BatchNorm
 date: 2021-07-09 21:05:30
 categories:
 tags:
-cover:
+cover: image-20210709213124510.png
 ---
 
 ![image-20210709213124510](bn/image-20210709213124510.png)

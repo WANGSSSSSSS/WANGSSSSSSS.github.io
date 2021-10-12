@@ -3,7 +3,7 @@ title: LDA 与 PCA
 date: 2021-07-10 11:02:58
 categories:
 tags:
-cover:
+cover: image-20210710110356708.png
 ---
 
 ### PCA

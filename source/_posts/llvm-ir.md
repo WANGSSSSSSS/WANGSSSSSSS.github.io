@@ -5,7 +5,7 @@ categories:
 - compiler
 tags:
 - compiler
-cover:
+cover: image-20210522212409706.png
 ---
 
 ## IR 设计

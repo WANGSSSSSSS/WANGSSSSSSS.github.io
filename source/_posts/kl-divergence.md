@@ -1,5 +1,5 @@
 ---
-title: KL散度 和 交叉熵
+title: Supervision With Data Distribution 
 date: 2021-10-10 15:34:42
 categories:
 - machine learning
@@ -15,9 +15,9 @@ cover: image-20211010163532692.png
 
 >  生成模型要捕捉到数据的分布，然后使得输出和输入的相似度最高
 >
->   $$ min_{P_\theta} Dis(\hat p(x),\hat q_\theta(x) )$$
+>   $ min_{P_\theta} Dis(\hat p(x),\hat q_\theta(x) )$
 
-![image-20211010163532692](kl-divergence/image-20211010163532692.png)
+<img src="kl-divergence/image-20211010163532692.png" alt="image-20211010163532692" style="zoom: 50%;" />
 
 很自然的，损失函数，监督信号就会定义在如何衡量两个分布之间的相似度上，最常见的分布对比
 
