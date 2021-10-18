@@ -13,7 +13,7 @@ cover: image-20211014124033229.png
 
 **SuperGlue: Learning Feature Matching with Graph Neural Networks**![image-20211014123448008](SuperGlue/image-20211014123448008.png)
 
-这篇文章实验和代码都很简单，总结一句话就是，用attention（self-attention）增强特征点的全局语义，然后构造匹配score matrix, 利用最优传输得出配对
+这篇文章实验和代码都很简单，总结一句话就是，用attention（self/cross-attention）增强特征点的全局语义，然后构造匹配score matrix, 利用最优传输得出配对
 
 ![image-20211014124033229](SuperGlue/image-20211014124033229.png)
 
@@ -21,7 +21,9 @@ cover: image-20211014124033229.png
 
 要最大化正确匹配的配对分数，应用上对数似然估计，就是**最小化负对数似然估计（NLL）**, $N$ 为未匹配（垃圾桶点），由于图片$A,B$遮挡等一系列原因，有的特征点确实没有匹配的真值
 
-$$Loss = - \Sigma \ log(P_{i,j})_{i,j \in Match} - \Sigma \ log(P_{i,N})_{i \in A} - \Sigma \  log(P_{i,N})_{i \in B}$$   
+$$Loss = - \Sigma log(P_{i,j})_{i,j \in Match} - \Sigma log(P_{i,N})_{i \in A} - \Sigma  log(P_{i,N})_{i \in B}$$
+
+![image-20211014130127179](SuperGlue/image-20211014130127179.png)
 
 如果使用softmax归一化，那么损失函数就等价于**crossentrpy**
 

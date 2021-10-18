@@ -672,7 +672,7 @@ aside:
     expand: none # none/true/false
     sort_order: # Don't modify the setting unless you know how it works
   card_tags:
-    enable: true
+    enable: false
     limit: 40 # if set 0 will show all
     color: false
     sort_order: # Don't modify the setting unless you know how it works
