@@ -1,5 +1,5 @@
 ---
-title: comir
+title: CoMIR
 date: 2021-10-25 18:50:44
 categories:
 - cv
@@ -44,7 +44,7 @@ this operation is a joint supervise action aims to force the latent feature map 
 
 ​						$max \ [ h(T_1^y(F(T_1^x(x)), F(x))]$
 
- 				   	$max \ [h(T_2^y(F(T_2^x(x)), F(x)]$
+​	      		   	$max \ [h(T_2^y(F(T_2^x(x)), F(x)]$
 
 #### experimental result
 
