@@ -79,7 +79,7 @@ katex:
 # --------------------------------------
 
 # Favicon（網站圖標）
-favicon: /images/web.webp
+favicon: /images/meta.png
 
 # Avatar (頭像)
 avatar:
@@ -660,7 +660,7 @@ aside:
       link: https://github.com/WANGSSSSSSS
   card_announcement:
     enable: true
-    content: 没学上了啊，我好难过
+    content: 只希望未来别再丢人了
   card_recent_post:
     enable: true
     limit: 5 # if set 0 will show all
