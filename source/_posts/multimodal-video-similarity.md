@@ -5,7 +5,7 @@ categories:
 - cv
 tags:
 - cv
-- nlp
+- NLP
 - video
 cover: image-20211106202422400.png
 ---
