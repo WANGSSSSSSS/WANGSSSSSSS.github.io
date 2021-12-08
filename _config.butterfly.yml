@@ -67,13 +67,22 @@ local_search:
 
 # MathJax
 mathjax:
-  enable: true
+  enable: false
   per_page: true
 # KaTeX
 katex:
   enable: true
   per_page: true
   hide_scrollbar: true
+
+markdown_it_plus:
+  plugins:
+    - plugin:
+      name: '@neilsustc/markdown-it-katex'
+      enable: true
+      options:
+        strict: true
+
 
 # Image (圖片設置)
 # --------------------------------------
