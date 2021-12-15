@@ -1,6 +1,6 @@
 ---
 title: Future
-date: 2021-10-02 18:41:22
+date: 2021-10-14 18:41:22
 categories:
 - Thinking
 tags:
@@ -10,7 +10,7 @@ cover: edu-hero.svg
 
 ## Future
 
-今天，手闲，看了一个同学关于未来的规划，我突然很感慨起来！
+<del>今天</del> (long long ago)，手闲，看了一个同学关于未来的规划，我突然很感慨起来！
 
 希望我未来能够胜任这份工作！！
 
@@ -22,6 +22,27 @@ cover: edu-hero.svg
 
 未来的事情，我应该好好想想了，老师给我很长的时间让我思考，我的方向，这种散养的模式，还是很让我头疼的，我并不知道自己适合什么，对于科研来说，我有很多的缺点，可惜现在后悔已经来不及了，因此我需要模仿一个合格科研者，度过前几年的修行，如果我真的不适合，我考虑退学！
 
+
+
+## 我学了什么？
+
+### 吃饭的东西
+
+* libtorch
+* quantize in pytorch
+
+
+
+### 法术
+
+- [ ] Backbone
+  - [x] ResNet
+  - [x] UNet
+  - [x] transformer
+  - [x] Vit
+  - [ ] Pit
+  - [ ] ....
+
 - [x] Detection Task 2d
 - [ ] Segmentation Task 2d
 - [ ] Detection Task- Point Cloud
@@ -31,11 +52,27 @@ cover: edu-hero.svg
   - [x] VAE
   - [x] GAN
   - [x] VRNN
+  - [x] Diffusion model
+  - [x] VQ-VAE
+  - [x] VQ-GAN
   - [ ]  and so on ......
 - [ ] Video analyze
 - [ ] Tracking
+  - [ ] 
+
 - [ ] diff-Images Matching
-- [ ]  and so on .....
+- [ ] NLP-CV
+  - [x] CLIP
+  - [x] Taming-transformer
+  - [x] VQ-Diffusion
+
+- [ ] and so on .....
+
+
+
+
+
+
 
 **Detailed Schedule**
 
