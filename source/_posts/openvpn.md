@@ -1,15 +1,17 @@
 ---
-title: openvpn
+title: 怎么让OpenVPN非全局代理?
 date: 2022-01-05 21:14:32
 categories:
 - net
 tags:
 - net
 - environment
-cover:
+cover: image-20220105232228157.png
 ---
 
-### openvpn
+### 关于openvpn的环境问题 [Manjaro21]
+
+![image-20220105232228157](openvpn/image-20220105232228157.png)
 
 最近开始实习，远程工作需要设置一些环境，公司很多网站是设置在内网上，没有内网的访问简直寸步难行，win11,和ubuntu18应该是很稳定的，使用的系统为manjaro 21. 还是喜欢arch
 
@@ -60,7 +62,7 @@ docker run --detach \
 
 既然是路由选择的问题，那就搞路由，但是感觉不是很优雅。
 
-* 修改配置文件（无效，因为这个networkmanager openvpn插件压根不支持这个feature，但是openvpn支持）
+* 修改配置文件（**无效**，因为这个networkmanager openvpn插件压根不支持这个feature，但是openvpn支持）
 
   给openvpn的配置文件添加：
 
@@ -86,8 +88,16 @@ route-metric 800
 
 ```bash
 interface wlan0
-metric 20
+metric 10
 ```
+
+原来路由表：
+
+![image-20220105231841886](openvpn/image-20220105231841886.png)
+
+这样路由表变成
+
+![image-20220105231823958](openvpn/image-20220105231823958.png)
 
 最后，我成功访问了，但是openvpn连接莫名其妙就会几分钟断开，即使改了`reneg-sec`，也是这样，我终于察觉到networkmanager插件比较naive了，根本不支持一些连接特性
 
