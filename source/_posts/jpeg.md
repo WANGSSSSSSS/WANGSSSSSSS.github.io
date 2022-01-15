@@ -1,11 +1,12 @@
 ---
-title: jpeg
+title: JPEG algorithm
 date: 2022-01-12 17:37:04
 categories:
 - cv
-  tags:
+tags:
 - cv
-  cover: image-20220112204947569.png
+- compression
+cover: image-20220112204947569.png
 ---
 
 ## JPEG compressiom
@@ -60,8 +61,7 @@ Once the image is in YCrCb color space and downsampled by a factor, it is partit
 
 Use the mathmetics language to describe discrete cosine transform, The whole transformation formula is :
 $$
-\begin{equation} \ G_{u,v}={\frac {1}{4}}\alpha (u)\alpha (v)\sum _{x=0}^{7}\sum _{y=0}^{7}g_{x,y}\cos \left[{\frac {(2x+1)u\pi }{16}}\right]\cos \left[{\frac {(2y+1)v\pi }{16}}\right]
-\end{equation}
+G_{u,v}={\frac {1}{4}}\alpha (u)\alpha (v)\sum _{x=0}^{7}\sum _{y=0}^{7}g_{x,y}\cos \left[{\frac {(2x+1)u\pi }{16}}\right]\cos \left [{\frac {(2y+1)v\pi }{16}} \right]
 $$
 As we all know, this transformation is aimed to project the image signal to basic components which are consist of $\cos$ function, this process is some kind like orthogonal decomposition in linear algebra.
 
