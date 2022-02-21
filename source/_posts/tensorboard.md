@@ -6,7 +6,7 @@ categories:
 tags:
 - cv
 - environment
-cover:
+cover: image-20220116144924962.png
 ---
 
 ### TensorBoard 文件
@@ -64,7 +64,92 @@ DEFAULT_SIZE_GUIDANCE = {
 }
 ```
 
+pytorch 强大的性能测试工具 `profiler` 可以分析网络的`neck` 性能：
+
+```bash
+pip install torch_tb_profiler
+tensorboard --logdir=./log
+```
+
+一个例子：
+
+```python
+if __name__  == "__main__":
+	model = mobilenet_v2()
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
+    model = model.cuda()
+    with torch.profiler.profile(
+            schedule=torch.profiler.schedule(wait=1, warmup=1, active=3, repeat=2),
+   		on_trace_ready=torch.profiler.tensorboard_trace_handler('/home/wang_shuai/mem'),
+            #record_shapes=True,
+            profile_memory=True,
+            with_stack=True
+    ) as prof:
+        inp = torch.rand([4, 1, 500, 500])
+        inp = inp.cuda()
+        for step in range(10):
+            if step >= (1 + 1 + 3) * 2:
+                break
+
+            with torch.no_grad():
+                model(inp)
+            prof.step()  # Need to call this at the end of each step to notify profiler of steps' boundary.
+```
+
+默认只会得到最底层的调用结果，所以对于部分代码，可以使用`record_function` 进行手动标记
+
 #### 重要教训
 
-看清tensorboard的坐标轴，有时候坐标轴会变化。。。要不然汇报工作的时候很尴尬
+* 看清tensorboard的坐标轴，有时候坐标轴会变化。。。要不然汇报工作的时候很尴尬
+
+* batchnorm 在pytorch某些实现`cudnn `, `intel mkl dnn` 等一些后端函数上，不是inplace
+
+  ```c++
+  std::tuple<Tensor, Tensor, Tensor, Tensor> cudnn_batch_norm(
+      const Tensor& input_t, const Tensor& weight_t, const c10::optional<Tensor>& bias_t_opt, const c10::optional<Tensor>& running_mean_t_opt, const c10::optional<Tensor>& running_var_t_opt,
+      bool training, double exponential_average_factor, double epsilon)
+  {
+      ... // some check code
+    // output space allocation      
+    auto output_t = at::empty_like(*input, input->options(), 
+                                   input->suggest_memory_format());
+  
+    TensorArg output{ output_t, "output", 0 };
+  
+    auto handle = getCudnnHandle();
+    auto dataType = getCudnnDataType(*input);
+    TensorDescriptor idesc{ *input, 4 };  // input descriptor
+    TensorDescriptor wdesc{ expandScale(*weight, input->dim()), 4 };  // descriptor for weight, bias, running_mean, etc.
+      
+      ... // some select code
+      cudnnBatchNormalizationForwardInference(
+        handle, mode, &one, &zero,
+        idesc.desc(), input->data_ptr(),
+        idesc.desc(), output->data_ptr(),
+        wdesc.desc(),
+        weight->data_ptr(),
+        bias->data_ptr(),
+        running_mean->data_ptr(),
+        running_var->data_ptr(),
+        epsilon);
+      
+     return std::tuple<Tensor, Tensor, Tensor, Tensor>{output_t, 
+                                                       save_mean,
+                                                       save_var,
+                                                       reserve};
+  }
+  
+  ```
+
+  所以在`conv`后面使用`batch norm`会加倍峰值显存, 最高的那几个都是`batch norm`造成的
+
+  <center>
+      <img src="tensorboard/image-20220116144924962.png" alt="image-20220116144924962" style="zoom:50%;" />
+      <img src="tensorboard/image-20220116145104234.png" alt="image-20220116145104234" style="zoom:50%;" />
+  </center>
+
+  
+
+
 
