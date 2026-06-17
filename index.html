@@ -4,492 +4,624 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Shuai Wang</title>
-<meta name="description" content="Shuai Wang (王帅) — PhD student at Nanjing University, working on diffusion models and visual generation." />
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>" />
+<meta name="description" content="Shuai Wang - PhD student at Nanjing University, working on diffusion models and visual generation." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --ink: #171511;
-    --ink-soft: #3f3a32;
-    --ink-muted: #7b7469;
-    --line: #e3ddd1;
-    --line-strong: #cbc2b3;
-    --bg: #f7f3eb;
-    --paper: #fffdf8;
-    --paper-2: #fbf7ef;
-    --accent: #315b4f;
-    --accent-soft: #edf4ef;
-    --gold: #9b7a37;
-    --shadow: 0 18px 60px -44px rgba(45, 35, 18, .38);
-    --serif: "Crimson Pro", Georgia, serif;
-    --sans: "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --text: #181818;
+    --muted: #666666;
+    --faint: #8b8b8b;
+    --line: #e6e2dc;
+    --paper: #fffdf9;
+    --wash: #f7f3ee;
+    --accent: #8a1538;
+    --accent-dark: #5d0e25;
+    --serif: "Crimson Pro", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --ink: #f2eee7;
-      --ink-soft: #d4cabd;
-      --ink-muted: #9f9587;
-      --line: #373126;
-      --line-strong: #514737;
-      --bg: #12100d;
-      --paper: #1a1712;
-      --paper-2: #201c16;
-      --accent: #8db7a7;
-      --accent-soft: #1f2a24;
-      --gold: #d0b46a;
-      --shadow: 0 18px 60px -34px rgba(0,0,0,.72);
-    }
-  }
+
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
+    color: var(--text);
     background:
-      radial-gradient(circle at top left, rgba(155,122,55,.11), transparent 34rem),
-      linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg) 92%, #fff 8%));
-    color: var(--ink);
+      linear-gradient(90deg, rgba(138, 21, 56, .035), transparent 24rem),
+      var(--paper);
     font-family: var(--sans);
-    font-size: 17px;
-    line-height: 1.7;
+    font-size: 16px;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-  a { color: var(--accent); text-decoration: none; transition: color .2s ease, border-color .2s ease; }
-
-  /* Subtle paper texture */
-  .bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-  .bg::before {
-    content: ""; position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(49,91,79,.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(49,91,79,.025) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: linear-gradient(180deg, rgba(0,0,0,.78), transparent 76%);
   }
 
-  .wrap { max-width: 840px; margin: 0 auto; padding: 0 28px; }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(138, 21, 56, .22);
+  }
 
-  /* Floating nav */
-  .nav {
-    position: sticky; top: 0; z-index: 50;
-    margin: 0 auto; max-width: 840px;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 28px 14px;
-    border-bottom: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
-    background: color-mix(in srgb, var(--bg) 86%, transparent);
-    backdrop-filter: saturate(130%) blur(10px);
-    -webkit-backdrop-filter: saturate(130%) blur(10px);
+  a:hover {
+    color: var(--accent-dark);
+    border-bottom-color: currentColor;
   }
-  .nav .brand { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--ink); letter-spacing: .01em; }
-  .nav .brand span { color: var(--accent); }
-  .nav-links { display: flex; gap: 18px; }
-  .nav-links a {
-    font-size: 12px; color: var(--ink-muted); padding: 0;
-    text-transform: uppercase; letter-spacing: .09em;
-    border-bottom: 1px solid transparent;
-  }
-  .nav-links a:hover { color: var(--accent); border-color: var(--accent); }
 
-  /* Header */
-  header { padding: 72px 0 42px; }
-  .intro {
-    display: grid; grid-template-columns: 180px 1fr; gap: 48px; align-items: center;
-    padding: 34px 0 42px; border-bottom: 1px solid var(--line-strong);
+  .page {
+    width: min(1080px, calc(100% - 48px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 284px 1fr;
+    gap: 64px;
+    padding: 58px 0 72px;
   }
-  .photo-ring {
-    flex: 0 0 auto; padding: 0; border-radius: 4px;
-    background: transparent;
-    box-shadow: var(--shadow);
+
+  .sidebar {
+    position: sticky;
+    top: 38px;
+    align-self: start;
   }
-  .photo {
-    display: block; width: 180px; height: 220px;
-    border-radius: 3px; object-fit: cover;
-    border: 1px solid var(--line-strong);
-    filter: saturate(.92) contrast(1.02);
+
+  .portrait {
+    width: 216px;
+    height: 258px;
+    object-fit: cover;
+    display: block;
+    border: 1px solid var(--line);
+    background: var(--wash);
+    margin-bottom: 24px;
   }
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: 9px;
-    font-size: 12px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
-    color: var(--gold); background: transparent;
-    padding: 0; margin-bottom: 12px;
+
+  .name {
+    font-family: var(--serif);
+    font-size: 43px;
+    line-height: .95;
+    font-weight: 600;
+    letter-spacing: -.02em;
+    margin: 0;
   }
-  .eyebrow .dot { width: 26px; height: 1px; background: var(--gold); box-shadow: none; border-radius: 0; }
-  .id h1 {
-    font-family: var(--serif); font-weight: 600;
-    font-size: 58px; line-height: .98; margin: 0 0 6px; letter-spacing: -.02em;
+
+  .name-zh {
+    font-family: var(--serif);
+    font-size: 23px;
+    color: var(--muted);
+    margin-top: 6px;
   }
-  .id h1 .accent { color: var(--ink); }
-  .id .zh { font-family: var(--serif); font-weight: 400; color: var(--ink-muted); font-size: 24px; }
-  .id .role { color: var(--ink-soft); margin: 16px 0 0; font-size: 16px; max-width: 560px; }
-  .id .role a { font-weight: 700; color: var(--ink); border-bottom: 1px solid var(--line-strong); }
-  .id .role a:hover { color: var(--accent); }
-  .links { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 22px; }
+
+  .role {
+    color: var(--muted);
+    margin: 18px 0 0;
+    max-width: 250px;
+  }
+
+  .links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 16px;
+    margin: 24px 0 0;
+    max-width: 236px;
+  }
+
   .links a {
-    display: inline-flex; align-items: center; gap: 7px;
-    padding: 0 0 4px; border: 0; border-bottom: 1px solid var(--line-strong); border-radius: 0;
-    color: var(--ink-soft); background: transparent;
-    font-size: 13px; font-weight: 700; cursor: pointer;
-    letter-spacing: .04em; text-transform: uppercase;
+    width: fit-content;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    color: var(--text);
+    border-bottom-color: var(--line);
   }
-  .links a:hover { color: var(--accent); border-color: var(--accent); }
-  .links svg { width: 15px; height: 15px; }
 
-  /* Sections */
-  section { padding: 38px 0 4px; scroll-margin-top: 84px; }
-  .sec-head { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
-  .sec-head .bar { width: 34px; height: 1px; border-radius: 0; background: var(--gold); flex: 0 0 auto; }
+  .links a:hover { color: var(--accent); }
+
+  .sidebar-note {
+    margin-top: 26px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    color: var(--faint);
+    font-size: 13px;
+  }
+
+  .topline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 34px;
+  }
+
+  .tagline {
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+  }
+
+  nav {
+    display: flex;
+    gap: 22px;
+  }
+
+  nav a {
+    color: var(--muted);
+    border: 0;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  nav a:hover { color: var(--accent); }
+
+  .lead {
+    font-family: var(--serif);
+    font-size: 29px;
+    line-height: 1.18;
+    letter-spacing: -.01em;
+    margin: 0 0 18px;
+    max-width: 720px;
+  }
+
+  .lead strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .intro-text {
+    color: var(--muted);
+    max-width: 720px;
+    margin: 0 0 14px;
+  }
+
+  section {
+    padding: 34px 0 0;
+    margin-top: 4px;
+    scroll-margin-top: 28px;
+  }
+
   h2 {
-    font-family: var(--sans); font-size: 12px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: .16em; color: var(--ink-muted); margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin: 0 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
-  p { margin: 0 0 14px; color: var(--ink-soft); }
-  .bio p { font-size: 18px; max-width: 760px; }
-  .bio strong { color: var(--ink); font-weight: 700; }
 
-  /* Interests */
-  .tags { display: flex; flex-wrap: wrap; gap: 10px; }
-  .tags span {
-    font-size: 14px; font-weight: 700; padding: 6px 12px; border-radius: 3px;
-    background: var(--paper-2); border: 1px solid var(--line); color: var(--ink-soft);
-    cursor: default;
-    transition: color .2s ease, border-color .2s ease;
+  h2::after {
+    content: "";
+    height: 1px;
+    background: var(--line);
+    flex: 1;
   }
-  .tags span:hover { color: var(--accent); border-color: var(--line-strong); }
 
-  /* News */
-  .news { list-style: none; padding: 0; margin: 0; }
+  .interests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 20px;
+  }
+
+  .interests span {
+    color: var(--muted);
+    background: var(--wash);
+    border: 1px solid var(--line);
+    padding: 3px 9px;
+    font-size: 13px;
+  }
+
+  .news {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
   .news li {
-    display: grid; grid-template-columns: 82px 1fr; gap: 20px; padding: 8px 0;
-    color: var(--ink-soft); border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+    display: grid;
+    grid-template-columns: 86px 1fr;
+    gap: 18px;
+    padding: 7px 0;
   }
+
   .news time {
-    color: var(--gold); font-size: 13px; font-weight: 700;
-    font-variant-numeric: tabular-nums; padding-top: 3px;
+    color: var(--faint);
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
   }
-  .news b { color: var(--ink); font-weight: 700; }
 
-  /* Card base */
-  .card {
-    background: transparent; border: 0; border-top: 1px solid var(--line);
-    border-radius: 0; padding: 18px 0; margin-bottom: 0; position: relative;
-    box-shadow: none;
-    transition: border-color .2s ease, background .2s ease;
-  }
-  .card::before {
-    content: none;
-  }
-  .card:hover { border-color: var(--line-strong); background: color-mix(in srgb, var(--paper) 42%, transparent); }
+  .news span { color: var(--muted); }
+  .news b { color: var(--text); font-weight: 600; }
 
-  /* Publications */
-  .pub { display: grid; grid-template-columns: 92px 1fr; gap: 22px; }
-  .venue { padding-top: 3px; }
+  .publication {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 18px;
+    padding: 17px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .publication:first-of-type { border-top: 0; padding-top: 0; }
+
+  .venue {
+    padding-top: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+
   .venue b {
-    display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .04em;
-    color: var(--accent); background: transparent;
-    padding: 0; border-radius: 0;
+    display: block;
+    color: var(--accent);
+    font-size: 13px;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: .02em;
   }
-  .venue i { display: block; font-style: normal; font-size: 12px; color: var(--ink-muted); margin-top: 4px; font-variant-numeric: tabular-nums; }
-  .pub-body .t { font-family: var(--serif); font-size: 22px; font-weight: 600; line-height: 1.22; color: var(--ink); display: inline; }
-  .pub-body a.t:hover { color: var(--accent); }
-  .pub-body .a { font-size: 14.5px; color: var(--ink-muted); margin: 5px 0 0; }
-  .pub-body .a u { color: var(--ink); text-decoration: none; font-weight: 700; border-bottom: 1px solid var(--gold); }
-  .pub-body .meta { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 12px; }
-  .pub-body .meta a {
-    display: inline-flex; align-items: center; gap: 5px;
-    font-size: 12px; font-weight: 700; padding: 0 0 2px; border: 0; border-bottom: 1px solid var(--line-strong); border-radius: 0;
-    color: var(--ink-soft); background: transparent; cursor: pointer;
-    text-transform: uppercase; letter-spacing: .04em;
-  }
-  .pub-body .meta a:hover { color: var(--accent); border-color: var(--accent); }
-  .more { font-size: 14.5px; margin: 16px 0 0; color: var(--ink-muted); }
-  .more a { font-weight: 700; }
 
-  /* Dated entries */
-  .entry .top { display: flex; justify-content: space-between; gap: 14px; align-items: baseline; }
-  .entry .org { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--ink); }
-  .entry .date {
-    flex: 0 0 auto; color: var(--ink-muted); font-size: 13px; font-weight: 400;
-    font-variant-numeric: tabular-nums; white-space: nowrap;
-    padding: 0; border: 0; border-radius: 0;
+  .venue i {
+    display: block;
+    color: var(--faint);
+    font-style: normal;
+    font-size: 12px;
+    margin-top: 3px;
   }
-  .entry .sub { color: var(--ink-soft); font-size: 14.5px; font-weight: 400; margin-top: 3px; font-style: italic; }
-  .entry .desc { color: var(--ink-soft); font-size: 15px; margin-top: 7px; margin-bottom: 0; }
 
-  /* Honors */
-  .honors { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+  .paper-title {
+    font-family: var(--serif);
+    color: var(--text);
+    font-size: 22px;
+    line-height: 1.18;
+    font-weight: 600;
+    border-bottom: 0;
+  }
+
+  .paper-title:hover { color: var(--accent); }
+
+  .authors {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .authors .me {
+    color: var(--text);
+    font-weight: 600;
+    border-bottom: 1px solid rgba(138, 21, 56, .32);
+  }
+
+  .paper-links {
+    display: flex;
+    gap: 14px;
+    margin-top: 6px;
+  }
+
+  .paper-links a {
+    color: var(--muted);
+    border-bottom-color: var(--line);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+
+  .paper-links a:hover { color: var(--accent); }
+
+  .more {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 16px 0 0;
+  }
+
+  .cv-list {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .cv-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 18px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .cv-item h3 {
+    font-family: var(--serif);
+    font-size: 21px;
+    line-height: 1.2;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .cv-item p {
+    margin: 3px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .cv-item time {
+    color: var(--faint);
+    font-size: 14px;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .honors {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--line);
+  }
+
   .honors li {
-    display: grid; grid-template-columns: 86px 1fr; align-items: center; gap: 16px; color: var(--ink-soft); font-size: 15.5px;
-    background: transparent; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 12px 0;
-    box-shadow: none;
+    display: grid;
+    grid-template-columns: 86px 1fr;
+    gap: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
   }
+
   .honors time {
-    color: var(--gold); font-size: 13px; font-weight: 700;
-    font-variant-numeric: tabular-nums; background: transparent;
-    padding: 0; border-radius: 0;
-  }
-  .honors b { color: var(--ink); font-weight: 700; }
-
-  footer { padding: 44px 0 64px; color: var(--ink-muted); font-size: 13.5px; text-align: center; }
-  footer .rule { height: 1px; background: linear-gradient(90deg, transparent, var(--line), transparent); margin-bottom: 22px; }
-
-  /* Entrance animation */
-  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
-  .reveal.in { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
-    html { scroll-behavior: auto; }
-    .card:hover, .links a:hover, .tags span:hover { transform: none; }
+    color: var(--faint);
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
   }
 
-  @media (max-width: 640px) {
-    .nav-links { display: none; }
-    .nav { padding: 14px 22px; }
-    header { padding: 36px 0 20px; }
-    .intro { grid-template-columns: 1fr; gap: 24px; align-items: center; text-align: center; padding-top: 14px; }
-    .photo-ring { justify-self: center; }
-    .photo { width: 144px; height: 176px; }
-    .links { justify-content: center; }
-    .id h1 { font-size: 44px; }
-    .pub { grid-template-columns: 1fr; gap: 7px; }
-    .venue { display: flex; gap: 8px; align-items: baseline; }
-    .venue i { margin-top: 0; }
-    .news li { grid-template-columns: 1fr; gap: 2px; }
-    .entry .top { flex-direction: column; gap: 6px; align-items: flex-start; }
-    .honors li { grid-template-columns: 1fr; gap: 2px; }
+  .honors b { color: var(--text); font-weight: 600; }
+
+  footer {
+    margin-top: 48px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    color: var(--faint);
+    font-size: 13px;
+  }
+
+  @media (max-width: 860px) {
+    .page {
+      grid-template-columns: 1fr;
+      gap: 34px;
+      padding-top: 34px;
+    }
+
+    .sidebar {
+      position: static;
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 22px;
+      align-items: start;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 26px;
+    }
+
+    .portrait {
+      width: 132px;
+      height: 158px;
+      margin-bottom: 0;
+    }
+
+    .name { font-size: 38px; }
+    .role { max-width: none; }
+    .sidebar-note { display: none; }
+    .topline { display: none; }
+  }
+
+  @media (max-width: 560px) {
+    .page {
+      width: min(100% - 32px, 1080px);
+      padding-top: 24px;
+    }
+
+    .sidebar {
+      grid-template-columns: 1fr;
+    }
+
+    .portrait {
+      width: 136px;
+      height: 164px;
+    }
+
+    .lead {
+      font-size: 25px;
+    }
+
+    .news li,
+    .publication,
+    .honors li,
+    .cv-item {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+
+    .cv-item time {
+      order: -1;
+    }
   }
 </style>
 </head>
 <body>
-<div class="bg"></div>
+<main class="page">
+  <aside class="sidebar">
+    <img class="portrait" src="assets/profile.png" alt="Portrait of Shuai Wang" />
+    <div>
+      <h1 class="name">Shuai Wang</h1>
+      <div class="name-zh">王帅</div>
+      <p class="role">
+        PhD Student<br />
+        Nanjing University<br />
+        Multimedia Computing Group
+      </p>
+      <div class="links">
+        <a href="mailto:wangshuai.excellent@foxmail.com">Email</a>
+        <a href="https://scholar.google.com/citations?user=us4prRUAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a>
+        <a href="https://huggingface.co/wangsssssss" target="_blank" rel="noopener">Hugging Face</a>
+        <a href="https://github.com/WANGSSSSSSS" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="sidebar-note">
+        Generative models, diffusion transformers, efficient sampling, and visual generation.
+      </p>
+    </div>
+  </aside>
 
-<nav class="nav">
-  <span class="brand">Shuai <span>Wang</span></span>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#publications">Publications</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
+  <div class="content">
+    <div class="topline">
+      <div class="tagline">Generative Models / Visual Intelligence</div>
+      <nav>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+      </nav>
+    </div>
+
+    <section id="research">
+      <p class="lead">
+        I work on <strong>generative models</strong> for image, video, and multimodal generation.
+      </p>
+      <p class="intro-text">
+        I am a PhD student at Nanjing University, advised by Prof. Limin Wang. My research focuses on efficient and scalable generative architectures, including diffusion transformers, pixel-space generation, fast diffusion sampling, and unified multimodal understanding-and-generation systems.
+      </p>
+      <div class="interests">
+        <span>Diffusion Models</span>
+        <span>Visual Generation</span>
+        <span>Efficient Sampling</span>
+        <span>Multimodal Understanding &amp; Generation</span>
+        <span>Representation Learning</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>News</h2>
+      <ul class="news">
+        <li><time>2026.06</time><span><b>UniDDT</b> - unifying multimodal understanding and generation with a decoupled diffusion transformer - is out.</span></li>
+        <li><time>2026.02</time><span><b>DDT: Decoupled Diffusion Transformer</b> accepted to <b>CVPR 2026</b>.</span></li>
+        <li><time>2026.01</time><span><b>PixNerd</b> accepted to <b>ICLR 2026</b>.</span></li>
+        <li><time>2025.05</time><span><b>Differentiable Solver Search</b> accepted to <b>ICML 2025</b>.</span></li>
+        <li><time>2024.09</time><span><b>FlowDCN</b> accepted to <b>NeurIPS 2024</b>.</span></li>
+      </ul>
+    </section>
+
+    <section id="publications">
+      <h2>Selected Publications</h2>
+
+      <article class="publication">
+        <div class="venue"><b>Preprint</b><i>2026</i></div>
+        <div>
+          <a class="paper-title" href="https://arxiv.org/abs/2606.16255" target="_blank" rel="noopener">UniDDT: Unifying Multimodal Understanding and Generation with Decoupled Diffusion Transformer</a>
+          <p class="authors"><span class="me">Shuai Wang</span>, et al.</p>
+          <div class="paper-links"><a href="https://arxiv.org/abs/2606.16255" target="_blank" rel="noopener">arXiv</a><a href="https://huggingface.co/papers/2606.16255" target="_blank" rel="noopener">HF</a></div>
+        </div>
+      </article>
+
+      <article class="publication">
+        <div class="venue"><b>CVPR</b><i>2026</i></div>
+        <div>
+          <a class="paper-title" href="https://arxiv.org/abs/2504.05741" target="_blank" rel="noopener">DDT: Decoupled Diffusion Transformer</a>
+          <p class="authors"><span class="me">Shuai Wang</span>, Zhi Tian, Weilin Huang, Limin Wang</p>
+          <div class="paper-links"><a href="https://arxiv.org/abs/2504.05741" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/MCG-NJU/DDT" target="_blank" rel="noopener">Code</a></div>
+        </div>
+      </article>
+
+      <article class="publication">
+        <div class="venue"><b>ICLR</b><i>2026</i></div>
+        <div>
+          <a class="paper-title" href="https://arxiv.org/abs/2507.23268" target="_blank" rel="noopener">PixNerd: Pixel Neural Field Diffusion</a>
+          <p class="authors"><span class="me">Shuai Wang</span>, Ziteng Gao, Chenhui Zhu, Weilin Huang, Limin Wang</p>
+          <div class="paper-links"><a href="https://arxiv.org/abs/2507.23268" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/MCG-NJU/PixNerd" target="_blank" rel="noopener">Code</a></div>
+        </div>
+      </article>
+
+      <article class="publication">
+        <div class="venue"><b>ICML</b><i>2025</i></div>
+        <div>
+          <a class="paper-title" href="https://arxiv.org/abs/2505.21114" target="_blank" rel="noopener">Differentiable Solver Search for Fast Diffusion Sampling</a>
+          <p class="authors"><span class="me">Shuai Wang</span>, Zexian Li, Tianhui Song, Xubin Li, Tiezheng Ge, Bo Zheng, Limin Wang</p>
+          <div class="paper-links"><a href="https://arxiv.org/abs/2505.21114" target="_blank" rel="noopener">arXiv</a></div>
+        </div>
+      </article>
+
+      <article class="publication">
+        <div class="venue"><b>NeurIPS</b><i>2024</i></div>
+        <div>
+          <a class="paper-title" href="https://arxiv.org/abs/2410.22655" target="_blank" rel="noopener">FlowDCN: Exploring DCN-like Architecture for Fast Image Generation with Arbitrary Resolution</a>
+          <p class="authors"><span class="me">Shuai Wang</span>, Zexian Li, Tianhui Song, Xubin Li, Tiezheng Ge, Bo Zheng, Limin Wang</p>
+          <div class="paper-links"><a href="https://arxiv.org/abs/2410.22655" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/MCG-NJU/FlowDCN" target="_blank" rel="noopener">Code</a></div>
+        </div>
+      </article>
+
+      <article class="publication">
+        <div class="venue"><b>TPAMI</b><i>2025</i></div>
+        <div>
+          <a class="paper-title" href="https://github.com/MCG-NJU/DEQDet" target="_blank" rel="noopener">Deep Equilibrium Object Detection and Segmentation</a>
+          <p class="authors"><span class="me">Shuai Wang</span>, Yao Teng, Limin Wang</p>
+          <div class="paper-links"><a href="https://github.com/MCG-NJU/DEQDet" target="_blank" rel="noopener">Code</a></div>
+        </div>
+      </article>
+
+      <article class="publication">
+        <div class="venue"><b>ICCV</b><i>2023</i></div>
+        <div>
+          <a class="paper-title" href="https://arxiv.org/abs/2308.09564" target="_blank" rel="noopener">Deep Equilibrium Object Detection</a>
+          <p class="authors"><span class="me">Shuai Wang</span>, Yao Teng, Limin Wang</p>
+          <div class="paper-links"><a href="https://arxiv.org/abs/2308.09564" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/MCG-NJU/DEQDet" target="_blank" rel="noopener">Code</a></div>
+        </div>
+      </article>
+
+      <p class="more">Selected collaborations: Cubic Discrete Diffusion (CVPR 2026), Deco (CVPR 2026), MotionRAG (NeurIPS 2026), Flowing Backwards (AAAI 2026), DMM (2025). <a href="https://scholar.google.com/citations?user=us4prRUAAAAJ&hl=en" target="_blank" rel="noopener">Full list on Google Scholar</a>.</p>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="cv-list">
+        <div class="cv-item">
+          <div><h3>ByteDance Seed</h3><p>Research Intern</p></div>
+          <time>2024.12 - Present</time>
+        </div>
+        <div class="cv-item">
+          <div><h3>Alibaba Alimama</h3><p>Research Intern</p></div>
+          <time>2024.04 - 2024.12</time>
+        </div>
+        <div class="cv-item">
+          <div><h3>SenseTime</h3><p>Research Intern, autonomous driving perception</p></div>
+          <time>2021.12 - 2022.05</time>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="cv-list">
+        <div class="cv-item">
+          <div><h3>Nanjing University</h3><p>Ph.D. (direct-track), Computer Science and Technology</p></div>
+          <time>2022.09 - Present</time>
+        </div>
+        <div class="cv-item">
+          <div><h3>Northwestern Polytechnical University</h3><p>B.E., Computer Science and Technology</p></div>
+          <time>2018.09 - 2022.06</time>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Selected Honors</h2>
+      <ul class="honors">
+        <li><time>2024-25</time><span><b>National Scholarship</b> (PhD)</span></li>
+        <li><time>2022-23</time><span><b>Tencent Scholarship</b> (Master)</span></li>
+        <li><time>2018-19</time><span><b>National Scholarship</b> (Undergraduate)</span></li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> Shuai Wang. Last updated 2026.</p>
+    </footer>
   </div>
-</nav>
-
-<div class="wrap">
-
-  <header class="reveal">
-    <div class="intro">
-      <div class="photo-ring">
-        <img class="photo" src="assets/profile.png" alt="Portrait of Shuai Wang" />
-      </div>
-      <div class="id">
-        <span class="eyebrow"><span class="dot"></span>Generative Models / Visual Intelligence</span>
-        <h1>Shuai <span class="accent">Wang</span></h1>
-        <div class="zh">王帅</div>
-        <p class="role">
-          PhD Student, <a href="https://www.nju.edu.cn/en" target="_blank" rel="noopener">Nanjing University</a><br />
-          Multimedia Computing Group (MCG-NJU), advised by Prof. Limin Wang
-        </p>
-        <nav class="links">
-          <a href="mailto:wangshuai.excellent@foxmail.com" aria-label="Email">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email
-          </a>
-          <a href="https://scholar.google.com/citations?user=us4prRUAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>Scholar
-          </a>
-          <a href="https://huggingface.co/wangsssssss" target="_blank" rel="noopener" aria-label="Hugging Face">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM8.2 9.1a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4zm7.6 0a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4zM12 18c-2.3 0-4.3-1.4-5.1-3.4-.2-.5.3-1 .8-.8 1.3.5 2.8.8 4.3.8s3-.3 4.3-.8c.5-.2 1 .3.8.8C16.3 16.6 14.3 18 12 18z"/></svg>Hugging Face
-          </a>
-          <a href="https://github.com/WANGSSSSSSS" target="_blank" rel="noopener" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.4.5 0 5.9 0 12.6c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 24 12.6C24 5.9 18.6.5 12 .5z"/></svg>GitHub
-          </a>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <section id="about" class="bio reveal">
-    <div class="sec-head"><span class="bar"></span><h2>About</h2></div>
-    <p>
-      I am a PhD student at <strong>Nanjing University</strong>, advised by Prof. Limin Wang.
-      My research centers on <strong>generative models</strong>—designing efficient and scalable
-      architectures for image, video, and multimodal generation.
-    </p>
-    <p>
-      I build models that are simple, fast, and principled, from
-      <strong>diffusion transformers</strong> and pixel-space generators to
-      <strong>unified understanding-and-generation</strong> systems.
-    </p>
-  </section>
-
-  <section class="reveal">
-    <div class="sec-head"><span class="bar"></span><h2>Research Interests</h2></div>
-    <div class="tags">
-      <span>Diffusion Models</span>
-      <span>Visual Generation</span>
-      <span>Efficient Sampling</span>
-      <span>Multimodal Understanding &amp; Generation</span>
-      <span>Representation Learning</span>
-    </div>
-  </section>
-
-  <section class="reveal">
-    <div class="sec-head"><span class="bar"></span><h2>News</h2></div>
-    <ul class="news">
-      <li><time>2026.06</time><span>UniDDT — unifying multimodal understanding and generation with a decoupled diffusion transformer — is out.</span></li>
-      <li><time>2026.02</time><span><b>DDT: Decoupled Diffusion Transformer</b> accepted to <b>CVPR 2026</b>.</span></li>
-      <li><time>2026.01</time><span><b>PixNerd</b> accepted to <b>ICLR 2026</b>.</span></li>
-      <li><time>2025.05</time><span><b>Differentiable Solver Search</b> accepted to <b>ICML 2025</b>.</span></li>
-      <li><time>2024.09</time><span><b>FlowDCN</b> accepted to <b>NeurIPS 2024</b>.</span></li>
-    </ul>
-  </section>
-
-  <section id="publications" class="reveal">
-    <div class="sec-head"><span class="bar"></span><h2>Selected Publications</h2></div>
-
-    <div class="card pub">
-      <div class="venue"><b>Preprint</b><i>2026</i></div>
-      <div class="pub-body">
-        <a class="t" href="https://arxiv.org/abs/2606.16255" target="_blank" rel="noopener">UniDDT: Unifying Multimodal Understanding and Generation with Decoupled Diffusion Transformer</a>
-        <p class="a"><u>Shuai Wang</u>, et al.</p>
-        <div class="meta"><a href="https://arxiv.org/abs/2606.16255" target="_blank" rel="noopener">arXiv</a><a href="https://huggingface.co/papers/2606.16255" target="_blank" rel="noopener">HF</a></div>
-      </div>
-    </div>
-
-    <div class="card pub">
-      <div class="venue"><b>CVPR</b><i>2026</i></div>
-      <div class="pub-body">
-        <a class="t" href="https://arxiv.org/abs/2504.05741" target="_blank" rel="noopener">DDT: Decoupled Diffusion Transformer</a>
-        <p class="a"><u>Shuai Wang</u>, Zhi Tian, Weilin Huang, Limin Wang</p>
-        <div class="meta"><a href="https://arxiv.org/abs/2504.05741" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/MCG-NJU/DDT" target="_blank" rel="noopener">Code</a></div>
-      </div>
-    </div>
-
-    <div class="card pub">
-      <div class="venue"><b>ICLR</b><i>2026</i></div>
-      <div class="pub-body">
-        <a class="t" href="https://arxiv.org/abs/2507.23268" target="_blank" rel="noopener">PixNerd: Pixel Neural Field Diffusion</a>
-        <p class="a"><u>Shuai Wang</u>, Ziteng Gao, Chenhui Zhu, Weilin Huang, Limin Wang</p>
-        <div class="meta"><a href="https://arxiv.org/abs/2507.23268" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/MCG-NJU/PixNerd" target="_blank" rel="noopener">Code</a></div>
-      </div>
-    </div>
-
-    <div class="card pub">
-      <div class="venue"><b>ICML</b><i>2025</i></div>
-      <div class="pub-body">
-        <a class="t" href="https://arxiv.org/abs/2505.21114" target="_blank" rel="noopener">Differentiable Solver Search for Fast Diffusion Sampling</a>
-        <p class="a"><u>Shuai Wang</u>, Zexian Li, Tianhui Song, Xubin Li, Tiezheng Ge, Bo Zheng, Limin Wang</p>
-        <div class="meta"><a href="https://arxiv.org/abs/2505.21114" target="_blank" rel="noopener">arXiv</a></div>
-      </div>
-    </div>
-
-    <div class="card pub">
-      <div class="venue"><b>NeurIPS</b><i>2024</i></div>
-      <div class="pub-body">
-        <a class="t" href="https://arxiv.org/abs/2410.22655" target="_blank" rel="noopener">FlowDCN: Exploring DCN-like Architecture for Fast Image Generation with Arbitrary Resolution</a>
-        <p class="a"><u>Shuai Wang</u>, Zexian Li, Tianhui Song, Xubin Li, Tiezheng Ge, Bo Zheng, Limin Wang</p>
-        <div class="meta"><a href="https://arxiv.org/abs/2410.22655" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/MCG-NJU/FlowDCN" target="_blank" rel="noopener">Code</a></div>
-      </div>
-    </div>
-
-    <div class="card pub">
-      <div class="venue"><b>TPAMI</b><i>2025</i></div>
-      <div class="pub-body">
-        <a class="t" href="https://github.com/MCG-NJU/DEQDet" target="_blank" rel="noopener">Deep Equilibrium Object Detection and Segmentation</a>
-        <p class="a"><u>Shuai Wang</u>, Yao Teng, Limin Wang</p>
-        <div class="meta"><a href="https://github.com/MCG-NJU/DEQDet" target="_blank" rel="noopener">Code</a></div>
-      </div>
-    </div>
-
-    <div class="card pub">
-      <div class="venue"><b>ICCV</b><i>2023</i></div>
-      <div class="pub-body">
-        <a class="t" href="https://arxiv.org/abs/2308.09564" target="_blank" rel="noopener">Deep Equilibrium Object Detection</a>
-        <p class="a"><u>Shuai Wang</u>, Yao Teng, Limin Wang</p>
-        <div class="meta"><a href="https://arxiv.org/abs/2308.09564" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/MCG-NJU/DEQDet" target="_blank" rel="noopener">Code</a></div>
-      </div>
-    </div>
-
-    <p class="more">Selected collaborations: Cubic Discrete Diffusion (CVPR&nbsp;2026), Deco (CVPR&nbsp;2026), MotionRAG (NeurIPS&nbsp;2026), Flowing Backwards (AAAI&nbsp;2026), DMM (2025). &nbsp;<a href="https://scholar.google.com/citations?user=us4prRUAAAAJ&hl=en" target="_blank" rel="noopener">Full list on Google Scholar →</a></p>
-  </section>
-
-  <section id="experience" class="reveal">
-    <div class="sec-head"><span class="bar"></span><h2>Experience</h2></div>
-
-    <div class="card entry">
-      <div class="top">
-        <span class="org">ByteDance · Seed</span>
-        <span class="date">2024.12 – Present</span>
-      </div>
-      <p class="sub">Research Intern</p>
-    </div>
-
-    <div class="card entry">
-      <div class="top">
-        <span class="org">Alibaba (Alimama)</span>
-        <span class="date">2024.04 – 2024.12</span>
-      </div>
-      <p class="sub">Research Intern</p>
-    </div>
-
-    <div class="card entry">
-      <div class="top">
-        <span class="org">SenseTime</span>
-        <span class="date">2021.12 – 2022.05</span>
-      </div>
-      <p class="sub">Research Intern</p>
-      <p class="desc">Perception for autonomous driving (SenseAuto).</p>
-    </div>
-  </section>
-
-  <section id="education" class="reveal">
-    <div class="sec-head"><span class="bar"></span><h2>Education</h2></div>
-
-    <div class="card entry">
-      <div class="top">
-        <span class="org">Nanjing University</span>
-        <span class="date">2022.09 – Present</span>
-      </div>
-      <p class="sub">Ph.D. (direct-track) in Computer Science &amp; Technology</p>
-    </div>
-
-    <div class="card entry">
-      <div class="top">
-        <span class="org">Northwestern Polytechnical University</span>
-        <span class="date">2018.09 – 2022.06</span>
-      </div>
-      <p class="sub">B.E. in Computer Science &amp; Technology</p>
-    </div>
-  </section>
-
-  <section class="reveal">
-    <div class="sec-head"><span class="bar"></span><h2>Selected Honors</h2></div>
-    <ul class="honors">
-      <li><time>2024–25</time><span><b>National Scholarship</b> (PhD)</span></li>
-      <li><time>2022–23</time><span><b>Tencent Scholarship</b> (Master)</span></li>
-      <li><time>2018–19</time><span><b>National Scholarship</b> (Undergraduate)</span></li>
-    </ul>
-  </section>
-
-  <footer>
-    <div class="rule"></div>
-    <p>© <span id="yr"></span> Shuai Wang · Nanjing University</p>
-  </footer>
-
-</div>
+</main>
 
 <script>
-  document.getElementById("yr").textContent = new Date().getFullYear();
-  const els = document.querySelectorAll(".reveal");
-  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.08 });
-    els.forEach((el) => io.observe(el));
-  } else {
-    els.forEach((el) => el.classList.add("in"));
-  }
+  document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
