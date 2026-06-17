@@ -357,10 +357,6 @@
     padding: 5px;
   }
 
-  .education-honors {
-    margin: 12px 0 0 68px;
-  }
-
   .cv-item h3 {
     font-family: var(--serif);
     font-size: 21px;
@@ -373,6 +369,30 @@
     margin: 3px 0 0;
     color: var(--muted);
     font-size: 14px;
+  }
+
+  .awards {
+    margin: 7px 0 0;
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+
+  .awards li {
+    margin-top: 2px;
+  }
+
+  .awards time {
+    color: var(--faint);
+    display: inline-block;
+    min-width: 66px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .awards b {
+    color: var(--text);
+    font-weight: 600;
   }
 
   .cv-item time {
@@ -478,10 +498,6 @@
       margin-bottom: 4px;
     }
 
-    .education-honors {
-      margin-left: 0;
-    }
-
     .cv-item time {
       order: -1;
     }
@@ -539,20 +555,28 @@
       <div class="cv-list">
         <div class="cv-item">
           <img class="org-logo" src="https://www.nju.edu.cn/images/app-icon72x72@2x.png" alt="Nanjing University emblem" />
-          <div><h3>Nanjing University</h3><p>Ph.D. (direct-track), Computer Science and Technology</p></div>
+          <div>
+            <h3>Nanjing University</h3>
+            <p>Ph.D. (direct-track), Computer Science and Technology</p>
+            <ul class="awards">
+              <li><time>2024-25</time><b>National Scholarship</b> (PhD)</li>
+              <li><time>2022-23</time><b>Tencent Scholarship</b> (Master)</li>
+            </ul>
+          </div>
           <time>2022.09 - Present</time>
         </div>
         <div class="cv-item">
           <img class="org-logo" src="https://urongda.com/images/normal/medium/northwestern-polytechnical-university-logo-1024px.png" alt="Northwestern Polytechnical University emblem" />
-          <div><h3>Northwestern Polytechnical University</h3><p>B.E., Computer Science and Technology</p></div>
+          <div>
+            <h3>Northwestern Polytechnical University</h3>
+            <p>B.E., Computer Science and Technology</p>
+            <ul class="awards">
+              <li><time>2018-19</time><b>National Scholarship</b> (Undergraduate)</li>
+            </ul>
+          </div>
           <time>2018.09 - 2022.06</time>
         </div>
       </div>
-      <ul class="honors education-honors">
-        <li><time>2024-25</time><span><b>National Scholarship</b> (PhD)</span></li>
-        <li><time>2022-23</time><span><b>Tencent Scholarship</b> (Master)</span></li>
-        <li><time>2018-19</time><span><b>National Scholarship</b> (Undergraduate)</span></li>
-      </ul>
     </section>
 
     <section id="experience">
