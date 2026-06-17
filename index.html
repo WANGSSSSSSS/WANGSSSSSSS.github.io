@@ -1,236 +1,308 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>wangshuai.excellent</title><meta name="author" content="wangshuai"><meta name="copyright" content="wangshuai"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
-<meta property="og:title" content="wangshuai.excellent">
-<meta property="og:url" content="http://wangsssssss.github.io/index.html">
-<meta property="og:site_name" content="wangshuai.excellent">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://wangsssssss.github.io/images/1.png">
-<meta property="article:author" content="wangshuai">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://wangsssssss.github.io/images/1.png"><link rel="shortcut icon" href="/images/meta.png"><link rel="canonical" href="http://wangsssssss.github.io/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  date_suffix: {
-    just: 'Just',
-    min: 'minutes ago',
-    hour: 'hours ago',
-    day: 'days ago',
-    month: 'months ago'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  source: {
-    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
-    },
-    fancybox: {
-      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shuai Wang</title>
+<meta name="description" content="Shuai Wang (王帅) — PhD student at Nanjing University, working on diffusion models and visual generation." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #09090b;
+    --ink-soft: #3f3f46;
+    --ink-muted: #71717a;
+    --line: #e4e4e7;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --accent: #2563eb;
+    --accent-soft: #eff4ff;
+    --serif: "Crimson Pro", Georgia, serif;
+    --sans: "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #f4f4f5;
+      --ink-soft: #d4d4d8;
+      --ink-muted: #a1a1aa;
+      --line: #27272a;
+      --bg: #0b0b0d;
+      --card: #131316;
+      --accent: #60a5fa;
+      --accent-soft: #16213a;
     }
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isanchor: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'wangshuai.excellent',
-  isPost: false,
-  isHome: true,
-  isHighlightShrink: false,
-  isToc: false,
-  postUpdate: '2022-02-21 15:59:08'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
   }
-  .justified-gallery img {
-    opacity: 1
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; transition: color .2s ease, opacity .2s ease; }
+  a:hover { opacity: .72; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header { padding: 88px 0 36px; }
+  .intro { display: flex; gap: 36px; align-items: flex-start; }
+  .photo {
+    width: 150px; height: 150px; flex: 0 0 150px;
+    border-radius: 16px; object-fit: cover;
+    border: 1px solid var(--line);
+    box-shadow: 0 6px 24px rgba(0,0,0,.08);
+  }
+  .id h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 1.1;
+    margin: 2px 0 2px;
+    letter-spacing: -.01em;
+  }
+  .id .zh { font-family: var(--serif); font-weight: 400; color: var(--ink-muted); font-size: 20px; }
+  .id .role { color: var(--ink-soft); margin-top: 10px; }
+  .id .role a { font-weight: 700; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .links a {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px;
+    color: var(--ink-soft); background: var(--card);
+    font-size: 14px; cursor: pointer;
+    transition: border-color .2s ease, color .2s ease, background .2s ease;
+  }
+  .links a:hover { color: var(--accent); border-color: var(--accent); opacity: 1; background: var(--accent-soft); }
+  .links svg { width: 16px; height: 16px; }
+
+  /* Sections */
+  section { padding: 26px 0; border-top: 1px solid var(--line); }
+  h2 {
+    font-family: var(--serif);
+    font-size: 14px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .14em; color: var(--ink-muted);
+    margin: 0 0 18px;
+  }
+  p { margin: 0 0 14px; color: var(--ink-soft); }
+  .bio strong { color: var(--ink); font-weight: 700; }
+
+  /* Interests */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags span {
+    font-size: 14px; padding: 5px 12px; border-radius: 8px;
+    background: var(--card); border: 1px solid var(--line); color: var(--ink-soft);
   }
 
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
+  /* News */
+  .news { list-style: none; padding: 0; margin: 0; }
+  .news li { display: flex; gap: 16px; margin-bottom: 10px; color: var(--ink-soft); }
+  .news time { flex: 0 0 76px; color: var(--ink-muted); font-size: 14px; padding-top: 1px; }
+
+  /* Publications */
+  .pub { display: flex; gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .pub:last-child { border-bottom: 0; }
+  .venue {
+    flex: 0 0 86px; padding-top: 2px;
   }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-    const detectApple = () => {
-      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
-<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
-  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/1.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">117</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">51</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">36</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">wangshuai.excellent</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2022/02/21/cosformer/" title="cosformer">     <img class="post_bg" src="/2022/02/21/cosformer/image-20220221154313909.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="cosformer"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/02/21/cosformer/" title="cosformer">cosformer</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-02-21T07:42:14.000Z" title="Created 2022-02-21 15:42:14">2022-02-21</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/cv/">cv</a></span></div><div class="content"> COSFORMER : RETHINKING SOFTMAX IN ATTENTION
-
- BackGround
-In order to reduce the time complexity of softmax transform operator while keeping the efficiency of transformer block. a lot work proposed to decrease the quad time complexity.
- pattern based attention mechanism
-Pattern based methods sparsify the attention matrix with handcrafted or learnable patterns.
-As an early approach, Lee et al. (2019) leverages the inducing points from the sparse Gaussian process to reduce the quadratic complexiti ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2022/01/16/targetAwareDeepTracking/" title="targetAwareDeepTracking">     <img class="post_bg" src="/2022/01/16/targetAwareDeepTracking/image-20220116213803824.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="targetAwareDeepTracking"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/01/16/targetAwareDeepTracking/" title="targetAwareDeepTracking">targetAwareDeepTracking</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-16T13:36:34.000Z" title="Created 2022-01-16 21:36:34">2022-01-16</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/cv/">cv</a><i class="fas fa-angle-right"></i><a class="article-meta__categories" href="/categories/cv/tracking/">tracking</a></span></div><div class="content"> Target-Aware Deep Tracking
-
-current improvement in tracking domain mainly focuses on architecture or tacking decision making module, This article exploits the potential capability of feature extractor to produce more distinctive or target aware feature which is around the foreground object. Because the feature backbone is universally trained on predefined classes which will not include the foreground object in target image, or feel excited about background objects seen before.
- Method
-follow th ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2022/01/15/receptive-filed/" title="receptive field">     <img class="post_bg" src="/images/4044.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="receptive field"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/01/15/receptive-filed/" title="receptive field">receptive field</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-15T09:07:57.000Z" title="Created 2022-01-15 17:07:57">2022-01-15</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/cv/">cv</a></span></div><div class="content"> Receptive Field
-为了方便计算receptive field的大小，我自己总结了规律，有这样一个递推式：
-{Ri=dikiSi−1+(Ri−1−Si−1)Si=Si−1si\left \{ \begin{aligned}
-R_i &amp;= d_i k_i S_{i-1} + (R_{i-1} - S_{i-1}) \\
-S_i &amp;= S_{i-1}s_i
-\end{aligned} \right .
-{Ri​Si​​=di​ki​Si−1​+(Ri−1​−Si−1​)=Si−1​si​​
-其中：kik_iki​ 为卷积核的大小， sis_isi​ 为 卷积的步长stride， 由此可知SiS_iSi​ 为feature map的步长， RiR_iRi​ 为receptive field大小
-对于eca-ResNet 感受野计算如下：
-123456789101112131415161718if __name__ == &quot;__main__&quot;:    model = eca_resnet18_small()    S = [1]    R =  ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2022/01/14/NumCooReg/" title="Numerical Coordinate Regression">     <img class="post_bg" src="/2022/01/14/NumCooReg/image-20220114103916483.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Numerical Coordinate Regression"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/01/14/NumCooReg/" title="Numerical Coordinate Regression">Numerical Coordinate Regression</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-14T02:37:07.000Z" title="Created 2022-01-14 10:37:07">2022-01-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/cv/">cv</a></span></div><div class="content">
- Numerical Coordinate Regression with Convolutional Neural Networks
-This paper proposed a general approach to inferring numerical coordinates for points of an images by take advantages of mean characteristics of probability distribution, thus construct a fully differentiate backend to supervise whole network. In contrast to heatmap match approach, this method provides opportunity for network to perceive numerical coordinate directly. Compared to fully connected neural network prediction method, ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2022/01/12/jpeg/" title="JPEG algorithm">     <img class="post_bg" src="/2022/01/12/jpeg/image-20220112204947569.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JPEG algorithm"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/01/12/jpeg/" title="JPEG algorithm">JPEG algorithm</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-12T09:37:04.000Z" title="Created 2022-01-12 17:37:04">2022-01-12</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/cv/">cv</a></span></div><div class="content"> JPEG compressiom
-JPEG stands for joint photographic experts croup, which is a group of image proxessing experts that devised a standard for compressing imags. Thus Jpeg becomes a relativly prevalent algorithm and common used file format in image compression field.
-
-    
-    
-    
-
-This is an example, the Left tom cat image only occupies 8.0k in jpeg format which the right counterpart takes three time space than left, but in fact, it is hard for human eye to recognize the distinct difference.
- w ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2022/01/06/pod/" title="Practical Object Detection with Scale-Sensitive Network">     <img class="post_bg" src="/2022/01/06/pod/image-20220106163709441.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Practical Object Detection with Scale-Sensitive Network"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/01/06/pod/" title="Practical Object Detection with Scale-Sensitive Network">Practical Object Detection with Scale-Sensitive Network</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-06T07:38:35.000Z" title="Created 2022-01-06 15:38:35">2022-01-06</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/cv/">cv</a></span></div><div class="content">Practical Object Detection with Scale-Sensitive Network
-object detection is one of the most important and fundamental question in computer vision area, while the dynamic range of object boxes hinders the forwarding of accuracy. To alleviate this issue, a lot of receptive field algorithm are proposed, the most famous idea is to introduce the dilation into conv operation, but the static configuration of dilation is expert-knowledge needed and is not optimal compared to end2end learning architectur ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2022/01/05/openvpn/" title="怎么让OpenVPN非全局代理?">     <img class="post_bg" src="/2022/01/05/openvpn/image-20220105232228157.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="怎么让OpenVPN非全局代理?"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/01/05/openvpn/" title="怎么让OpenVPN非全局代理?">怎么让OpenVPN非全局代理?</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-05T13:14:32.000Z" title="Created 2022-01-05 21:14:32">2022-01-05</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/net/">net</a></span></div><div class="content"> 关于openvpn的环境问题 [Manjaro21]
-
-最近开始实习，远程工作需要设置一些环境，公司很多网站是设置在内网上，没有内网的访问简直寸步难行，win11,和ubuntu18应该是很稳定的，使用的系统为manjaro 21. 还是喜欢arch
-我开始以为访问内网主要通过ssh服务就够了，根据我对于vpn的了解，理所当然认为我需要做的就是避免全局代理，所以一开始的办法是用docker作为vpn, 然后打开一个proxy代理，把代理端口映射下来，每次登陆的时候，使用ssh的ProxyCommand ， 等价于proxyjump  ，不过是使用corkscrew, 因为nm没成功
-123456789Host node     HostName xxxx.com     User wangshuai     ProxyCommand  corkscrew 127.0.0.1 10808 %h %p     IdentityFile ~/.ssh/id_rsa     IdentitiesOnly yes     HostkeyAlgorithms +ssh-rsa     Pubke ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2022/01/01/LS-GAN/" title="LS-GAN">     <img class="post_bg" src="/2022/01/01/LS-GAN/image-20220101203143737.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LS-GAN"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/01/01/LS-GAN/" title="LS-GAN">LS-GAN</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-01-01T12:10:27.000Z" title="Created 2022-01-01 20:10:27">2022-01-01</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/cv/">cv</a></span></div><div class="content"> LS-GAN
-unsupervised learning with generative adversarial networks has proven hugely successful. regular Gans hypothesize the discriminator as a classifier with sigmoid cross entropy loss function, which may hurts the learning process with its vanished gradient when the loss is nearly 0 or 1.
- Formulation
-similar to general gan algorithm. revise the objective function to improve stability of learning procedure.
-min⁡DL(D)=Edata(D(x)−b)2+Ez(D(G(z))−a)2min⁡GL(G)=Ez(D(G(z))−c)2\begin{aligned}
-\min_D ...</div></div></div><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/12/28/CLIP-GLaSS/" title="CLIP-GLaSS">     <img class="post_bg" src="/2021/12/28/CLIP-GLaSS/image-20211228103302038.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CLIP-GLaSS"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/12/28/CLIP-GLaSS/" title="CLIP-GLaSS">CLIP-GLaSS</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-28T02:14:31.000Z" title="Created 2021-12-28 10:14:31">2021-12-28</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/cv/">cv</a></span></div><div class="content">Generating images from caption and vice versa via CLIP-Guided Generative Latent Space Search
- Introduction
-I d like to regard this article as a novelty technical report rather than a computer vision paper with solid works, due to the limited contribution of generative model, which only explores the inference procedure with a rough analysis. This paper improves synthesized image or text quality by leverage similarity computed from CLIP. The whole architecture consists of there components, CLIP, G ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/12/14/quantization/" title="quantize In PyTorch">     <img class="post_bg" src="/2021/12/14/quantization/image-20211214144041009.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="quantize In PyTorch"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/12/14/quantization/" title="quantize In PyTorch">quantize In PyTorch</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-14T03:33:35.000Z" title="Created 2021-12-14 11:33:35">2021-12-14</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/ml/">ml</a></span></div><div class="content"> PyTorch 中的 Quantization
-pytorch中的量化支持三种类型，大概是三种：
-
-dynamic quantization
-static quantization
-quantizaition aware training
-
-支持这些功能的辅助函数主要是两个：prepare  和 convert
- quantized tensor
-一个量化张量有两种量化方案：1. 在这个张量里面进行数据表示  2. 在一个通道上进行数据表示
-量化的数据表示是为尽可能减少量化误差，因为int8只有255个数，如果映射到float 全集上，那误差必定大的和马一样，还好数据集有一定的数据特征，一般在运算中，结果会集中到一个范围上。
-Q(x,s,z)=round(xs+z)\mathbb Q(x, s,z) = \text{round}({x\over s} + z)
-Q(x,s,z)=round(sx​+z)
- prepare function
-prepare function 提供给不同的量化类型，添加observer, observer 通过运行过程统计特定数据集的数字特征，比如说最大 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/#content-inner">12</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/1.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">wangshuai</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">117</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">51</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">36</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/WANGSSSSSSS"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/WANGSSSSSSS" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:wangshuai.excellent@foxmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">只希望未来别再丢人了</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/02/21/cosformer/" title="cosformer"><img src="/2022/02/21/cosformer/image-20220221154313909.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="cosformer"/></a><div class="content"><a class="title" href="/2022/02/21/cosformer/" title="cosformer">cosformer</a><time datetime="2022-02-21T07:42:14.000Z" title="Created 2022-02-21 15:42:14">2022-02-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/16/targetAwareDeepTracking/" title="targetAwareDeepTracking"><img src="/2022/01/16/targetAwareDeepTracking/image-20220116213803824.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="targetAwareDeepTracking"/></a><div class="content"><a class="title" href="/2022/01/16/targetAwareDeepTracking/" title="targetAwareDeepTracking">targetAwareDeepTracking</a><time datetime="2022-01-16T13:36:34.000Z" title="Created 2022-01-16 21:36:34">2022-01-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/15/receptive-filed/" title="receptive field"><img src="/images/4044.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="receptive field"/></a><div class="content"><a class="title" href="/2022/01/15/receptive-filed/" title="receptive field">receptive field</a><time datetime="2022-01-15T09:07:57.000Z" title="Created 2022-01-15 17:07:57">2022-01-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/14/NumCooReg/" title="Numerical Coordinate Regression"><img src="/2022/01/14/NumCooReg/image-20220114103916483.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Numerical Coordinate Regression"/></a><div class="content"><a class="title" href="/2022/01/14/NumCooReg/" title="Numerical Coordinate Regression">Numerical Coordinate Regression</a><time datetime="2022-01-14T02:37:07.000Z" title="Created 2022-01-14 10:37:07">2022-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/01/12/jpeg/" title="JPEG algorithm"><img src="/2022/01/12/jpeg/image-20220112204947569.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JPEG algorithm"/></a><div class="content"><a class="title" href="/2022/01/12/jpeg/" title="JPEG algorithm">JPEG algorithm</a><time datetime="2022-01-12T09:37:04.000Z" title="Created 2022-01-12 17:37:04">2022-01-12</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span><a class="card-more-btn" href="/archives/" title="More">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/02/"><span class="card-archive-list-date">February 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/01/"><span class="card-archive-list-date">January 2022</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/12/"><span class="card-archive-list-date">December 2021</span><span class="card-archive-list-count">9</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/11/"><span class="card-archive-list-date">November 2021</span><span class="card-archive-list-count">23</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/10/"><span class="card-archive-list-date">October 2021</span><span class="card-archive-list-count">10</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/09/"><span class="card-archive-list-date">September 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/08/"><span class="card-archive-list-date">August 2021</span><span class="card-archive-list-count">11</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/07/"><span class="card-archive-list-date">July 2021</span><span class="card-archive-list-count">10</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">117</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-02-21T07:59:08.126Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By wangshuai</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>if (document.getElementsByClassName('mermaid').length) {
-  if (window.mermaidJsLoad) mermaid.init()
-  else {
-    getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(() => {
-      window.mermaidJsLoad = true
-      mermaid.initialize({
-        theme: 'default',
-      })
-      false && mermaid.init()
-    })
+  .venue b {
+    display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .03em;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 3px 9px; border-radius: 6px;
   }
-}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start -->
-  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
-  <script data-pjax>
-        function GithubCalendarConfig(){
-            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?WANGSSSSSSS";
-            var git_color =['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f'];
-            var git_user ="WANGSSSSSSS";
-            var parent_div_git = document.getElementById('recent-posts');
-            var git_div_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><div id="github_loading" style="height:100%;display: flex;align-items: center;justify-content: center;"><svg style="height:50px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
-            if(parent_div_git && location.pathname =='/'){
-                console.log('已挂载github calendar')
-                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
-                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
-            };
-            GithubCalendar(git_githubapiurl,git_color,git_user)
-        }
-        if(document.getElementById('recent-posts')){
-            GithubCalendarConfig()
-        }
-    </script>
-    <style>#github_container{min-height:248px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
-    <style></style><!-- hexo injector body_end end --></body></html>
+  .venue i { display: block; font-style: normal; font-size: 12px; color: var(--ink-muted); margin-top: 5px; }
+  .pub-body .t { font-family: var(--serif); font-size: 20px; font-weight: 600; line-height: 1.25; color: var(--ink); display: inline; }
+  .pub-body a.t:hover { color: var(--accent); }
+  .pub-body .a { font-size: 14.5px; color: var(--ink-muted); margin: 4px 0 0; }
+  .pub-body .a u { color: var(--ink); text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--accent); }
+  .pub-body .meta { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .pub-body .meta a {
+    font-size: 12.5px; padding: 2px 9px; border: 1px solid var(--line); border-radius: 6px;
+    color: var(--ink-soft); background: var(--card); cursor: pointer;
+  }
+  .pub-body .meta a:hover { color: var(--accent); border-color: var(--accent); opacity: 1; }
+
+  .more { font-size: 14px; margin-top: 18px; }
+
+  footer { padding: 40px 0 64px; color: var(--ink-muted); font-size: 13.5px; text-align: center; border-top: 1px solid var(--line); }
+
+  /* Entrance animation */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 56px 0 28px; }
+    .intro { flex-direction: column; gap: 22px; align-items: center; text-align: center; }
+    .photo { width: 128px; height: 128px; flex-basis: 128px; }
+    .links { justify-content: center; }
+    .id h1 { font-size: 34px; }
+    .pub { flex-direction: column; gap: 8px; }
+    .venue { display: flex; gap: 8px; align-items: center; }
+    .venue i { margin-top: 0; }
+    .news li { flex-direction: column; gap: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="reveal">
+    <div class="intro">
+      <img class="photo" src="assets/profile.png" alt="Portrait of Shuai Wang" />
+      <div class="id">
+        <h1>Shuai Wang</h1>
+        <div class="zh">王帅</div>
+        <p class="role">
+          PhD Student, <a href="https://www.nju.edu.cn/en" target="_blank" rel="noopener">Nanjing University</a><br />
+          Multimedia Computing Group (MCG-NJU), advised by Prof. Limin Wang
+        </p>
+        <nav class="links">
+          <a href="mailto:wangshuai@smail.nju.edu.cn" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email
+          </a>
+          <a href="https://scholar.google.com/citations?user=us4prRUAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>Scholar
+          </a>
+          <a href="https://huggingface.co/wangsssssss" target="_blank" rel="noopener" aria-label="Hugging Face">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM8.2 9.1a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4zm7.6 0a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4zM12 18c-2.3 0-4.3-1.4-5.1-3.4-.2-.5.3-1 .8-.8 1.3.5 2.8.8 4.3.8s3-.3 4.3-.8c.5-.2 1 .3.8.8C16.3 16.6 14.3 18 12 18z"/></svg>Hugging Face
+          </a>
+          <a href="https://github.com/WANGSSSSSSS" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.4.5 0 5.9 0 12.6c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 24 12.6C24 5.9 18.6.5 12 .5z"/></svg>GitHub
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="bio reveal">
+    <h2>About</h2>
+    <p>
+      I am a PhD student at <strong>Nanjing University</strong>, advised by Prof. Limin Wang.
+      My research centers on <strong>generative models</strong>—designing efficient and scalable
+      architectures for image, video, and multimodal generation.
+    </p>
+    <p>
+      I build models that are simple, fast, and principled, from
+      <strong>diffusion transformers</strong> and pixel-space generators to
+      <strong>unified understanding-and-generation</strong> systems.
+    </p>
+  </section>
+
+  <section class="reveal">
+    <h2>Research Interests</h2>
+    <div class="tags">
+      <span>Diffusion Models</span>
+      <span>Visual Generation</span>
+      <span>Efficient Sampling</span>
+      <span>Multimodal Understanding &amp; Generation</span>
+      <span>Representation Learning</span>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2>News</h2>
+    <ul class="news">
+      <li><time>2026.06</time><span>UniDDT — unifying multimodal understanding and generation with a decoupled diffusion transformer — is out.</span></li>
+      <li><time>2026.03</time><span>DDT: Decoupled Diffusion Transformer accepted to <b>CVPR 2026</b>.</span></li>
+      <li><time>2025.07</time><span>Released PixNerd: pixel neural field diffusion.</span></li>
+      <li><time>2024.09</time><span>FlowDCN accepted to <b>NeurIPS 2024</b>.</span></li>
+    </ul>
+  </section>
+
+  <section class="reveal">
+    <h2>Selected Publications</h2>
+
+    <div class="pub">
+      <div class="venue"><b>Preprint</b><i>2026</i></div>
+      <div class="pub-body">
+        <a class="t" href="https://arxiv.org/abs/2606.16255" target="_blank" rel="noopener">UniDDT: Unifying Multimodal Understanding and Generation with Decoupled Diffusion Transformer</a>
+        <p class="a"><u>Shuai Wang</u>, et al.</p>
+        <div class="meta"><a href="https://arxiv.org/abs/2606.16255" target="_blank" rel="noopener">arXiv</a><a href="https://huggingface.co/papers/2606.16255" target="_blank" rel="noopener">HF</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="venue"><b>CVPR</b><i>2026</i></div>
+      <div class="pub-body">
+        <a class="t" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=us4prRUAAAAJ&citation_for_view=us4prRUAAAAJ" target="_blank" rel="noopener">DDT: Decoupled Diffusion Transformer</a>
+        <p class="a"><u>Shuai Wang</u>, Zhi Tian, Weilin Huang, Limin Wang</p>
+        <div class="meta"><a href="https://github.com/MCG-NJU/DDT" target="_blank" rel="noopener">Code</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="venue"><b>Preprint</b><i>2025</i></div>
+      <div class="pub-body">
+        <a class="t" href="https://arxiv.org/abs/2507.23268" target="_blank" rel="noopener">PixNerd: Pixel Neural Field Diffusion</a>
+        <p class="a"><u>Shuai Wang</u>, Ziteng Gao, Chenyu Zhu, Weilin Huang, Limin Wang</p>
+        <div class="meta"><a href="https://arxiv.org/abs/2507.23268" target="_blank" rel="noopener">arXiv</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="venue"><b>Preprint</b><i>2025</i></div>
+      <div class="pub-body">
+        <a class="t" href="https://arxiv.org/abs/2505.21114" target="_blank" rel="noopener">Differentiable Solver Search for Fast Diffusion Sampling</a>
+        <p class="a"><u>Shuai Wang</u>, Zexian Li, Tianhui Song, Xubin Li, Tiezheng Ge, Bo Zheng, Limin Wang</p>
+        <div class="meta"><a href="https://arxiv.org/abs/2505.21114" target="_blank" rel="noopener">arXiv</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="venue"><b>NeurIPS</b><i>2024</i></div>
+      <div class="pub-body">
+        <span class="t">FlowDCN: Exploring DCN-like Architecture for Fast Image Generation with Arbitrary Resolution</span>
+        <p class="a"><u>Shuai Wang</u>, Zexian Li, Tianhui Song, Xubin Li, Tiezheng Ge, Bo Zheng, Limin Wang</p>
+        <div class="meta"><a href="https://huggingface.co/wangsssssss/FlowDCN" target="_blank" rel="noopener">Model</a></div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="venue"><b>TPAMI</b><i>2025</i></div>
+      <div class="pub-body">
+        <span class="t">Deep Equilibrium Object Detection and Segmentation</span>
+        <p class="a"><u>Shuai Wang</u>, Yao Teng, Limin Wang</p>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="venue"><b>ICCV</b><i>2023</i></div>
+      <div class="pub-body">
+        <span class="t">Deep Equilibrium Object Detection</span>
+        <p class="a"><u>Shuai Wang</u>, Yao Teng, Limin Wang</p>
+      </div>
+    </div>
+
+    <p class="more">Selected collaborations: Cubic Discrete Diffusion (CVPR&nbsp;2026), Deco (CVPR&nbsp;2026), MotionRAG (NeurIPS&nbsp;2026), Flowing Backwards (AAAI&nbsp;2026), DMM (2025). &nbsp;<a href="https://scholar.google.com/citations?user=us4prRUAAAAJ&hl=en" target="_blank" rel="noopener">Full list on Google Scholar →</a></p>
+  </section>
+
+  <footer>
+    <p>© <span id="yr"></span> Shuai Wang · Nanjing University · Built with care.</p>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById("yr").textContent = new Date().getFullYear();
+  const els = document.querySelectorAll(".reveal");
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) { e.target.style.transitionDelay = (i % 3) * 60 + "ms"; e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    els.forEach((el) => io.observe(el));
+  } else {
+    els.forEach((el) => el.classList.add("in"));
+  }
+</script>
+</body>
+</html>
