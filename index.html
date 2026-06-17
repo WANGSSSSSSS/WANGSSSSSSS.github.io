@@ -11,27 +11,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --ink: #09090b;
-    --ink-soft: #3f3f46;
-    --ink-muted: #71717a;
-    --line: #e4e4e7;
-    --bg: #fafafa;
+    --ink: #0b0b12;
+    --ink-soft: #3f3f55;
+    --ink-muted: #6b7280;
+    --line: #e7e7ee;
+    --bg: #fbfbfd;
     --card: #ffffff;
-    --accent: #2563eb;
-    --accent-soft: #eff4ff;
+    --card-2: #ffffff;
+    --accent: #2f5cff;
+    --accent-2: #7c3aed;
+    --accent-soft: #eef2ff;
+    --grad: linear-gradient(120deg, #2f5cff 0%, #7c3aed 100%);
+    --shadow: 0 1px 2px rgba(16,24,40,.04), 0 8px 28px -12px rgba(16,24,40,.16);
+    --shadow-lg: 0 1px 2px rgba(16,24,40,.05), 0 18px 42px -16px rgba(47,92,255,.28);
     --serif: "Crimson Pro", Georgia, serif;
     --sans: "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --ink: #f4f4f5;
-      --ink-soft: #d4d4d8;
-      --ink-muted: #a1a1aa;
-      --line: #27272a;
-      --bg: #0b0b0d;
-      --card: #131316;
-      --accent: #60a5fa;
-      --accent-soft: #16213a;
+      --ink: #f2f2f7;
+      --ink-soft: #c8c8d4;
+      --ink-muted: #8b8b9a;
+      --line: #24242e;
+      --bg: #08080c;
+      --card: #121219;
+      --card-2: #15151e;
+      --accent: #7aa2ff;
+      --accent-2: #b794f6;
+      --accent-soft: #161a2e;
+      --grad: linear-gradient(120deg, #7aa2ff 0%, #c4a3ff 100%);
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px -14px rgba(0,0,0,.7);
+      --shadow-lg: 0 1px 2px rgba(0,0,0,.4), 0 22px 48px -18px rgba(122,162,255,.35);
     }
   }
   * { box-sizing: border-box; }
@@ -44,138 +54,234 @@
     font-size: 17px;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
   a { color: var(--accent); text-decoration: none; transition: color .2s ease, opacity .2s ease; }
-  a:hover { opacity: .72; }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  /* Decorative aurora background */
+  .bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+  .bg::before, .bg::after {
+    content: ""; position: absolute; border-radius: 50%;
+    filter: blur(90px); opacity: .5;
+  }
+  .bg::before { width: 620px; height: 620px; top: -220px; right: -160px;
+    background: radial-gradient(circle at 30% 30%, rgba(47,92,255,.40), transparent 70%); }
+  .bg::after { width: 560px; height: 560px; top: 380px; left: -200px;
+    background: radial-gradient(circle at 50% 50%, rgba(124,58,237,.30), transparent 70%); }
+  @media (prefers-color-scheme: dark) {
+    .bg::before { opacity: .35; background: radial-gradient(circle at 30% 30%, rgba(47,92,255,.55), transparent 70%); }
+    .bg::after { opacity: .28; background: radial-gradient(circle at 50% 50%, rgba(124,58,237,.5), transparent 70%); }
+  }
+
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+  /* Floating nav */
+  .nav {
+    position: sticky; top: 16px; z-index: 50;
+    margin: 16px auto 0; max-width: 720px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 10px 8px 18px;
+    border: 1px solid var(--line); border-radius: 999px;
+    background: color-mix(in srgb, var(--card) 72%, transparent);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    box-shadow: var(--shadow);
+  }
+  .nav .brand { font-family: var(--serif); font-weight: 700; font-size: 17px; color: var(--ink); letter-spacing: -.01em; }
+  .nav .brand span { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .nav-links { display: flex; gap: 4px; }
+  .nav-links a {
+    font-size: 14px; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px;
+    transition: color .2s ease, background .2s ease;
+  }
+  .nav-links a:hover { color: var(--ink); background: var(--accent-soft); }
 
   /* Header */
-  header { padding: 88px 0 36px; }
-  .intro { display: flex; gap: 36px; align-items: flex-start; }
+  header { padding: 64px 0 30px; }
+  .intro { display: flex; gap: 38px; align-items: center; }
+  .photo-ring {
+    flex: 0 0 auto; padding: 4px; border-radius: 22px;
+    background: var(--grad);
+    box-shadow: var(--shadow-lg);
+  }
   .photo {
-    width: 150px; height: 150px; flex: 0 0 150px;
-    border-radius: 16px; object-fit: cover;
-    border: 1px solid var(--line);
-    box-shadow: 0 6px 24px rgba(0,0,0,.08);
+    display: block; width: 156px; height: 156px;
+    border-radius: 18px; object-fit: cover;
+    border: 3px solid var(--card);
   }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 4px 12px; border-radius: 999px; margin-bottom: 12px;
+  }
+  .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: #16a34a; box-shadow: 0 0 0 3px rgba(22,163,74,.18); }
   .id h1 {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 40px;
-    line-height: 1.1;
-    margin: 2px 0 2px;
-    letter-spacing: -.01em;
+    font-family: var(--serif); font-weight: 700;
+    font-size: 46px; line-height: 1.05; margin: 0 0 4px; letter-spacing: -.015em;
   }
-  .id .zh { font-family: var(--serif); font-weight: 400; color: var(--ink-muted); font-size: 20px; }
-  .id .role { color: var(--ink-soft); margin-top: 10px; }
-  .id .role a { font-weight: 700; }
-  .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .id h1 .accent { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .id .zh { font-family: var(--serif); font-weight: 400; color: var(--ink-muted); font-size: 21px; }
+  .id .role { color: var(--ink-soft); margin: 12px 0 0; font-size: 16px; }
+  .id .role a { font-weight: 700; color: var(--ink); border-bottom: 2px solid color-mix(in srgb, var(--accent) 40%, transparent); }
+  .id .role a:hover { color: var(--accent); }
+  .links { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
   .links a {
     display: inline-flex; align-items: center; gap: 7px;
-    padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px;
+    padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
     color: var(--ink-soft); background: var(--card);
-    font-size: 14px; cursor: pointer;
-    transition: border-color .2s ease, color .2s ease, background .2s ease;
+    font-size: 14px; font-weight: 700; cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform .2s ease, border-color .2s ease, color .2s ease, background .2s ease, box-shadow .2s ease;
   }
-  .links a:hover { color: var(--accent); border-color: var(--accent); opacity: 1; background: var(--accent-soft); }
+  .links a:hover { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); background: var(--accent-soft); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
   .links svg { width: 16px; height: 16px; }
 
   /* Sections */
-  section { padding: 26px 0; border-top: 1px solid var(--line); }
+  section { padding: 34px 0 6px; scroll-margin-top: 90px; }
+  .sec-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .sec-head .bar { width: 22px; height: 4px; border-radius: 4px; background: var(--grad); flex: 0 0 auto; }
   h2 {
-    font-family: var(--serif);
-    font-size: 14px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: .14em; color: var(--ink-muted);
-    margin: 0 0 18px;
+    font-family: var(--serif); font-size: 14px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .16em; color: var(--ink-muted); margin: 0;
   }
   p { margin: 0 0 14px; color: var(--ink-soft); }
+  .bio p { font-size: 17.5px; }
   .bio strong { color: var(--ink); font-weight: 700; }
 
   /* Interests */
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 9px; }
   .tags span {
-    font-size: 14px; padding: 5px 12px; border-radius: 8px;
+    font-size: 14px; font-weight: 700; padding: 7px 14px; border-radius: 999px;
     background: var(--card); border: 1px solid var(--line); color: var(--ink-soft);
+    box-shadow: var(--shadow); cursor: default;
+    transition: transform .2s ease, color .2s ease, border-color .2s ease;
   }
+  .tags span:hover { transform: translateY(-2px); color: var(--accent); border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
 
   /* News */
   .news { list-style: none; padding: 0; margin: 0; }
-  .news li { display: flex; gap: 16px; margin-bottom: 10px; color: var(--ink-soft); }
-  .news time { flex: 0 0 76px; color: var(--ink-muted); font-size: 14px; padding-top: 1px; }
+  .news li { display: flex; gap: 18px; padding: 9px 0; color: var(--ink-soft); }
+  .news time {
+    flex: 0 0 64px; color: var(--accent); font-size: 13px; font-weight: 700;
+    font-variant-numeric: tabular-nums; padding-top: 3px;
+  }
+  .news b { color: var(--ink); font-weight: 700; }
+
+  /* Card base */
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 18px 20px; margin-bottom: 12px; position: relative;
+    box-shadow: var(--shadow);
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  }
+  .card::before {
+    content: ""; position: absolute; left: 0; top: 16px; bottom: 16px; width: 3px;
+    border-radius: 3px; background: var(--grad); opacity: 0; transition: opacity .22s ease;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: color-mix(in srgb, var(--accent) 30%, var(--line)); }
+  .card:hover::before { opacity: 1; }
 
   /* Publications */
-  .pub { display: flex; gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--line); }
-  .pub:last-child { border-bottom: 0; }
-  .venue {
-    flex: 0 0 86px; padding-top: 2px;
-  }
+  .pub { display: flex; gap: 18px; }
+  .venue { flex: 0 0 84px; padding-top: 2px; }
   .venue b {
-    display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .03em;
-    color: var(--accent); background: var(--accent-soft);
-    padding: 3px 9px; border-radius: 6px;
+    display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .03em;
+    color: #fff; background: var(--grad);
+    padding: 4px 10px; border-radius: 7px;
   }
-  .venue i { display: block; font-style: normal; font-size: 12px; color: var(--ink-muted); margin-top: 5px; }
-  .pub-body .t { font-family: var(--serif); font-size: 20px; font-weight: 600; line-height: 1.25; color: var(--ink); display: inline; }
+  .venue i { display: block; font-style: normal; font-size: 12px; color: var(--ink-muted); margin-top: 6px; font-variant-numeric: tabular-nums; }
+  .pub-body .t { font-family: var(--serif); font-size: 21px; font-weight: 600; line-height: 1.25; color: var(--ink); display: inline; }
   .pub-body a.t:hover { color: var(--accent); }
-  .pub-body .a { font-size: 14.5px; color: var(--ink-muted); margin: 4px 0 0; }
+  .pub-body .a { font-size: 14.5px; color: var(--ink-muted); margin: 5px 0 0; }
   .pub-body .a u { color: var(--ink); text-decoration: none; font-weight: 700; border-bottom: 2px solid var(--accent); }
-  .pub-body .meta { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .pub-body .meta { margin-top: 9px; display: flex; flex-wrap: wrap; gap: 7px; }
   .pub-body .meta a {
-    font-size: 12.5px; padding: 2px 9px; border: 1px solid var(--line); border-radius: 6px;
-    color: var(--ink-soft); background: var(--card); cursor: pointer;
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12.5px; font-weight: 700; padding: 3px 11px; border: 1px solid var(--line); border-radius: 7px;
+    color: var(--ink-soft); background: var(--card-2); cursor: pointer;
+    transition: color .2s ease, border-color .2s ease, background .2s ease;
   }
-  .pub-body .meta a:hover { color: var(--accent); border-color: var(--accent); opacity: 1; }
+  .pub-body .meta a:hover { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); background: var(--accent-soft); }
+  .more { font-size: 14.5px; margin: 16px 0 0; color: var(--ink-muted); }
+  .more a { font-weight: 700; }
 
-  .more { font-size: 14px; margin-top: 18px; }
-
-  /* Dated entries (experience / education) */
-  .entry { padding: 13px 0; border-bottom: 1px solid var(--line); }
-  .entry:last-child { border-bottom: 0; }
+  /* Dated entries */
   .entry .top { display: flex; justify-content: space-between; gap: 14px; align-items: baseline; }
-  .entry .org { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--ink); }
-  .entry .date { flex: 0 0 auto; color: var(--ink-muted); font-size: 13.5px; white-space: nowrap; }
-  .entry .sub { color: var(--ink-soft); font-size: 15px; margin-top: 2px; }
-  .entry .desc { color: var(--ink-soft); font-size: 15px; margin-top: 6px; }
+  .entry .org { font-family: var(--serif); font-size: 21px; font-weight: 600; color: var(--ink); }
+  .entry .date {
+    flex: 0 0 auto; color: var(--ink-muted); font-size: 13px; font-weight: 700;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+    padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px;
+  }
+  .entry .sub { color: var(--accent); font-size: 14.5px; font-weight: 700; margin-top: 4px; }
+  .entry .desc { color: var(--ink-soft); font-size: 15px; margin-top: 7px; margin-bottom: 0; }
 
   /* Honors */
-  .honors { list-style: none; padding: 0; margin: 0; }
-  .honors li { display: flex; gap: 16px; margin-bottom: 9px; color: var(--ink-soft); font-size: 15.5px; }
-  .honors time { flex: 0 0 84px; color: var(--ink-muted); font-size: 14px; }
+  .honors { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .honors li {
+    display: flex; align-items: center; gap: 14px; color: var(--ink-soft); font-size: 15.5px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px;
+    box-shadow: var(--shadow);
+  }
+  .honors time {
+    flex: 0 0 auto; color: var(--accent); font-size: 12.5px; font-weight: 700;
+    font-variant-numeric: tabular-nums; background: var(--accent-soft);
+    padding: 3px 10px; border-radius: 999px;
+  }
   .honors b { color: var(--ink); font-weight: 700; }
 
-  footer { padding: 40px 0 64px; color: var(--ink-muted); font-size: 13.5px; text-align: center; border-top: 1px solid var(--line); }
+  footer { padding: 44px 0 64px; color: var(--ink-muted); font-size: 13.5px; text-align: center; }
+  footer .rule { height: 1px; background: linear-gradient(90deg, transparent, var(--line), transparent); margin-bottom: 22px; }
 
   /* Entrance animation */
-  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
     html { scroll-behavior: auto; }
+    .card:hover, .links a:hover, .tags span:hover { transform: none; }
   }
 
-  @media (max-width: 600px) {
-    header { padding: 56px 0 28px; }
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .nav { padding: 8px 16px; }
+    header { padding: 30px 0 20px; }
     .intro { flex-direction: column; gap: 22px; align-items: center; text-align: center; }
-    .photo { width: 128px; height: 128px; flex-basis: 128px; }
+    .photo { width: 132px; height: 132px; }
     .links { justify-content: center; }
-    .id h1 { font-size: 34px; }
-    .pub { flex-direction: column; gap: 8px; }
+    .id h1 { font-size: 38px; }
+    .pub { flex-direction: column; gap: 10px; }
     .venue { display: flex; gap: 8px; align-items: center; }
     .venue i { margin-top: 0; }
-    .news li { flex-direction: column; gap: 0; }
-    .entry .top { flex-direction: column; gap: 2px; }
-    .honors li { flex-direction: column; gap: 0; }
+    .news li { flex-direction: column; gap: 2px; }
+    .entry .top { flex-direction: column; gap: 6px; align-items: flex-start; }
   }
 </style>
 </head>
 <body>
+<div class="bg"></div>
+
+<nav class="nav">
+  <span class="brand">Shuai <span>Wang</span></span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#publications">Publications</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+  </div>
+</nav>
+
 <div class="wrap">
 
   <header class="reveal">
     <div class="intro">
-      <img class="photo" src="assets/profile.png" alt="Portrait of Shuai Wang" />
+      <div class="photo-ring">
+        <img class="photo" src="assets/profile.png" alt="Portrait of Shuai Wang" />
+      </div>
       <div class="id">
-        <h1>Shuai Wang</h1>
+        <span class="eyebrow"><span class="dot"></span>Open to collaboration</span>
+        <h1>Shuai <span class="accent">Wang</span></h1>
         <div class="zh">王帅</div>
         <p class="role">
           PhD Student, <a href="https://www.nju.edu.cn/en" target="_blank" rel="noopener">Nanjing University</a><br />
@@ -199,8 +305,8 @@
     </div>
   </header>
 
-  <section class="bio reveal">
-    <h2>About</h2>
+  <section id="about" class="bio reveal">
+    <div class="sec-head"><span class="bar"></span><h2>About</h2></div>
     <p>
       I am a PhD student at <strong>Nanjing University</strong>, advised by Prof. Limin Wang.
       My research centers on <strong>generative models</strong>—designing efficient and scalable
@@ -214,7 +320,7 @@
   </section>
 
   <section class="reveal">
-    <h2>Research Interests</h2>
+    <div class="sec-head"><span class="bar"></span><h2>Research Interests</h2></div>
     <div class="tags">
       <span>Diffusion Models</span>
       <span>Visual Generation</span>
@@ -225,20 +331,20 @@
   </section>
 
   <section class="reveal">
-    <h2>News</h2>
+    <div class="sec-head"><span class="bar"></span><h2>News</h2></div>
     <ul class="news">
       <li><time>2026.06</time><span>UniDDT — unifying multimodal understanding and generation with a decoupled diffusion transformer — is out.</span></li>
-      <li><time>2026.02</time><span>DDT: Decoupled Diffusion Transformer accepted to <b>CVPR 2026</b>.</span></li>
-      <li><time>2026.01</time><span>PixNerd accepted to <b>ICLR 2026</b>.</span></li>
-      <li><time>2025.05</time><span>Differentiable Solver Search accepted to <b>ICML 2025</b>.</span></li>
-      <li><time>2024.09</time><span>FlowDCN accepted to <b>NeurIPS 2024</b>.</span></li>
+      <li><time>2026.02</time><span><b>DDT: Decoupled Diffusion Transformer</b> accepted to <b>CVPR 2026</b>.</span></li>
+      <li><time>2026.01</time><span><b>PixNerd</b> accepted to <b>ICLR 2026</b>.</span></li>
+      <li><time>2025.05</time><span><b>Differentiable Solver Search</b> accepted to <b>ICML 2025</b>.</span></li>
+      <li><time>2024.09</time><span><b>FlowDCN</b> accepted to <b>NeurIPS 2024</b>.</span></li>
     </ul>
   </section>
 
-  <section class="reveal">
-    <h2>Selected Publications</h2>
+  <section id="publications" class="reveal">
+    <div class="sec-head"><span class="bar"></span><h2>Selected Publications</h2></div>
 
-    <div class="pub">
+    <div class="card pub">
       <div class="venue"><b>Preprint</b><i>2026</i></div>
       <div class="pub-body">
         <a class="t" href="https://arxiv.org/abs/2606.16255" target="_blank" rel="noopener">UniDDT: Unifying Multimodal Understanding and Generation with Decoupled Diffusion Transformer</a>
@@ -247,7 +353,7 @@
       </div>
     </div>
 
-    <div class="pub">
+    <div class="card pub">
       <div class="venue"><b>CVPR</b><i>2026</i></div>
       <div class="pub-body">
         <a class="t" href="https://arxiv.org/abs/2504.05741" target="_blank" rel="noopener">DDT: Decoupled Diffusion Transformer</a>
@@ -256,7 +362,7 @@
       </div>
     </div>
 
-    <div class="pub">
+    <div class="card pub">
       <div class="venue"><b>ICLR</b><i>2026</i></div>
       <div class="pub-body">
         <a class="t" href="https://arxiv.org/abs/2507.23268" target="_blank" rel="noopener">PixNerd: Pixel Neural Field Diffusion</a>
@@ -265,7 +371,7 @@
       </div>
     </div>
 
-    <div class="pub">
+    <div class="card pub">
       <div class="venue"><b>ICML</b><i>2025</i></div>
       <div class="pub-body">
         <a class="t" href="https://arxiv.org/abs/2505.21114" target="_blank" rel="noopener">Differentiable Solver Search for Fast Diffusion Sampling</a>
@@ -274,7 +380,7 @@
       </div>
     </div>
 
-    <div class="pub">
+    <div class="card pub">
       <div class="venue"><b>NeurIPS</b><i>2024</i></div>
       <div class="pub-body">
         <a class="t" href="https://arxiv.org/abs/2410.22655" target="_blank" rel="noopener">FlowDCN: Exploring DCN-like Architecture for Fast Image Generation with Arbitrary Resolution</a>
@@ -283,7 +389,7 @@
       </div>
     </div>
 
-    <div class="pub">
+    <div class="card pub">
       <div class="venue"><b>TPAMI</b><i>2025</i></div>
       <div class="pub-body">
         <a class="t" href="https://github.com/MCG-NJU/DEQDet" target="_blank" rel="noopener">Deep Equilibrium Object Detection and Segmentation</a>
@@ -292,7 +398,7 @@
       </div>
     </div>
 
-    <div class="pub">
+    <div class="card pub">
       <div class="venue"><b>ICCV</b><i>2023</i></div>
       <div class="pub-body">
         <a class="t" href="https://arxiv.org/abs/2308.09564" target="_blank" rel="noopener">Deep Equilibrium Object Detection</a>
@@ -304,10 +410,10 @@
     <p class="more">Selected collaborations: Cubic Discrete Diffusion (CVPR&nbsp;2026), Deco (CVPR&nbsp;2026), MotionRAG (NeurIPS&nbsp;2026), Flowing Backwards (AAAI&nbsp;2026), DMM (2025). &nbsp;<a href="https://scholar.google.com/citations?user=us4prRUAAAAJ&hl=en" target="_blank" rel="noopener">Full list on Google Scholar →</a></p>
   </section>
 
-  <section class="reveal">
-    <h2>Experience</h2>
+  <section id="experience" class="reveal">
+    <div class="sec-head"><span class="bar"></span><h2>Experience</h2></div>
 
-    <div class="entry">
+    <div class="card entry">
       <div class="top">
         <span class="org">ByteDance · Seed</span>
         <span class="date">2024.12 – Present</span>
@@ -316,7 +422,7 @@
       <p class="desc">University–industry collaboration on enhancing the generalization and world-knowledge reconstruction abilities of generative models.</p>
     </div>
 
-    <div class="entry">
+    <div class="card entry">
       <div class="top">
         <span class="org">Alibaba (Alimama)</span>
         <span class="date">2024.04 – 2024.12</span>
@@ -325,7 +431,7 @@
       <p class="desc">Model acceleration for intelligent creation; co-developed open-source models such as Flux-Turbo (10k+ downloads).</p>
     </div>
 
-    <div class="entry">
+    <div class="card entry">
       <div class="top">
         <span class="org">SenseTime</span>
         <span class="date">2021.12 – 2022.05</span>
@@ -335,10 +441,10 @@
     </div>
   </section>
 
-  <section class="reveal">
-    <h2>Education</h2>
+  <section id="education" class="reveal">
+    <div class="sec-head"><span class="bar"></span><h2>Education</h2></div>
 
-    <div class="entry">
+    <div class="card entry">
       <div class="top">
         <span class="org">Nanjing University</span>
         <span class="date">2022.09 – Present</span>
@@ -346,7 +452,7 @@
       <p class="sub">Ph.D. (direct-track) in Computer Science &amp; Technology</p>
     </div>
 
-    <div class="entry">
+    <div class="card entry">
       <div class="top">
         <span class="org">Northwestern Polytechnical University</span>
         <span class="date">2018.09 – 2022.06</span>
@@ -356,7 +462,7 @@
   </section>
 
   <section class="reveal">
-    <h2>Selected Honors</h2>
+    <div class="sec-head"><span class="bar"></span><h2>Selected Honors</h2></div>
     <ul class="honors">
       <li><time>2024–25</time><span><b>National Scholarship</b> (PhD)</span></li>
       <li><time>2022–23</time><span><b>Tencent Scholarship</b> (Master)</span></li>
@@ -365,7 +471,8 @@
   </section>
 
   <footer>
-    <p>© <span id="yr"></span> Shuai Wang · Nanjing University · Built with care.</p>
+    <div class="rule"></div>
+    <p>© <span id="yr"></span> Shuai Wang · Nanjing University</p>
   </footer>
 
 </div>
@@ -375,8 +482,8 @@
   const els = document.querySelectorAll(".reveal");
   if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) { e.target.style.transitionDelay = (i % 3) * 60 + "ms"; e.target.classList.add("in"); io.unobserve(e.target); }
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
       });
     }, { threshold: 0.08 });
     els.forEach((el) => io.observe(el));
