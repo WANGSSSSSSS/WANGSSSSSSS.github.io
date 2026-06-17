@@ -237,7 +237,7 @@
 
   .publication {
     display: grid;
-    grid-template-columns: 84px 86px 1fr;
+    grid-template-columns: 84px 112px 1fr;
     gap: 18px;
     padding: 17px 0;
     border-top: 1px solid var(--line);
@@ -268,25 +268,59 @@
   }
 
   .paper-thumb {
-    width: 86px;
-    height: 62px;
+    width: 112px;
+    height: 76px;
     border: 1px solid var(--line);
-    background:
-      linear-gradient(135deg, rgba(138, 21, 56, .08), transparent 58%),
-      var(--wash);
+    border-radius: 9px;
+    background: #fff;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .02);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 8px;
-    color: var(--accent);
-    font-size: 10px;
+    position: relative;
+    overflow: hidden;
+    padding: 9px 10px 8px;
+    color: var(--text);
+    font-size: 11px;
     line-height: 1.1;
     font-weight: 700;
-    letter-spacing: .04em;
-    text-transform: uppercase;
+    letter-spacing: .01em;
+  }
+
+  .paper-thumb::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 33px;
+    height: 20px;
+    background:
+      linear-gradient(var(--line) 0 0) 0 0 / 72% 1px no-repeat,
+      linear-gradient(var(--line) 0 0) 0 7px / 92% 1px no-repeat,
+      linear-gradient(var(--line) 0 0) 0 14px / 54% 1px no-repeat;
+  }
+
+  .paper-thumb::after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    background:
+      linear-gradient(135deg, rgba(138, 21, 56, .18), rgba(138, 21, 56, .04));
+    border: 1px solid rgba(138, 21, 56, .12);
+  }
+
+  .paper-thumb span {
+    max-width: 74px;
+    color: var(--text);
+    z-index: 1;
   }
 
   .paper-thumb em {
+    z-index: 1;
     color: var(--faint);
     font-style: normal;
     font-size: 9px;
@@ -485,7 +519,7 @@
 
     .paper-thumb {
       width: 100%;
-      height: 54px;
+      height: 64px;
     }
 
     .org-logo {
@@ -602,7 +636,7 @@
 
       <article class="publication">
         <div class="venue"><b>Preprint</b><i>2026</i></div>
-        <div class="paper-thumb"><span>UniDDT</span><em>Unified</em></div>
+        <div class="paper-thumb"><span>UniDDT</span><em>arXiv:2606.16255</em></div>
         <div>
           <a class="paper-title" href="https://arxiv.org/abs/2606.16255" target="_blank" rel="noopener">UniDDT: Unifying Multimodal Understanding and Generation with Decoupled Diffusion Transformer</a>
           <p class="authors"><span class="me">Shuai Wang</span>, et al.</p>
@@ -612,7 +646,7 @@
 
       <article class="publication">
         <div class="venue"><b>CVPR</b><i>2026</i></div>
-        <div class="paper-thumb"><span>DDT</span><em>Training</em></div>
+        <div class="paper-thumb"><span>DDT</span><em>arXiv:2504.05741</em></div>
         <div>
           <a class="paper-title" href="https://arxiv.org/abs/2504.05741" target="_blank" rel="noopener">DDT: Decoupled Diffusion Transformer</a>
           <p class="authors"><span class="me">Shuai Wang</span>, Zhi Tian, Weilin Huang, Limin Wang</p>
@@ -622,7 +656,7 @@
 
       <article class="publication">
         <div class="venue"><b>ICLR</b><i>2026</i></div>
-        <div class="paper-thumb"><span>PixNerd</span><em>Pixel</em></div>
+        <div class="paper-thumb"><span>PixNerd</span><em>arXiv:2507.23268</em></div>
         <div>
           <a class="paper-title" href="https://arxiv.org/abs/2507.23268" target="_blank" rel="noopener">PixNerd: Pixel Neural Field Diffusion</a>
           <p class="authors"><span class="me">Shuai Wang</span>, Ziteng Gao, Chenhui Zhu, Weilin Huang, Limin Wang</p>
@@ -632,7 +666,7 @@
 
       <article class="publication">
         <div class="venue"><b>ICML</b><i>2025</i></div>
-        <div class="paper-thumb"><span>DSS</span><em>Sampling</em></div>
+        <div class="paper-thumb"><span>DSS</span><em>arXiv:2505.21114</em></div>
         <div>
           <a class="paper-title" href="https://arxiv.org/abs/2505.21114" target="_blank" rel="noopener">Differentiable Solver Search for Fast Diffusion Sampling</a>
           <p class="authors"><span class="me">Shuai Wang</span>, Zexian Li, Tianhui Song, Xubin Li, Tiezheng Ge, Bo Zheng, Limin Wang</p>
@@ -642,7 +676,7 @@
 
       <article class="publication">
         <div class="venue"><b>NeurIPS</b><i>2024</i></div>
-        <div class="paper-thumb"><span>FlowDCN</span><em>Scale</em></div>
+        <div class="paper-thumb"><span>FlowDCN</span><em>arXiv:2410.22655</em></div>
         <div>
           <a class="paper-title" href="https://arxiv.org/abs/2410.22655" target="_blank" rel="noopener">FlowDCN: Exploring DCN-like Architecture for Fast Image Generation with Arbitrary Resolution</a>
           <p class="authors"><span class="me">Shuai Wang</span>, Zexian Li, Tianhui Song, Xubin Li, Tiezheng Ge, Bo Zheng, Limin Wang</p>
@@ -652,7 +686,7 @@
 
       <article class="publication">
         <div class="venue"><b>TPAMI</b><i>2025</i></div>
-        <div class="paper-thumb"><span>DEQDet</span><em>Equilibrium</em></div>
+        <div class="paper-thumb"><span>DEQDet</span><em>TPAMI 2025</em></div>
         <div>
           <a class="paper-title" href="https://github.com/MCG-NJU/DEQDet" target="_blank" rel="noopener">Deep Equilibrium Object Detection and Segmentation</a>
           <p class="authors"><span class="me">Shuai Wang</span>, Yao Teng, Limin Wang</p>
@@ -662,7 +696,7 @@
 
       <article class="publication">
         <div class="venue"><b>ICCV</b><i>2023</i></div>
-        <div class="paper-thumb"><span>DEQDet</span><em>Detection</em></div>
+        <div class="paper-thumb"><span>DEQDet</span><em>arXiv:2308.09564</em></div>
         <div>
           <a class="paper-title" href="https://arxiv.org/abs/2308.09564" target="_blank" rel="noopener">Deep Equilibrium Object Detection</a>
           <p class="authors"><span class="me">Shuai Wang</span>, Yao Teng, Limin Wang</p>
