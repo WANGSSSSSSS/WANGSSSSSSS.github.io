@@ -321,10 +321,34 @@
 
   .cv-item {
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 18px;
+    grid-template-columns: 44px 1fr auto;
+    align-items: center;
+    gap: 16px;
     padding: 13px 0;
     border-bottom: 1px solid var(--line);
+  }
+
+  .org-logo {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--line);
+    display: block;
+    object-fit: contain;
+    background: var(--wash);
+    padding: 5px;
+  }
+
+  .org-logo.seal {
+    border-radius: 50%;
+  }
+
+  .org-logo.word {
+    width: 42px;
+    border-radius: 3px;
+  }
+
+  .education-honors {
+    margin: 12px 0 0 60px;
   }
 
   .cv-item h3 {
@@ -436,6 +460,14 @@
       gap: 4px;
     }
 
+    .org-logo {
+      margin-bottom: 4px;
+    }
+
+    .education-honors {
+      margin-left: 0;
+    }
+
     .cv-item time {
       order: -1;
     }
@@ -470,52 +502,12 @@
     <div class="topline">
       <div class="tagline">Generative Models / Visual Intelligence</div>
       <nav>
-        <a href="#experience">Experience</a>
-        <a href="#honors">Honors</a>
-        <a href="#news">News</a>
         <a href="#research">About</a>
         <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
         <a href="#publications">Publications</a>
       </nav>
     </div>
-
-    <section id="experience">
-      <h2>Experience</h2>
-      <div class="cv-list">
-        <div class="cv-item">
-          <div><h3>ByteDance Seed</h3><p>Research Intern</p></div>
-          <time>2024.12 - Present</time>
-        </div>
-        <div class="cv-item">
-          <div><h3>Alibaba Alimama</h3><p>Research Intern</p></div>
-          <time>2024.04 - 2024.12</time>
-        </div>
-        <div class="cv-item">
-          <div><h3>SenseTime</h3><p>Research Intern, autonomous driving perception</p></div>
-          <time>2021.12 - 2022.05</time>
-        </div>
-      </div>
-    </section>
-
-    <section id="honors">
-      <h2>Selected Honors</h2>
-      <ul class="honors">
-        <li><time>2024-25</time><span><b>National Scholarship</b> (PhD)</span></li>
-        <li><time>2022-23</time><span><b>Tencent Scholarship</b> (Master)</span></li>
-        <li><time>2018-19</time><span><b>National Scholarship</b> (Undergraduate)</span></li>
-      </ul>
-    </section>
-
-    <section id="news">
-      <h2>News</h2>
-      <ul class="news">
-        <li><time>2026.06</time><span><b>UniDDT</b> - unifying multimodal understanding and generation with a decoupled diffusion transformer - is out.</span></li>
-        <li><time>2026.02</time><span><b>DDT: Decoupled Diffusion Transformer</b> accepted to <b>CVPR 2026</b>.</span></li>
-        <li><time>2026.01</time><span><b>PixNerd</b> accepted to <b>ICLR 2026</b>.</span></li>
-        <li><time>2025.05</time><span><b>Differentiable Solver Search</b> accepted to <b>ICML 2025</b>.</span></li>
-        <li><time>2024.09</time><span><b>FlowDCN</b> accepted to <b>NeurIPS 2024</b>.</span></li>
-      </ul>
-    </section>
 
     <section id="research">
       <p class="lead">
@@ -537,15 +529,43 @@
     </section>
 
     <section id="education">
-      <h2>Education</h2>
+      <h2>Education & Honors</h2>
       <div class="cv-list">
         <div class="cv-item">
+          <img class="org-logo seal" src="https://www.google.com/s2/favicons?domain=nju.edu.cn&sz=128" alt="Nanjing University logo" />
           <div><h3>Nanjing University</h3><p>Ph.D. (direct-track), Computer Science and Technology</p></div>
           <time>2022.09 - Present</time>
         </div>
         <div class="cv-item">
+          <img class="org-logo seal" src="https://www.google.com/s2/favicons?domain=nwpu.edu.cn&sz=128" alt="Northwestern Polytechnical University logo" />
           <div><h3>Northwestern Polytechnical University</h3><p>B.E., Computer Science and Technology</p></div>
           <time>2018.09 - 2022.06</time>
+        </div>
+      </div>
+      <ul class="honors education-honors">
+        <li><time>2024-25</time><span><b>National Scholarship</b> (PhD)</span></li>
+        <li><time>2022-23</time><span><b>Tencent Scholarship</b> (Master)</span></li>
+        <li><time>2018-19</time><span><b>National Scholarship</b> (Undergraduate)</span></li>
+      </ul>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="cv-list">
+        <div class="cv-item">
+          <img class="org-logo word" src="https://www.google.com/s2/favicons?domain=seed.bytedance.com&sz=128" alt="ByteDance Seed logo" />
+          <div><h3>ByteDance Seed</h3><p>Research Intern</p></div>
+          <time>2024.12 - Present</time>
+        </div>
+        <div class="cv-item">
+          <img class="org-logo word" src="https://www.google.com/s2/favicons?domain=alimama.com&sz=128" alt="Alibaba Alimama logo" />
+          <div><h3>Alibaba Alimama</h3><p>Research Intern</p></div>
+          <time>2024.04 - 2024.12</time>
+        </div>
+        <div class="cv-item">
+          <img class="org-logo word" src="https://www.google.com/s2/favicons?domain=sensetime.com&sz=128" alt="SenseTime logo" />
+          <div><h3>SenseTime</h3><p>Research Intern, autonomous driving perception</p></div>
+          <time>2021.12 - 2022.05</time>
         </div>
       </div>
     </section>
