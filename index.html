@@ -128,6 +128,21 @@
 
   .more { font-size: 14px; margin-top: 18px; }
 
+  /* Dated entries (experience / education) */
+  .entry { padding: 13px 0; border-bottom: 1px solid var(--line); }
+  .entry:last-child { border-bottom: 0; }
+  .entry .top { display: flex; justify-content: space-between; gap: 14px; align-items: baseline; }
+  .entry .org { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--ink); }
+  .entry .date { flex: 0 0 auto; color: var(--ink-muted); font-size: 13.5px; white-space: nowrap; }
+  .entry .sub { color: var(--ink-soft); font-size: 15px; margin-top: 2px; }
+  .entry .desc { color: var(--ink-soft); font-size: 15px; margin-top: 6px; }
+
+  /* Honors */
+  .honors { list-style: none; padding: 0; margin: 0; }
+  .honors li { display: flex; gap: 16px; margin-bottom: 9px; color: var(--ink-soft); font-size: 15.5px; }
+  .honors time { flex: 0 0 84px; color: var(--ink-muted); font-size: 14px; }
+  .honors b { color: var(--ink); font-weight: 700; }
+
   footer { padding: 40px 0 64px; color: var(--ink-muted); font-size: 13.5px; text-align: center; border-top: 1px solid var(--line); }
 
   /* Entrance animation */
@@ -148,6 +163,8 @@
     .venue { display: flex; gap: 8px; align-items: center; }
     .venue i { margin-top: 0; }
     .news li { flex-direction: column; gap: 0; }
+    .entry .top { flex-direction: column; gap: 2px; }
+    .honors li { flex-direction: column; gap: 0; }
   }
 </style>
 </head>
@@ -211,8 +228,9 @@
     <h2>News</h2>
     <ul class="news">
       <li><time>2026.06</time><span>UniDDT — unifying multimodal understanding and generation with a decoupled diffusion transformer — is out.</span></li>
-      <li><time>2026.03</time><span>DDT: Decoupled Diffusion Transformer accepted to <b>CVPR 2026</b>.</span></li>
-      <li><time>2025.07</time><span>Released PixNerd: pixel neural field diffusion.</span></li>
+      <li><time>2026.02</time><span>PixNerd accepted to <b>CVPR 2026</b>.</span></li>
+      <li><time>2026.01</time><span>DDT: Decoupled Diffusion Transformer accepted to <b>ICLR 2026</b>.</span></li>
+      <li><time>2025.05</time><span>Differentiable Solver Search accepted to <b>ICML 2025</b>.</span></li>
       <li><time>2024.09</time><span>FlowDCN accepted to <b>NeurIPS 2024</b>.</span></li>
     </ul>
   </section>
@@ -230,7 +248,7 @@
     </div>
 
     <div class="pub">
-      <div class="venue"><b>CVPR</b><i>2026</i></div>
+      <div class="venue"><b>ICLR</b><i>2026</i></div>
       <div class="pub-body">
         <a class="t" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=us4prRUAAAAJ&citation_for_view=us4prRUAAAAJ" target="_blank" rel="noopener">DDT: Decoupled Diffusion Transformer</a>
         <p class="a"><u>Shuai Wang</u>, Zhi Tian, Weilin Huang, Limin Wang</p>
@@ -239,7 +257,7 @@
     </div>
 
     <div class="pub">
-      <div class="venue"><b>ICLR</b><i>2026</i></div>
+      <div class="venue"><b>CVPR</b><i>2026</i></div>
       <div class="pub-body">
         <a class="t" href="https://arxiv.org/abs/2507.23268" target="_blank" rel="noopener">PixNerd: Pixel Neural Field Diffusion</a>
         <p class="a"><u>Shuai Wang</u>, Ziteng Gao, Chenyu Zhu, Weilin Huang, Limin Wang</p>
@@ -282,6 +300,69 @@
     </div>
 
     <p class="more">Selected collaborations: Cubic Discrete Diffusion (CVPR&nbsp;2026), Deco (CVPR&nbsp;2026), MotionRAG (NeurIPS&nbsp;2026), Flowing Backwards (AAAI&nbsp;2026), DMM (2025). &nbsp;<a href="https://scholar.google.com/citations?user=us4prRUAAAAJ&hl=en" target="_blank" rel="noopener">Full list on Google Scholar →</a></p>
+  </section>
+
+  <section class="reveal">
+    <h2>Experience</h2>
+
+    <div class="entry">
+      <div class="top">
+        <span class="org">ByteDance · Seed</span>
+        <span class="date">2024.12 – Present</span>
+      </div>
+      <p class="sub">Research Intern</p>
+      <p class="desc">University–industry collaboration on enhancing the generalization and world-knowledge reconstruction abilities of generative models.</p>
+    </div>
+
+    <div class="entry">
+      <div class="top">
+        <span class="org">Alibaba (Alimama)</span>
+        <span class="date">2024.04 – 2024.12</span>
+      </div>
+      <p class="sub">Research Intern</p>
+      <p class="desc">Model acceleration for intelligent creation; co-developed open-source models such as Flux-Turbo (10k+ downloads).</p>
+    </div>
+
+    <div class="entry">
+      <div class="top">
+        <span class="org">SenseTime</span>
+        <span class="date">2021.12 – 2022.05</span>
+      </div>
+      <p class="sub">Research Intern</p>
+      <p class="desc">Perception for autonomous driving (SenseAuto).</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2>Education</h2>
+
+    <div class="entry">
+      <div class="top">
+        <span class="org">Nanjing University</span>
+        <span class="date">2022.09 – Present</span>
+      </div>
+      <p class="sub">Ph.D. (direct-track) in Computer Science &amp; Technology</p>
+    </div>
+
+    <div class="entry">
+      <div class="top">
+        <span class="org">Northwestern Polytechnical University</span>
+        <span class="date">2018.09 – 2022.06</span>
+      </div>
+      <p class="sub">B.E. in Computer Science &amp; Technology</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2>Selected Honors</h2>
+    <ul class="honors">
+      <li><time>2024–25</time><span><b>National Scholarship</b> (PhD)</span></li>
+      <li><time>2022–23</time><span><b>Tencent Scholarship</b> (Master)</span></li>
+      <li><time>2018–19</time><span><b>National Scholarship</b> (Undergraduate)</span></li>
+      <li><time>2021</time><span>Champion, Rocket Force "Zhijian–Huoyan" AI Challenge</span></li>
+      <li><time>2020</time><span>International 3rd Place, ICRA RoboMaster AI Challenge</span></li>
+      <li><time>2019</time><span>Runner-up, FIRA RoboWorld Cup (Robosot, Development Group)</span></li>
+    </ul>
   </section>
 
   <footer>
