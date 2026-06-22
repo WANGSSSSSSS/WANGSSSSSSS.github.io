@@ -113,6 +113,20 @@
 
   .links a:hover { color: var(--accent); }
 
+  .availability {
+    margin: 18px 0 0;
+    max-width: 250px;
+    color: var(--accent);
+    font-size: 13px;
+    line-height: 1.55;
+    font-weight: 600;
+  }
+
+  .availability a {
+    color: var(--accent);
+    border-bottom-color: rgba(138, 21, 56, .32);
+  }
+
   .sidebar-note {
     margin-top: 26px;
     padding-top: 18px;
@@ -126,9 +140,9 @@
     justify-content: space-between;
     align-items: center;
     gap: 24px;
-    padding-bottom: 18px;
+    padding-bottom: 14px;
     border-bottom: 1px solid var(--line);
-    margin-bottom: 34px;
+    margin-bottom: 22px;
   }
 
   .tagline {
@@ -177,6 +191,11 @@
     padding: 34px 0 0;
     margin-top: 4px;
     scroll-margin-top: 28px;
+  }
+
+  .topline + section {
+    padding-top: 0;
+    margin-top: 0;
   }
 
   h2 {
@@ -521,6 +540,9 @@
         <a href="https://huggingface.co/wangsssssss" target="_blank" rel="noopener">Hugging Face</a>
         <a href="https://github.com/WANGSSSSSSS" target="_blank" rel="noopener">GitHub</a>
       </div>
+      <p class="availability">
+        Expected to graduate in 2027. I am seeking suitable internship and full-time opportunities. If you think I may be a good fit, please <a href="mailto:wangshuai.excellent@foxmail.com">contact me by email</a>.
+      </p>
       <p class="sidebar-note">
         Scalable training and sampling methods of generative models.
       </p>
